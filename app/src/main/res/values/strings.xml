@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">oop-project-fake-anki</string>
+    <string name="buttonText" />
 </resources>
