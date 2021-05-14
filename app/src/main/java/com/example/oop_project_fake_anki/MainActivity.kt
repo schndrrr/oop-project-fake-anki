@@ -5,11 +5,12 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.button_test.*
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.button_test)
     }
 
     fun test(view: View) {
@@ -22,7 +23,9 @@ class MainActivity : AppCompatActivity() {
         val intent = Intent(this, test::class.java)
         startActivity(intent)
     }
+
     fun sendMessage(view: View) {
         println ("Hat es funktioniert?")
+        textView_doener.text = "Hallo das ist ein test"
     }
 }
