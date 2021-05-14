@@ -22,4 +22,7 @@ class MainActivity : AppCompatActivity() {
         val intent = Intent(this, test::class.java)
         startActivity(intent)
     }
+    fun sendMessage(view: View) {
+        println ("Hat es funktioniert?")
+    }
 }
