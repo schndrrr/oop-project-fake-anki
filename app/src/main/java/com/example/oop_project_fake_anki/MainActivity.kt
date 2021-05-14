@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import com.example.oop_project_fake_anki.CreateCard.CreateCard
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -15,4 +16,6 @@ class MainActivity : AppCompatActivity() {
         val intent = Intent(this, CreateCard::class.java)
         startActivity(intent)
     }
+
+
 }

@@ -4,13 +4,92 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CreateCard">
+    tools:context=".CreateCard.CreateCard">
+
+    <Spinner
+        android:id="@+id/spinner_select_stack"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        tools:layout_editor_absoluteX="54dp"
+        tools:layout_editor_absoluteY="105dp"
+        tools:ignore="MissingConstraints" />
+
+    <EditText
+        android:id="@+id/edittext_add_front"
+        android:layout_width="300dp"
+        android:layout_height="162dp"
+        android:hint="Vorderseite eingeben"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.486"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.312" />
+
+    <EditText
+        android:id="@+id/edittext_add_back"
+        android:layout_width="300dp"
+        android:layout_height="162dp"
+        android:hint="Rückseite eingeben"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.486"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.641" />
+
+    <Button
+        android:id="@+id/button_Home"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Home"
+        android:onClick="routeToHome"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="667dp"
+        tools:ignore="MissingConstraints" />
+
+    <Button
+        android:id="@+id/button_create_card"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hinzufügen"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="619dp" />
+
+    <Button
+        android:id="@+id/button_Again"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nochmal"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="32dp"
+        tools:layout_editor_absoluteY="542dp" />
+
+    <Button
+        android:id="@+id/button_Good"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Gut"
+        tools:layout_editor_absoluteX="158dp"
+        tools:layout_editor_absoluteY="542dp"
+        tools:ignore="MissingConstraints" />
+
+    <Button
+        android:id="@+id/button_Easy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Einfach"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="271dp"
+        tools:layout_editor_absoluteY="542dp" />
 
     <TextView
         android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView"
-        tools:layout_editor_absoluteX="144dp"
-        tools:layout_editor_absoluteY="283dp" />
+        android:layout_width="72dp"
+        android:layout_height="20dp"
+        android:text="Editor"
+        tools:layout_editor_absoluteX="282dp"
+        tools:layout_editor_absoluteY="62dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
