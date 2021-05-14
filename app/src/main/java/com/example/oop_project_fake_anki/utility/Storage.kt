@@ -1,12 +1,10 @@
-package com.example.oop_project_fake_anki
-import android.content.Context
-import java.io.IOException
+package com.example.oop_project_fake_anki.utility
 
-import androidx.core.content.ContextCompat
-import java.io.BufferedWriter
-import java.io.File
-import java.io.FileWriter
-import java.io.Writer
+import android.content.Context
+import com.example.oop_project_fake_anki.classes.Stack
+import java.io.*
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 
 class Storage {
 
@@ -18,13 +16,15 @@ class Storage {
             ioException.printStackTrace()
             return "null"
         }
-        println(jsonString)
         return jsonString
     }
 
-    fun parseData(jsonString: String) {
-
-    }
+   fun parseData(jsonString: String): List<Stack> {
+       val gson = Gson()
+       val testType = object : TypeToken<List<Stack>>() {}.type
+       val stack: List<Stack> = gson.fromJson(jsonString, testType)
+       return stack
+   }
 
 
     fun saveData(jsonString: String) {
@@ -37,11 +37,8 @@ class Storage {
 
     fun createFile(): File {
         val fileName = "storage"
-        //val storageDir = "src/main/assets"
-       // if(!storageDir.ex()){
-        //    storageDir.mkdir()
-        //}
-        return File.createTempFile(fileName, ".json", File("src/main/assets"))
+        var file = File(fileName)
+        return file
     }
 
 }
