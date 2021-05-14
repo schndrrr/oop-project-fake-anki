@@ -8,6 +8,9 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         val s = Storage()
-        s.getData(applicationContext, "test.json")
+
+        val json = s.getData(applicationContext, "test.json")
+        s.saveData(json)
+        s.getData(applicationContext, "storage.json")
     }
 }
