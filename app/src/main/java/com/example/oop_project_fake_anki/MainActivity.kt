@@ -22,4 +22,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.layout)
         textView_newSite.text = "Ja und das geht auch"
     }
+    fun sendMessage(view: View) {
+        println ("Hat es funktioniert?")
+    }
 }
