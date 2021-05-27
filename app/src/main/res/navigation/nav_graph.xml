@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/homeScreen">
+    <fragment
+        android:id="@+id/createCard"
+        android:name="com.example.oop_project_fake_anki.createCard"
+        android:label="fragment_create_card"
+        tools:layout="@layout/fragment_create_card" >
+        <action
+            android:id="@+id/action_createCard_to_homeScreen"
+            app:destination="@id/homeScreen" />
+    </fragment>
+    <fragment
+        android:id="@+id/homeScreen"
+        android:name="com.example.oop_project_fake_anki.homeScreen"
+        android:label="fragment_home_screen"
+        tools:layout="@layout/fragment_home_screen" />
+    <fragment
+        android:id="@+id/showStack"
+        android:name="com.example.oop_project_fake_anki.showStack"
+        android:label="fragment_show_stack"
+        tools:layout="@layout/fragment_show_stack" />
+</navigation>
