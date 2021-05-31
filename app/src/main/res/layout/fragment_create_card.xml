@@ -5,13 +5,79 @@
     android:layout_height="match_parent"
     tools:context=".createCard">
 
+    <Spinner
+        android:id="@+id/spinner_select_stack"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        tools:layout_editor_absoluteX="54dp"
+        tools:layout_editor_absoluteY="105dp"
+        tools:ignore="MissingConstraints" />
+
+    <EditText
+        android:id="@+id/edittext_add_front"
+        android:layout_width="300dp"
+        android:layout_height="162dp"
+        android:hint="Vorderseite eingeben"
+
+
+    <EditText
+        android:id="@+id/edittext_add_back"
+        android:layout_width="300dp"
+        android:layout_height="162dp"
+        android:hint="Rückseite eingeben" />
+
     <Button
-        android:id="@+id/button"
-        android:layout_width="261dp"
-        android:layout_height="362dp"
-        android:onClick="test"
-        android:text="Button"
-        tools:ignore="OnClick" />
+        android:id="@+id/button_Home"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Home"
+        android:onClick="routeToHome"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="667dp"
+        tools:ignore="MissingConstraints" />
+
+    <Button
+        android:id="@+id/button_create_card"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hinzufügen"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="619dp" />
+
+    <Button
+        android:id="@+id/button_Again"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nochmal"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="32dp"
+        tools:layout_editor_absoluteY="542dp" />
+
+    <Button
+        android:id="@+id/button_Good"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Gut"
+        tools:layout_editor_absoluteX="158dp"
+        tools:layout_editor_absoluteY="542dp"
+        tools:ignore="MissingConstraints" />
+
+    <Button
+        android:id="@+id/button_Easy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Einfach"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="271dp"
+        tools:layout_editor_absoluteY="542dp" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="72dp"
+        android:layout_height="20dp"
+        android:text="Editor"
+        tools:layout_editor_absoluteX="282dp"
+        tools:layout_editor_absoluteY="62dp" />
 
 
 </FrameLayout>
