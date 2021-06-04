@@ -37,6 +37,11 @@ class showCard : Fragment() {
         return inflater.inflate(R.layout.fragment_show_card, container, false)
     }
 
+    fun routeToNextCard(view: View)
+    {
+        println("Test Button")
+    }
+
     companion object {
         /**
          * Use this factory method to create a new instance of

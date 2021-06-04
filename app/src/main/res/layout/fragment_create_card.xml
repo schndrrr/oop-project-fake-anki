@@ -17,7 +17,7 @@
         android:id="@+id/edittext_add_front"
         android:layout_width="300dp"
         android:layout_height="162dp"
-        android:hint="Vorderseite eingeben"
+        android:hint="Vorderseite eingeben" />
 
 
     <EditText
