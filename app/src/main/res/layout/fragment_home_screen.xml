@@ -15,7 +15,6 @@
         android:id="@+id/homeButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Button"
-        tools:ignore="OnClick" />
+        android:text="moin" />
 
 </FrameLayout>

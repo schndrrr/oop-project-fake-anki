@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 
@@ -35,16 +36,20 @@ class homeScreen : Fragment(), View.OnClickListener {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_home_screen, container, false)
+        val view: View = inflater.inflate(R.layout.fragment_home_screen, container, false)
+        val btn: Button = view.findViewById(R.id.homeButton)
+        btn.setOnClickListener(this)
+        return view
     }
 
     override fun onClick(v: View?) {
         when(v?.id) {
             R.id.homeButton -> {
-                v.findNavController().navigate(R.id.homeScreen)
+                v.findNavController().navigate(R.id.createCard)
+                //println("hallo")
             }
-            R.id.nextButton -> {
-                //
+            else -> {
+                println("lol")
             }
         }
     }
