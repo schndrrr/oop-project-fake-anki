@@ -37,10 +37,8 @@ class createCard : Fragment(), View.OnClickListener {
         return inflater.inflate(R.layout.fragment_create_card, container, false)
     }
 
-    override fun onClick(v: View) {
-        when(v?.id) {
 
-        }
-    }
 
-}
+
+
+

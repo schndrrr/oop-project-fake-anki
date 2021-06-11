@@ -35,7 +35,7 @@
             android:id="@+id/action_home"
             app:destination="@id/homeScreen" />
         <action
-            android:id="@+id/button_front_of_card"
+            android:id="@+id/action_front_of_card"
             app:destination="@id/front_of_card" />
     </fragment>
     <fragment
