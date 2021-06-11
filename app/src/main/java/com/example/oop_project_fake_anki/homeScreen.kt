@@ -17,7 +17,7 @@ private const val ARG_PARAM2 = "param2"
  * Use the [homeScreen.newInstance] factory method to
  * create an instance of this fragment.
  */
-class homeScreen : Fragment(), View.OnClickListener {
+class homeScreen : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
@@ -38,13 +38,5 @@ class homeScreen : Fragment(), View.OnClickListener {
         return inflater.inflate(R.layout.fragment_home_screen, container, false)
     }
 
-    override fun onClick(v: View?) {
-        when(v?.id) {
-            R.id.homeButton -> {
-                v.findNavController().navigate(R.id.homeScreen)
-            }
 
-                //
-            }
-        }
     }

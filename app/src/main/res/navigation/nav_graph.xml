@@ -8,7 +8,11 @@
         android:id="@+id/createCard"
         android:name="com.example.oop_project_fake_anki.createCard"
         android:label="fragment_create_card"
-        tools:layout="@layout/fragment_create_card" />
+        tools:layout="@layout/fragment_create_card" >
+        <action
+            android:id="@+id/action_home"
+            app:destination="@id/homeScreen" />
+    </fragment>
     <fragment
         android:id="@+id/homeScreen"
         android:name="com.example.oop_project_fake_anki.homeScreen"

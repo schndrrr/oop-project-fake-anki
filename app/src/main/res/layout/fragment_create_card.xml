@@ -9,82 +9,82 @@
 
     <Spinner
         android:id="@+id/spinner_select_stack"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="130dp"
+        android:layout_width="300dp"
+        android:layout_height="62dp"
         android:layout_marginBottom="390dp"
-        app:layout_constraintBottom_toTopOf="@+id/button_create_card"
-        app:layout_constraintEnd_toEndOf="@+id/edittext_add_front"
-        app:layout_constraintStart_toStartOf="@+id/edittext_add_front"
-        app:layout_constraintTop_toBottomOf="@+id/textView2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.236"
         tools:ignore="MissingConstraints" />
+
 
     <EditText
         android:id="@+id/edittext_add_front"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="300dp"
+        android:layout_height="200dp"
         android:layout_marginBottom="38dp"
         android:hint="Vorderseite eingeben"
-        app:layout_constraintBottom_toTopOf="@+id/edittext_add_back"
-        app:layout_constraintEnd_toEndOf="@+id/edittext_add_back"
-        app:layout_constraintStart_toStartOf="@+id/edittext_add_back"
-        app:layout_constraintTop_toBottomOf="@+id/spinner_select_stack" />
-
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.292" />
 
     <EditText
         android:id="@+id/edittext_add_back"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="50dp"
-        android:layout_marginLeft="50dp"
-        android:layout_marginEnd="50dp"
-        android:layout_marginRight="50dp"
-        android:layout_marginBottom="88dp"
+        android:layout_width="300dp"
+        android:layout_height="200dp"
         android:hint="Rückseite eingeben"
-        app:layout_constraintBottom_toTopOf="@+id/button_Home"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edittext_add_front" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.67" />
+
 
     <Button
         android:id="@+id/button_Home"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
-        android:layout_marginLeft="50dp"
-        android:layout_marginBottom="33dp"
+        android:layout_marginStart="52dp"
+        android:layout_marginLeft="52dp"
         android:text="Home"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edittext_add_back"
+        app:layout_constraintVertical_bias="0.677"
         tools:ignore="MissingConstraints" />
 
     <Button
         android:id="@+id/button_create_card"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
-        android:layout_marginLeft="12dp"
         android:layout_marginBottom="113dp"
         android:text="Hinzufügen"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/button_Home"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spinner_select_stack"
+        app:layout_constraintVertical_bias="1.0"
         tools:ignore="MissingConstraints" />
-
 
     <TextView
         android:id="@+id/textView2"
-        android:layout_width="72dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="100dp"
-        android:layout_marginEnd="39dp"
-        android:layout_marginRight="39dp"
-        android:layout_marginBottom="10dp"
-        android:text="Editor"
+        android:layout_width="80dp"
+        android:layout_height="20dp"
+        android:text="Karteneditor"
         app:layout_constraintBottom_toTopOf="@+id/spinner_select_stack"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintHorizontal_bias="0.851"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.591" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

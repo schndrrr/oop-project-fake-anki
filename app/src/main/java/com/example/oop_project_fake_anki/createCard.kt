@@ -5,6 +5,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.Navigation
+import kotlinx.android.synthetic.main.fragment_create_card.view.*
+import kotlinx.android.synthetic.main.fragment_show_card.view.*
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -16,7 +19,7 @@ private const val ARG_PARAM2 = "param2"
  * Use the [createCard.newInstance] factory method to
  * create an instance of this fragment.
  */
-class createCard : Fragment(), View.OnClickListener {
+class createCard : Fragment(){
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
@@ -34,11 +37,9 @@ class createCard : Fragment(), View.OnClickListener {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_create_card, container, false)
+        val view = inflater.inflate(R.layout.fragment_create_card, container, false)
+        view.button_home.setOnClickListener{Navigation.findNavController(view).navigate(R.id.action_home)}
+        return view
     }
 
-
-
-
-
-
+}
