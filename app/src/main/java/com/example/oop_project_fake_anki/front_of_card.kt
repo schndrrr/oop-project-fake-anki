@@ -36,7 +36,7 @@ class front_of_card : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        inflater.inflate(R.layout.fragment_front_of_card, container, false)
+        val view = inflater.inflate(R.layout.fragment_front_of_card, container, false)
         view.button_home.setOnClickListener{ Navigation.findNavController(view).navigate(R.id.action_home)}
 
 
