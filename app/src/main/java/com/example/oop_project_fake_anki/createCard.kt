@@ -39,9 +39,7 @@ class createCard : Fragment(), View.OnClickListener {
 
     override fun onClick(v: View) {
         when(v?.id) {
-            R.id.button -> {
 
-            }
         }
     }
 

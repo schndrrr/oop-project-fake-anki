@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/homeScreen">
+    app:startDestination="@id/showCard">
     <fragment
         android:id="@+id/createCard"
         android:name="com.example.oop_project_fake_anki.createCard"
@@ -30,7 +30,14 @@
         android:id="@+id/showCard"
         android:name="com.example.oop_project_fake_anki.showCard"
         android:label="fragment_show_card"
-        tools:layout="@layout/fragment_show_card" />
+        tools:layout="@layout/fragment_show_card" >
+        <action
+            android:id="@+id/action_home"
+            app:destination="@id/homeScreen" />
+        <action
+            android:id="@+id/button_front_of_card"
+            app:destination="@id/front_of_card" />
+    </fragment>
     <fragment
         android:id="@+id/front_of_card"
         android:name="com.example.oop_project_fake_anki.front_of_card"
