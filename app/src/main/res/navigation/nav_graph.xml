@@ -8,16 +8,19 @@
         android:id="@+id/createCard"
         android:name="com.example.oop_project_fake_anki.createCard"
         android:label="fragment_create_card"
-        tools:layout="@layout/fragment_create_card" >
-        <action
-            android:id="@+id/action_createCard_to_homeScreen"
-            app:destination="@id/homeScreen" />
-    </fragment>
+        tools:layout="@layout/fragment_create_card" />
     <fragment
         android:id="@+id/homeScreen"
         android:name="com.example.oop_project_fake_anki.homeScreen"
         android:label="fragment_home_screen"
-        tools:layout="@layout/fragment_home_screen" />
+        tools:layout="@layout/fragment_home_screen" >
+        <action
+            android:id="@+id/action_homeScreen_to_createCard"
+            app:destination="@id/createCard" />
+        <action
+            android:id="@+id/action_homeScreen_to_showStack"
+            app:destination="@id/showStack" />
+    </fragment>
     <fragment
         android:id="@+id/showStack"
         android:name="com.example.oop_project_fake_anki.showStack"
