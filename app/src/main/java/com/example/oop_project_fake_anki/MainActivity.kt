@@ -16,10 +16,6 @@ class MainActivity : AppCompatActivity() {
         view.findNavController().navigate(R.id.homeScreen)
     }
 
-    fun test2(view: View) {
-        view.findNavController().navigate(R.id.createCard)
-    }
-
     fun homeScreen(view: View) {
         view.findNavController().navigate(R.id.homeScreen)
     }
