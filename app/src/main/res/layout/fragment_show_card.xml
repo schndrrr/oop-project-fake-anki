@@ -25,7 +25,7 @@
         tools:layout_conversion_absoluteWidth="151dp" />
 
     <Button
-        android:id="@+id/button_schwer"
+        android:id="@+id/button_hard"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="routeToNextCard"
@@ -42,18 +42,18 @@
         android:id="@+id/button_normal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="68dp"
+        android:layout_marginRight="68dp"
         android:onClick="routeToNextCard"
         android:text="Normal"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/button_leicht"
+        app:layout_constraintEnd_toStartOf="@+id/button_easy"
         app:layout_constraintStart_toEndOf="@+id/button_schwer"
         tools:layout_conversion_absoluteHeight="198dp"
-        tools:layout_conversion_absoluteWidth="98dp"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="0dp" />
+        tools:layout_conversion_absoluteWidth="98dp" />
 
     <Button
-        android:id="@+id/button_leicht"
+        android:id="@+id/button_easy"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="routeToNextCard"
@@ -64,5 +64,17 @@
         tools:layout_conversion_absoluteWidth="88dp"
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="0dp" />
+
+    <Button
+        android:id="@+id/button_home"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Home"
+        app:layout_constraintBottom_toTopOf="@+id/button_hard"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.971" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
