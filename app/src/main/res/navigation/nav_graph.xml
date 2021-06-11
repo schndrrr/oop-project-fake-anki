@@ -47,4 +47,9 @@
         android:name="com.example.oop_project_fake_anki.front_of_card"
         android:label="fragment_front_of_card"
         tools:layout="@layout/fragment_front_of_card" />
+    <fragment
+        android:id="@+id/home"
+        android:name="com.example.oop_project_fake_anki.home"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" />
 </navigation>
