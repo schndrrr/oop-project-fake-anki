@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.findNavController
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -16,7 +17,7 @@ private const val ARG_PARAM2 = "param2"
  * Use the [showCard.newInstance] factory method to
  * create an instance of this fragment.
  */
-class showCard : Fragment() {
+class showCard : Fragment(), View.OnClickListener {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
@@ -37,10 +38,23 @@ class showCard : Fragment() {
         return inflater.inflate(R.layout.fragment_show_card, container, false)
     }
 
-    fun routeToNextCard(view: View)
-    {
-        println("Test Button")
-    }
+    override fun onClick(v: View?) {
+        when(v?.id) {
+            R.id.button_hard -> {
+                v.findNavController().navigate(R.id.front_of_card)
+            }
+            R.id.button_normal -> {
+                v.findNavController().navigate(R.id.front_of_card)
+            }
+            R.id.button_easy -> {
+                v.findNavController().navigate(R.id.front_of_card)
+
+            }
+            R.id.button_home _> {
+                v.findNavController().navigate(R.id.homeScreen)
+            }
+        }
+        }
 
     companion object {
         /**

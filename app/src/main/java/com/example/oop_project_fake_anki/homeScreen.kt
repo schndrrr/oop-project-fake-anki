@@ -43,7 +43,7 @@ class homeScreen : Fragment(), View.OnClickListener {
             R.id.homeButton -> {
                 v.findNavController().navigate(R.id.homeScreen)
             }
-            R.id.nextButton -> {
+
                 //
             }
         }
