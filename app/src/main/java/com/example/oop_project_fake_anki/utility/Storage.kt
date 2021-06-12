@@ -25,20 +25,4 @@ class Storage {
        val stack: List<Stack> = gson.fromJson(jsonString, testType)
        return stack
    }
-
-
-    fun saveData(jsonString: String) {
-//        val output: Writer
-//        val file = createFile()
-//        output = BufferedWriter(FileWriter(file))
-//        output.write(jsonString)
-//        output.close()
-    }
-
-    fun createFile(): File {
-//        val fileName = "storage"
-//        var file = File(fileName)
-//        return file
-    }
-
 }
