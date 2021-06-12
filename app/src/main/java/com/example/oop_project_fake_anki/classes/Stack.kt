@@ -5,5 +5,4 @@ class Stack(id: String, name: String) {
         get() = this.toString()
     val name: String
         get() = this.toString()
-
 }
