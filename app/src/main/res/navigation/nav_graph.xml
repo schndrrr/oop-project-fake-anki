@@ -38,13 +38,5 @@
         <action
             android:id="@+id/action_home"
             app:destination="@id/homeScreen" />
-        <action
-            android:id="@+id/action_front_of_card"
-            app:destination="@id/front_of_card" />
     </fragment>
-    <fragment
-        android:id="@+id/front_of_card"
-        android:name="com.example.oop_project_fake_anki.front_of_card"
-        android:label="fragment_front_of_card"
-        tools:layout="@layout/fragment_front_of_card" />
 </navigation>

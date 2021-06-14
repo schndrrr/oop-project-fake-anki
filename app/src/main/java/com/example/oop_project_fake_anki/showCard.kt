@@ -39,9 +39,9 @@ class showCard : Fragment(){
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_show_card, container, false)
         view.button_home.setOnClickListener{Navigation.findNavController(view).navigate(R.id.action_home)}
-        view.button_hard.setOnClickListener{Navigation.findNavController(view).navigate(R.id.action_front_of_card)}
-        view.button_normal.setOnClickListener{Navigation.findNavController(view).navigate(R.id.action_front_of_card)}
-        view.button_easy.setOnClickListener{Navigation.findNavController(view).navigate(R.id.action_front_of_card)}
+        //view.button_hard.setOnClickListener{Navigation.findNavController(view).navigate(R.id.action_front_of_card)}
+        //view.button_normal.setOnClickListener{Navigation.findNavController(view).navigate(R.id.action_front_of_card)}
+        //view.button_easy.setOnClickListener{Navigation.findNavController(view).navigate(R.id.action_front_of_card)}
 
 
         return view
