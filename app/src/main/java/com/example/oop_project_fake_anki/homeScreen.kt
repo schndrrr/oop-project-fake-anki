@@ -4,8 +4,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
+import com.example.oop_project_fake_anki.classes.Stack
+import com.example.oop_project_fake_anki.utility.Storage
+import com.google.firebase.firestore.FirebaseFirestore
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -35,13 +39,20 @@ class homeScreen : Fragment(), View.OnClickListener {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_home_screen, container, false)
+        val view: View = inflater.inflate(R.layout.fragment_home_screen, container, false)
+        val btn: Button = view.findViewById(R.id.homeButton)
+        btn.setOnClickListener(this)
+        return view
     }
 
     override fun onClick(v: View?) {
         when(v?.id) {
             R.id.homeButton -> {
-                v.findNavController().navigate(R.id.homeScreen)
+                println("hallo")
+                val db = FirebaseFirestore.getInstance()
+                val s = Storage(db);
+                val testStack: Stack = Stack("testTest", "EinName")
+                s.postData(testStack)
             }
         }
     }
