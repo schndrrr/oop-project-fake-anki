@@ -58,7 +58,7 @@
         android:text="Titel"
         android:textColor="#FFFFFF"
         android:textIsSelectable="false"
-        android:textSize="30"
+        android:textSize="30px"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/ic_home_frame"
         app:layout_constraintTop_toTopOf="@+id/ic_home_frame" />
@@ -72,7 +72,7 @@
         android:layout_marginTop="10dp"
         android:text="Untertitel"
         android:textColor="#FFFFFF"
-        android:textSize="15"
+        android:textSize="15px"
         app:layout_constraintStart_toStartOf="@+id/ic_home_frame"
         app:layout_constraintTop_toBottomOf="@+id/txt_home_frame_title" />
 
@@ -98,7 +98,7 @@
         android:layout_marginTop="20dp"
         android:text="Anzahl der Karten"
         android:textColor="#FFFFFF"
-        android:textSize="15"
+        android:textSize="15px"
         app:layout_constraintStart_toStartOf="@+id/ic_home_frame"
         app:layout_constraintTop_toBottomOf="@+id/txt_home_frame_linie" />
 
@@ -112,7 +112,7 @@
         android:text="Zahl1"
         android:textColor="#FFFFFF"
         android:textIsSelectable="false"
-        android:textSize="25"
+        android:textSize="25px"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/ic_home_frame"
         app:layout_constraintTop_toBottomOf="@+id/txt_home_frame_cards_title" />
@@ -126,7 +126,7 @@
         android:layout_marginTop="20dp"
         android:text="Gelernte Stunden"
         android:textColor="#FFFFFF"
-        android:textSize="15"
+        android:textSize="15px"
         app:layout_constraintEnd_toEndOf="@+id/ic_home_frame"
         app:layout_constraintHorizontal_bias="0.019"
         app:layout_constraintStart_toEndOf="@+id/txt_home_frame_cards_title"
@@ -142,7 +142,7 @@
         android:text="Zahl2"
         android:textColor="#FFFFFF"
         android:textIsSelectable="false"
-        android:textSize="25"
+        android:textSize="25px"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@+id/ic_home_frame"
         app:layout_constraintHorizontal_bias="0.0"
@@ -159,7 +159,7 @@
         android:layout_marginBottom="45dp"
         android:text="Erstelldatum"
         android:textColor="#FFFFFF"
-        android:textSize="15"
+        android:textSize="15px"
         app:layout_constraintBottom_toBottomOf="@+id/ic_home_frame"
         app:layout_constraintStart_toStartOf="@+id/ic_home_frame"
         app:layout_constraintTop_toBottomOf="@+id/txt_home_frame_cards_number"
