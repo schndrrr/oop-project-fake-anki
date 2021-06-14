@@ -14,7 +14,7 @@
         android:layout_marginLeft="40dp"
         android:layout_marginTop="50dp"
         android:text=" Hallo,"
-        android:textSize="20sp"
+        android:textSize="20dp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.006"
@@ -29,7 +29,7 @@
         android:layout_marginLeft="40dp"
         android:layout_marginTop="10dp"
         android:text="Was möchtest du heute lernen?"
-        android:textSize="15sp"
+        android:textSize="15dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -46,7 +46,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txt_home_subtitle"
         app:layout_constraintVertical_bias="1.0"
-        app:srcCompat="@drawable/ic_stackbox" />
+        app:srcCompat="@drawable/ic_stackbox"
+        tools:ignore="MissingPrefix,VectorDrawableCompat"/>
 
     <TextView
         android:id="@+id/txt_home_frame_title"
@@ -58,7 +59,7 @@
         android:text="Titel"
         android:textColor="#FFFFFF"
         android:textIsSelectable="false"
-        android:textSize="30px"
+        android:textSize="30dp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/ic_home_frame"
         app:layout_constraintTop_toTopOf="@+id/ic_home_frame" />
@@ -72,7 +73,7 @@
         android:layout_marginTop="10dp"
         android:text="Untertitel"
         android:textColor="#FFFFFF"
-        android:textSize="15px"
+        android:textSize="15dp"
         app:layout_constraintStart_toStartOf="@+id/ic_home_frame"
         app:layout_constraintTop_toBottomOf="@+id/txt_home_frame_title" />
 
@@ -87,7 +88,8 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/ic_home_frame"
         app:layout_constraintTop_toBottomOf="@+id/txt_home_frame_subtitle"
-        app:srcCompat="@drawable/ic_partingline" />
+        app:srcCompat="@drawable/ic_partingline"
+        tools:ignore="MissingPrefix,VectorDrawableCompat" />
 
     <TextView
         android:id="@+id/txt_home_frame_cards_title"
@@ -98,7 +100,7 @@
         android:layout_marginTop="20dp"
         android:text="Anzahl der Karten"
         android:textColor="#FFFFFF"
-        android:textSize="15px"
+        android:textSize="15dp"
         app:layout_constraintStart_toStartOf="@+id/ic_home_frame"
         app:layout_constraintTop_toBottomOf="@+id/txt_home_frame_linie" />
 
@@ -112,7 +114,7 @@
         android:text="Zahl1"
         android:textColor="#FFFFFF"
         android:textIsSelectable="false"
-        android:textSize="25px"
+        android:textSize="25dp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/ic_home_frame"
         app:layout_constraintTop_toBottomOf="@+id/txt_home_frame_cards_title" />
@@ -126,7 +128,7 @@
         android:layout_marginTop="20dp"
         android:text="Gelernte Stunden"
         android:textColor="#FFFFFF"
-        android:textSize="15px"
+        android:textSize="15dp"
         app:layout_constraintEnd_toEndOf="@+id/ic_home_frame"
         app:layout_constraintHorizontal_bias="0.019"
         app:layout_constraintStart_toEndOf="@+id/txt_home_frame_cards_title"
@@ -142,7 +144,7 @@
         android:text="Zahl2"
         android:textColor="#FFFFFF"
         android:textIsSelectable="false"
-        android:textSize="25px"
+        android:textSize="25dp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@+id/ic_home_frame"
         app:layout_constraintHorizontal_bias="0.0"
@@ -159,7 +161,7 @@
         android:layout_marginBottom="45dp"
         android:text="Erstelldatum"
         android:textColor="#FFFFFF"
-        android:textSize="15px"
+        android:textSize="15dp"
         app:layout_constraintBottom_toBottomOf="@+id/ic_home_frame"
         app:layout_constraintStart_toStartOf="@+id/ic_home_frame"
         app:layout_constraintTop_toBottomOf="@+id/txt_home_frame_cards_number"
@@ -181,7 +183,8 @@
         app:layout_constraintStart_toEndOf="@+id/txt_home_frame_date"
         app:layout_constraintTop_toBottomOf="@+id/txt_home_frame_time_number"
         app:layout_constraintVertical_bias="1.0"
-        app:srcCompat="@drawable/ic_start_button" />
+        app:srcCompat="@drawable/ic_start_button"
+        tools:ignore="MissingPrefix,VectorDrawableCompat"/>
 
     <ImageView
         android:id="@+id/ic_home_home"
@@ -194,7 +197,8 @@
         app:layout_constraintEnd_toStartOf="@+id/ic_home_add"
         app:layout_constraintHorizontal_bias="0.01"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/ic_home" />
+        app:srcCompat="@drawable/ic_home"
+        tools:ignore="MissingPrefix,VectorDrawableCompat"/>
 
     <ImageView
         android:id="@+id/ic_home_add"
@@ -207,7 +211,8 @@
         app:layout_constraintEnd_toStartOf="@+id/ic_home_favorites"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/ic_add" />
+        app:srcCompat="@drawable/ic_add"
+        tools:ignore="MissingPrefix,VectorDrawableCompat"/>
 
     <ImageView
         android:id="@+id/ic_home_favorites"
@@ -220,7 +225,8 @@
         app:layout_constraintEnd_toStartOf="@+id/ic_home_profile"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/ic_favorites" />
+        app:srcCompat="@drawable/ic_favorites"
+        tools:ignore="MissingPrefix,VectorDrawableCompat"/>
 
     <ImageView
         android:id="@+id/ic_home_profile"
@@ -233,7 +239,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/ic_profile" />
+        app:srcCompat="@drawable/ic_profile"
+        tools:ignore="MissingPrefix,VectorDrawableCompat"/>
 
     <ImageView
         android:id="@+id/imageView"
@@ -244,6 +251,7 @@
         android:layout_marginTop="30dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_menu" />
+        app:srcCompat="@drawable/ic_menu"
+        tools:ignore="MissingPrefix,VectorDrawableCompat"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
