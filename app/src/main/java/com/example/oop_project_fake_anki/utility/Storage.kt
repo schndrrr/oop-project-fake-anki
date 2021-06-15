@@ -29,8 +29,9 @@ class Storage(db: FirebaseFirestore) {
             "id" to data.id,
             "name" to data.name
         )
+        val random = "123"
         dataBase.collection("stacks")
-            .document("rand")
+            .document(random)
             .set(dataToPost).addOnSuccessListener { println("it worked") }
     }
 }

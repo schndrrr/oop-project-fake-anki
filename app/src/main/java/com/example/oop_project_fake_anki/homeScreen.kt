@@ -49,6 +49,7 @@ class homeScreen : Fragment(), View.OnClickListener {
     override fun onClick(v: View?) {
         when (v?.id) {
             R.id.homeButton -> {
+                // get data from firebase
                 val db = FirebaseFirestore.getInstance()
                 val s = Storage(db);
                 s.getDataForId("test")
