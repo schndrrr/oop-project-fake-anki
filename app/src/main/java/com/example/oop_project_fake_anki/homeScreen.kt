@@ -52,7 +52,7 @@ class homeScreen : Fragment(), View.OnClickListener {
                 // get data from firebase
                 val db = FirebaseFirestore.getInstance()
                 val s = Storage(db);
-                s.getDataForId("test")
+                s.getStacks()
             }
         }
     }
