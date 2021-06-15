@@ -4,11 +4,15 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
 import androidx.navigation.findNavController
 import kotlinx.android.synthetic.main.fragment_create_card.view.*
 import kotlinx.android.synthetic.main.fragment_show_card.view.*
+import com.example.oop_project_fake_anki.classes.Stack
+import com.example.oop_project_fake_anki.utility.Storage
+import com.google.firebase.firestore.FirebaseFirestore
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -40,6 +44,8 @@ class createCard : Fragment(), View.OnClickListener {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_create_card, container, false)
         view.button_Home.setOnClickListener{Navigation.findNavController(view).navigate(R.id.action_home)}
+        val btn: Button = view.findViewById(R.id.button)
+        btn.setOnClickListener(this)
         return view
     }
 

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "818743808576",
+    "project_id": "fake-anki",
+    "storage_bucket": "fake-anki.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:818743808576:android:d86cac1a91cd42e84205a5",
+        "android_client_info": {
+          "package_name": "com.example.oop_project_fake_anki"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "818743808576-dqq582aaslfjjkni0s37462mtt3tc6v9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBD5mBjeTb-3m1HSEIqTWY8LoWqf5Os7tI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "818743808576-dqq582aaslfjjkni0s37462mtt3tc6v9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
