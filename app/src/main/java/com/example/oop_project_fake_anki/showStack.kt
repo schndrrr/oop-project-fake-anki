@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import androidx.navigation.Navigation
 import kotlinx.android.synthetic.main.fragment_show_card.view.*
 
@@ -18,7 +19,7 @@ private const val ARG_PARAM2 = "param2"
  * Use the [showStack.newInstance] factory method to
  * create an instance of this fragment.
  */
-class showStack : Fragment() {
+class showStack : Fragment(), View.OnClickListener {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
@@ -37,8 +38,22 @@ class showStack : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_show_stack, container, false)
-        view.button_home.setOnClickListener{ Navigation.findNavController(view).navigate(R.id.action_home)}
+        view.button_home.setOnClickListener{ Navigation.findNavController(view).navigate(R.id.action_homeScreen_to_showStack)}
+        val btn: Button = view.findViewById(R.id.button)
+        btn.setOnClickListener(this)
+
         return view
     }
-
+    override fun onClick(v: View?) {
+        when (v?.id) {
+            R.id.button -> {
+                // TODO
+                println("hallo button")
+            }
+            //R.id.button_home -> {
+                // TODO
+               // println("hallo button home")
+           // }
+        }
+    }
 }

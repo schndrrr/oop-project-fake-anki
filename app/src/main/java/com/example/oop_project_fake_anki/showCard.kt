@@ -44,9 +44,11 @@ class showCard : Fragment(), View.OnClickListener {
         //view.button_normal.setOnClickListener{Navigation.findNavController(view).navigate(R.id.action_front_of_card)}
         //view.button_easy.setOnClickListener{Navigation.findNavController(view).navigate(R.id.action_front_of_card)}
         val btn: Button = view.findViewById(R.id.button_hard)
+        val btnNormal: Button = view.findViewById(R.id.button_normal)
         val btnEasy: Button = view.findViewById(R.id.button_easy)
         btn.setOnClickListener(this)
         btnEasy.setOnClickListener(this)
+        btnNormal.setOnClickListener(this)
         return view
     }
 
@@ -59,6 +61,10 @@ class showCard : Fragment(), View.OnClickListener {
             R.id.button_easy -> {
                 // TODO
                 println("hallo button easy")
+            }
+            R.id.button_normal -> {
+                // TODO
+                println("hallo button normal")
             }
         }
     }
