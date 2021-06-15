@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
+import androidx.navigation.findNavController
 import kotlinx.android.synthetic.main.fragment_create_card.view.*
 import kotlinx.android.synthetic.main.fragment_show_card.view.*
 
@@ -19,7 +20,7 @@ private const val ARG_PARAM2 = "param2"
  * Use the [createCard.newInstance] factory method to
  * create an instance of this fragment.
  */
-class createCard : Fragment(){
+class createCard : Fragment(), View.OnClickListener {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
@@ -38,8 +39,20 @@ class createCard : Fragment(){
     ): View? {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_create_card, container, false)
-        view.button_home.setOnClickListener{Navigation.findNavController(view).navigate(R.id.action_home)}
+        view.button_Home.setOnClickListener{Navigation.findNavController(view).navigate(R.id.action_home)}
         return view
+    }
+
+    override fun onClick(v: View?) {
+        when (v?.id) {
+            // TODO
+            R.id.button_Home -> {
+
+            }
+            else -> {
+                println("lol")
+            }
+        }
     }
 
 }
