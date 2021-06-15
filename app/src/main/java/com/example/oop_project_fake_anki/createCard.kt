@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.EditText
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
 import androidx.navigation.findNavController
@@ -45,12 +46,22 @@ class createCard : Fragment(), View.OnClickListener {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_create_card, container, false)
         view.button_Home.setOnClickListener{Navigation.findNavController(view).navigate(R.id.action_home)}
-        val btn: Button = view.findViewById(R.id.button)
-        btn.setOnClickListener(this)
+
+        val btn_home: Button = view.findViewById(R.id.button_Home)
+        val btn_createCard: Button = view.findViewById(R.id.button_create_card)
+
+
+        btn_home.setOnClickListener(this)
+        btn_createCard.setOnClickListener(this)
+
+
         return view
     }
 
     override fun onClick(v: View?) {
+
+
+
         when (v?.id) {
             // TODO
             R.id.button_Home -> {
@@ -58,10 +69,14 @@ class createCard : Fragment(), View.OnClickListener {
             }
 
             R.id.button_create_card -> {
-                // TODO
-                val test = DefaultCard("asdasd","b")
-                test.description="test description"
-                print("${test.description}")
+                val textEdit: EditText = v.findViewById(R.id.edittext_add_front)
+                val question = textEdit.text.toString()
+                println("${question}")
+
+//                val card = DefaultCard("asdasd","b")
+//
+//                card.description = question
+//                println("${card.description}")
             }
         }
     }
