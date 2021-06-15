@@ -1,5 +1,9 @@
 package com.example.oop_project_fake_anki.classes
 
-class Card {
-    constructor(id: String, name: String, description: String)
+open class Card constructor(name: String, id: String) {
+    val learningState: String = ""
+
+    fun updateLearningState(){
+
+    }
 }

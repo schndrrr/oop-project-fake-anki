@@ -4,10 +4,8 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
-import com.example.oop_project_fake_anki.classes.Stack
-import com.example.oop_project_fake_anki.utility.Storage
+import com.example.oop_project_fake_anki.classes.DefaultCard
 import com.google.firebase.FirebaseApp
-import com.google.firebase.firestore.FirebaseFirestore
 
 class MainActivity : AppCompatActivity() {
 
@@ -20,5 +18,10 @@ class MainActivity : AppCompatActivity() {
 
     fun test(view: View) {
         view.findNavController().navigate(R.id.homeScreen)
+//        hier mal ein teil der default card mit Wertezuweisung
+
+        val defCard1 = DefaultCard("testCard", "1")
+        defCard1.description=="testcard description or answer"
+        defCard1.answer=="testcard answer"
     }
 }

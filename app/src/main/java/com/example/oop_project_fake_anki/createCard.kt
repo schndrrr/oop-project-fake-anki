@@ -47,12 +47,7 @@ class createCard : Fragment(), View.OnClickListener {
     override fun onClick(v: View) {
         when(v?.id) {
             R.id.button -> {
-                // TODO
-                println("hallo")
-                val db = FirebaseFirestore.getInstance()
-                val s = Storage(db);
-                val testStack: Stack = Stack("testTest", "EinName")
-                s.postData(testStack)
+
             }
         }
     }

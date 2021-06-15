@@ -8,11 +8,14 @@ class Storage(db: FirebaseFirestore) {
     private var dataBase: FirebaseFirestore = db
 
     fun getDataForId(id: String) {
-        // TODO
         val colRef = dataBase.collection("stacks")
         colRef.get().addOnSuccessListener { document ->
             if (document != null) {
-                println(document)
+                var stacks: MutableList<Stack> = mutableListOf<Stack>()
+                document.forEach {
+                    println(it.data)
+                    // TODO
+                }
             } else {
                 println("no doc")
             }
@@ -20,10 +23,6 @@ class Storage(db: FirebaseFirestore) {
     }
 
     fun postData(data: Stack) {
-        // TODO
-
-        println(data.id)
-
 
         val dataToPost = hashMapOf(
             "id" to data.id,
@@ -33,5 +32,4 @@ class Storage(db: FirebaseFirestore) {
             .document("rand")
             .set(dataToPost).addOnSuccessListener { println("it worked") }
     }
-
 }
