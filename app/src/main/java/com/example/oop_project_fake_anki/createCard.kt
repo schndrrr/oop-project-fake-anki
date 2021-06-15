@@ -8,6 +8,7 @@ import android.widget.Button
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
 import androidx.navigation.findNavController
+import com.example.oop_project_fake_anki.classes.DefaultCard
 import kotlinx.android.synthetic.main.fragment_create_card.view.*
 import kotlinx.android.synthetic.main.fragment_show_card.view.*
 import com.example.oop_project_fake_anki.classes.Stack
@@ -55,8 +56,12 @@ class createCard : Fragment(), View.OnClickListener {
             R.id.button_Home -> {
 
             }
-            else -> {
-                println("lol")
+
+            R.id.button_create_card -> {
+                // TODO
+                val test = DefaultCard("asdasd","b")
+                test.description="test description"
+                print("${test.description}")
             }
         }
     }
