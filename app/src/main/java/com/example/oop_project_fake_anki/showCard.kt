@@ -77,7 +77,7 @@ class showCard : Fragment(), View.OnClickListener {
                 println("hallo button normal")
             }
             R.id.buttonTest -> {
-                answer.text = "Hallo"
+                answer.text = "Seine Hose ist natürlich blau"
             }
         }
     }
