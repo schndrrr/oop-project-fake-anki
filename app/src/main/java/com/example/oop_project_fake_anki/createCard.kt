@@ -11,6 +11,7 @@ import androidx.navigation.Navigation
 import androidx.navigation.findNavController
 import com.example.oop_project_fake_anki.classes.DefaultCard
 import kotlinx.android.synthetic.main.fragment_create_card.view.*
+import kotlinx.android.synthetic.main.fragment_create_card.*
 import kotlinx.android.synthetic.main.fragment_show_card.view.*
 import com.example.oop_project_fake_anki.classes.Stack
 import com.example.oop_project_fake_anki.utility.Storage
@@ -50,7 +51,6 @@ class createCard : Fragment(), View.OnClickListener {
         val btn_home: Button = view.findViewById(R.id.button_Home)
         val btn_createCard: Button = view.findViewById(R.id.button_create_card)
 
-
         btn_home.setOnClickListener(this)
         btn_createCard.setOnClickListener(this)
 
@@ -69,14 +69,12 @@ class createCard : Fragment(), View.OnClickListener {
             }
 
             R.id.button_create_card -> {
-                val textEdit: EditText = v.findViewById(R.id.edittext_add_front)
-                val question = textEdit.text.toString()
-                println("${question}")
+                val card = DefaultCard("asdasd","b")
 
-//                val card = DefaultCard("asdasd","b")
-//
-//                card.description = question
-//                println("${card.description}")
+                card.description = edittext_add_front.text.toString()
+                card.answer = edittext_add_back.text.toString()
+                println(card.description)
+                println(card.answer)
             }
         }
     }
