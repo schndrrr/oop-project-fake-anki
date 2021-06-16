@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.TextView
 import androidx.navigation.Navigation
 import androidx.navigation.findNavController
 import kotlinx.android.synthetic.main.fragment_show_card.view.*
@@ -49,6 +50,14 @@ class showCard : Fragment(), View.OnClickListener {
         btn.setOnClickListener(this)
         btnEasy.setOnClickListener(this)
         btnNormal.setOnClickListener(this)
+
+
+
+        val btnTest: Button = view.findViewById(R.id.buttonTest)
+
+        btnTest.setOnClickListener(this)
+
+
         return view
     }
 
@@ -65,6 +74,10 @@ class showCard : Fragment(), View.OnClickListener {
             R.id.button_normal -> {
                 // TODO
                 println("hallo button normal")
+            }
+            R.id.buttonTest -> {
+                val txt: TextView = v.findViewById(R.id.answer)
+                txt.text = "Hallo"
             }
         }
     }
