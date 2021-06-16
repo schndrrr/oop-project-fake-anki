@@ -6,27 +6,31 @@ import java.io.*
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.toObject
 
+const val USERIDdev = "uxlmFFX19O64PveyJc6l"
+
 class Storage(db: FirebaseFirestore) {
+
 
     private var dataBase: FirebaseFirestore = db
 
 
     //************ ALL ************\\
-    fun getStacksAndCards(): MutableList<Stack> {
+    suspend fun getStacksAndCards(): MutableList<Stack> {
         var stacks = getStacks()
         stacks.forEach {
-            it.cards = getCardsForStackId(it.id)
+            it.cards = getCardsForStackId(it.stackId)
         }
         return stacks
     }
 
     //************ STACKS ************\\
-    fun getStacks(): MutableList<Stack> {
+    suspend fun getStacks(): MutableList<Stack> {
         var stacks: MutableList<Stack> = mutableListOf<Stack>()
-        val colRef = dataBase.collection("stacks")
+        val colRef = dataBase.collection("userID/${USERIDdev}/stacks")
         colRef.get().addOnSuccessListener { document ->
             if (document != null) {
                 document.forEach {
+                    val temp = it.toObject<Stack>()
                     stacks.add(it.toObject<Stack>())
                 }
             } else {
@@ -39,7 +43,7 @@ class Storage(db: FirebaseFirestore) {
     fun postStack(data: Stack) {
 
         val dataToPost = hashMapOf(
-            "id" to data.id,
+            "id" to data.stackId,
             "name" to data.name
             // TODO add all properties of Stack
         )
@@ -50,9 +54,9 @@ class Storage(db: FirebaseFirestore) {
     }
 
     //************ CARDS ************\\
-    private fun getCardsForStackId(stackId: String): MutableList<Card> {
+    suspend fun getCardsForStackId(stackId: String): MutableList<Card> {
         var cards: MutableList<Card> = mutableListOf<Card>()
-        val colRef = dataBase.collection("cards")
+        val colRef = dataBase.collection("userID/${USERIDdev}/cards")
         colRef
             .whereEqualTo("stackId", stackId)
             .get()
@@ -61,6 +65,7 @@ class Storage(db: FirebaseFirestore) {
                 document.forEach {
                     cards.add(it.toObject<Card>())
                 }
+                println(cards)
             } else {
                 println("no doc")
             }
