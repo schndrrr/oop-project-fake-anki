@@ -9,6 +9,7 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.navigation.Navigation
 import androidx.navigation.findNavController
+import kotlinx.android.synthetic.main.fragment_show_card.*
 import kotlinx.android.synthetic.main.fragment_show_card.view.*
 
 // TODO: Rename parameter arguments, choose names that match
@@ -76,8 +77,7 @@ class showCard : Fragment(), View.OnClickListener {
                 println("hallo button normal")
             }
             R.id.buttonTest -> {
-                val txt: TextView = v.findViewById(R.id.answer)
-                txt.text = "Hallo"
+                answer.text = "Hallo"
             }
         }
     }
