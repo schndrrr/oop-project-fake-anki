@@ -10,6 +10,9 @@ import androidx.navigation.findNavController
 import com.example.oop_project_fake_anki.classes.Stack
 import com.example.oop_project_fake_anki.utility.Storage
 import com.google.firebase.firestore.FirebaseFirestore
+import kotlinx.coroutines.coroutineScope
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -49,11 +52,21 @@ class homeScreen : Fragment(), View.OnClickListener {
     override fun onClick(v: View?) {
         when (v?.id) {
             R.id.homeButton -> {
-                // get data from firebase
-                val db = FirebaseFirestore.getInstance()
-                val s = Storage(db);
-                s.getDataForId("test")
+                var scope = runBlocking {
+                    getData()
+                }
             }
         }
+    }
+
+    suspend fun getData() = coroutineScope {
+        val db = FirebaseFirestore.getInstance()
+        val s = Storage(db);
+        var stacks: MutableList<Stack> = mutableListOf()
+        launch {
+            // get data from firebase
+            stacks = s.getStacksAndCards()
+        }
+        println(stacks)
     }
 }

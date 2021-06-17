@@ -1,37 +1,92 @@
 package com.example.oop_project_fake_anki.utility
 
+import com.example.oop_project_fake_anki.classes.Card
 import com.example.oop_project_fake_anki.classes.Stack
 import java.io.*
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.ktx.toObject
+
+const val USERIDdev = "uxlmFFX19O64PveyJc6l"
 
 class Storage(db: FirebaseFirestore) {
 
+
     private var dataBase: FirebaseFirestore = db
 
-    fun getDataForId(id: String) {
-        val colRef = dataBase.collection("stacks")
+
+    //************ ALL ************\\
+    suspend fun getStacksAndCards(): MutableList<Stack> {
+        var stacks = getStacks()
+        stacks.forEach {
+            it.cards = getCardsForStackId(it.stackId)
+        }
+        return stacks
+    }
+
+    //************ STACKS ************\\
+    suspend fun getStacks(): MutableList<Stack> {
+        var stacks: MutableList<Stack> = mutableListOf<Stack>()
+        val colRef = dataBase.collection("userID/${USERIDdev}/stacks")
         colRef.get().addOnSuccessListener { document ->
             if (document != null) {
-                var stacks: MutableList<Stack> = mutableListOf<Stack>()
                 document.forEach {
-                    println(it.data)
-                    // TODO
+                    val temp = it.toObject<Stack>()
+                    stacks.add(it.toObject<Stack>())
                 }
             } else {
                 println("no doc")
             }
         }
+        return stacks
     }
 
-    fun postData(data: Stack) {
+    fun postStack(data: Stack) {
 
         val dataToPost = hashMapOf(
-            "id" to data.id,
+            "id" to data.stackId,
             "name" to data.name
+            // TODO add all properties of Stack
         )
         val random = "123"
         dataBase.collection("stacks")
             .document(random)
             .set(dataToPost).addOnSuccessListener { println("it worked") }
     }
+
+    //************ CARDS ************\\
+    suspend fun getCardsForStackId(stackId: String): MutableList<Card> {
+        var cards: MutableList<Card> = mutableListOf<Card>()
+        val colRef = dataBase.collection("userID/${USERIDdev}/cards")
+        colRef
+            .whereEqualTo("stackId", stackId)
+            .get()
+            .addOnSuccessListener { document ->
+            if (document != null) {
+                document.forEach {
+                    cards.add(it.toObject<Card>())
+                }
+                println(cards)
+            } else {
+                println("no doc")
+            }
+        }
+        return cards
+    }
+
+    fun postCard(data: Card) {
+
+        // TODO hashMapOf
+        val dataToPost = hashMapOf(
+            "question" to data.question,
+            "answer" to data.answer,
+            "index" to data.index,
+            "stackId" to data.stackId
+
+        )
+        val randomId = System.currentTimeMillis()
+        dataBase.collection("userID/${USERIDdev}/cards")
+            .document(randomId.toString())
+            .set(dataToPost).addOnSuccessListener { println("it worked") }
+    }
+
 }
