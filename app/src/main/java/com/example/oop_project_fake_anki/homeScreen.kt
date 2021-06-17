@@ -10,6 +10,7 @@ import androidx.navigation.findNavController
 import com.example.oop_project_fake_anki.classes.Stack
 import com.example.oop_project_fake_anki.utility.Storage
 import com.google.firebase.firestore.FirebaseFirestore
+import kotlinx.coroutines.async
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
@@ -28,6 +29,8 @@ class homeScreen : Fragment(), View.OnClickListener {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
+    private var db = FirebaseFirestore.getInstance()
+    private var s = Storage(db);
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,6 +38,8 @@ class homeScreen : Fragment(), View.OnClickListener {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
         }
+        // get data from firebase
+        s.getStacks()
     }
 
     override fun onCreateView(
@@ -52,21 +57,8 @@ class homeScreen : Fragment(), View.OnClickListener {
     override fun onClick(v: View?) {
         when (v?.id) {
             R.id.homeButton -> {
-                var scope = runBlocking {
-                    getData()
-                }
+                println(s.stacks[0].name)
             }
         }
-    }
-
-    suspend fun getData() = coroutineScope {
-        val db = FirebaseFirestore.getInstance()
-        val s = Storage(db);
-        var stacks: MutableList<Stack> = mutableListOf()
-        launch {
-            // get data from firebase
-            stacks = s.getStacksAndCards()
-        }
-        println(stacks)
     }
 }
