@@ -5,10 +5,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.EditText
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
 import androidx.navigation.findNavController
+import com.example.oop_project_fake_anki.classes.DefaultCard
 import kotlinx.android.synthetic.main.fragment_create_card.view.*
+import kotlinx.android.synthetic.main.fragment_create_card.*
 import kotlinx.android.synthetic.main.fragment_show_card.view.*
 import com.example.oop_project_fake_anki.classes.Stack
 import com.example.oop_project_fake_anki.utility.Storage
@@ -44,19 +47,34 @@ class createCard : Fragment(), View.OnClickListener {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_create_card, container, false)
         view.button_Home.setOnClickListener{Navigation.findNavController(view).navigate(R.id.action_home)}
-        val btn: Button = view.findViewById(R.id.button)
-        btn.setOnClickListener(this)
+
+        val btn_home: Button = view.findViewById(R.id.button_Home)
+        val btn_createCard: Button = view.findViewById(R.id.button_create_card)
+
+        btn_home.setOnClickListener(this)
+        btn_createCard.setOnClickListener(this)
+
+
         return view
     }
 
     override fun onClick(v: View?) {
+
+
+
         when (v?.id) {
             // TODO
             R.id.button_Home -> {
 
             }
-            else -> {
-                println("lol")
+
+            R.id.button_create_card -> {
+                val card = DefaultCard("asdasd","b")
+
+                card.description = edittext_add_front.text.toString()
+                card.answer = edittext_add_back.text.toString()
+                println(card.description)
+                println(card.answer)
             }
         }
     }
