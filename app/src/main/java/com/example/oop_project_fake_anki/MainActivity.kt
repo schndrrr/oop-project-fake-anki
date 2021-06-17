@@ -13,8 +13,6 @@ class MainActivity : AppCompatActivity() {
         FirebaseApp.initializeApp(this)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-        setContentView(R.layout.activity_main)
     }
 
     fun test(view: View) {
