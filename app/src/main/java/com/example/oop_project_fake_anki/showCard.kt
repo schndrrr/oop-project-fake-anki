@@ -59,7 +59,7 @@ class showCard : Fragment(), View.OnClickListener {
         btnNormal.setOnClickListener(this)
 
 
-        val btnTest: Button = view.findViewById(R.id.buttonTest)
+        val btnTest: Button = view.findViewById(R.id.button_solution)
 
 
 
@@ -74,19 +74,28 @@ class showCard : Fragment(), View.OnClickListener {
 
             when (v?.id) {
                 R.id.button_hard -> {
-
+                    button_normal.isVisible = false
+                    button_hard.isVisible = false
+                    button_easy.isVisible = false
+                    answer.text = ""
                     println("hallo button hard")
                 }
                 R.id.button_easy -> {
-
+                    button_normal.isVisible = false
+                    button_hard.isVisible = false
+                    button_easy.isVisible = false
+                    answer.text = ""
                     println("hallo button easy")
                 }
                 R.id.button_normal -> {
-
+                    button_normal.isVisible = false
+                    button_hard.isVisible = false
+                    button_easy.isVisible = false
+                    answer.text = ""
                     println("hallo button normal")
                 }
-                R.id.buttonTest -> {
-                    // hide textView
+                R.id.button_solution -> {
+                    // show buttons and textView
                     answer.text = "Seine Hose ist natürlich blau"
                     button_easy.isVisible = true
                     button_normal.isVisible = true
