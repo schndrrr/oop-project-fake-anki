@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/showCard">
+    app:startDestination="@id/home">
     <fragment
         android:id="@+id/createCard"
         android:name="com.example.oop_project_fake_anki.createCard"
@@ -11,7 +11,7 @@
         tools:layout="@layout/fragment_create_card" >
         <action
             android:id="@+id/action_home"
-            app:destination="@id/homeScreen" />
+            app:destination="@id/home" />
     </fragment>
     <fragment
         android:id="@+id/homeScreen"
@@ -37,6 +37,15 @@
         tools:layout="@layout/fragment_show_card" >
         <action
             android:id="@+id/action_home"
-            app:destination="@id/homeScreen" />
+            app:destination="@id/home" />
+    </fragment>
+    <fragment
+        android:id="@+id/home"
+        android:name="com.example.oop_project_fake_anki.home"
+        android:label="home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_home"
+            app:destination="@id/home" />
     </fragment>
 </navigation>
