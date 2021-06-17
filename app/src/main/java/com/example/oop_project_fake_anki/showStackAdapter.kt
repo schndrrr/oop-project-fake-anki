@@ -27,6 +27,7 @@ class showStackAdapter (
         val curStack = stacks[position]
         holder.itemView.apply {
             tvtitle_stack.text = curStack.name
+            tvnumber_of_cards.text = curStack.numberOfCards
         }
     }
 
