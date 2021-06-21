@@ -1,10 +1,16 @@
 package com.example.oop_project_fake_anki.utility
 
+import android.util.Log
 import com.example.oop_project_fake_anki.classes.Card
 import com.example.oop_project_fake_anki.classes.Stack
+import com.example.oop_project_fake_anki.showStackAdapter
+import com.google.firebase.firestore.*
 import java.io.*
-import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.toObject
+import kotlinx.coroutines.async
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
+
 
 const val USERIDdev = "uxlmFFX19O64PveyJc6l"
 
@@ -13,31 +19,32 @@ class Storage(db: FirebaseFirestore) {
 
     private var dataBase: FirebaseFirestore = db
 
+    var stacks: MutableList<Stack> = mutableListOf<Stack>()
 
     //************ ALL ************\\
-    suspend fun getStacksAndCards(): MutableList<Stack> {
-        var stacks = getStacks()
-        stacks.forEach {
-            it.cards = getCardsForStackId(it.stackId)
-        }
-        return stacks
+    fun getStacksAndCards() {
+            stacks.forEach {
+                it.cards = getCardsForStackId(it.stackId)
+            }
     }
 
     //************ STACKS ************\\
-    suspend fun getStacks(): MutableList<Stack> {
-        var stacks: MutableList<Stack> = mutableListOf<Stack>()
+    fun getStacks(adapter: showStackAdapter, stacksAdapter: MutableList<Stack>) {
         val colRef = dataBase.collection("userID/${USERIDdev}/stacks")
-        colRef.get().addOnSuccessListener { document ->
-            if (document != null) {
-                document.forEach {
-                    val temp = it.toObject<Stack>()
-                    stacks.add(it.toObject<Stack>())
+        colRef.addSnapshotListener(object: EventListener<QuerySnapshot> {
+            override fun onEvent(value: QuerySnapshot?, error: FirebaseFirestoreException?) {
+                if (error != null) {
+                    Log.e("Firebase Error:", error.message.toString())
                 }
-            } else {
-                println("no doc")
+                for (dc: DocumentChange in value?.documentChanges!!) {
+                    if (dc != null) {
+                        stacksAdapter.add(dc.document.toObject<Stack>())
+                    }
+                }
+                adapter.notifyDataSetChanged()
+
             }
-        }
-        return stacks
+        })
     }
 
     fun postStack(data: Stack) {
@@ -54,7 +61,7 @@ class Storage(db: FirebaseFirestore) {
     }
 
     //************ CARDS ************\\
-    suspend fun getCardsForStackId(stackId: String): MutableList<Card> {
+    fun getCardsForStackId(stackId: String): MutableList<Card> {
         var cards: MutableList<Card> = mutableListOf<Card>()
         val colRef = dataBase.collection("userID/${USERIDdev}/cards")
         colRef

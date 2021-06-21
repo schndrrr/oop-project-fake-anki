@@ -54,7 +54,6 @@ class createCard : Fragment(), View.OnClickListener {
         btn_home.setOnClickListener(this)
         btn_createCard.setOnClickListener(this)
 
-
         return view
     }
 
