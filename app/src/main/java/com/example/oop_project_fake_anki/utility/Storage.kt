@@ -5,6 +5,10 @@ import com.example.oop_project_fake_anki.classes.Stack
 import java.io.*
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.toObject
+import kotlinx.coroutines.async
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
+
 
 const val USERIDdev = "uxlmFFX19O64PveyJc6l"
 
@@ -13,31 +17,29 @@ class Storage(db: FirebaseFirestore) {
 
     private var dataBase: FirebaseFirestore = db
 
+    var stacks: MutableList<Stack> = mutableListOf<Stack>()
 
     //************ ALL ************\\
-    suspend fun getStacksAndCards(): MutableList<Stack> {
-        var stacks = getStacks()
-        stacks.forEach {
-            it.cards = getCardsForStackId(it.stackId)
-        }
-        return stacks
+    fun getStacksAndCards() {
+            getStacks()
+            stacks.forEach {
+                it.cards = getCardsForStackId(it.stackId)
+            }
     }
 
     //************ STACKS ************\\
-    suspend fun getStacks(): MutableList<Stack> {
-        var stacks: MutableList<Stack> = mutableListOf<Stack>()
+    fun getStacks() {
         val colRef = dataBase.collection("userID/${USERIDdev}/stacks")
         colRef.get().addOnSuccessListener { document ->
             if (document != null) {
                 document.forEach {
-                    val temp = it.toObject<Stack>()
                     stacks.add(it.toObject<Stack>())
+                    println(it.toObject<Stack>().stackId)
                 }
             } else {
                 println("no doc")
             }
         }
-        return stacks
     }
 
     fun postStack(data: Stack) {
@@ -54,7 +56,7 @@ class Storage(db: FirebaseFirestore) {
     }
 
     //************ CARDS ************\\
-    suspend fun getCardsForStackId(stackId: String): MutableList<Card> {
+    fun getCardsForStackId(stackId: String): MutableList<Card> {
         var cards: MutableList<Card> = mutableListOf<Card>()
         val colRef = dataBase.collection("userID/${USERIDdev}/cards")
         colRef

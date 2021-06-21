@@ -5,10 +5,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.oop_project_fake_anki.classes.Stack
+import com.example.oop_project_fake_anki.utility.Storage
 import kotlinx.android.synthetic.main.item_stack.view.*
 
 class showStackAdapter (
-    private val stacks: MutableList<Stack>
+    private val storage: Storage
     ) : RecyclerView.Adapter<showStackAdapter.StackViewHolder>() {
 
         class StackViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
@@ -24,7 +25,7 @@ class showStackAdapter (
     }
 
     override fun onBindViewHolder(holder: StackViewHolder, position: Int) {
-        val curStack = stacks[position]
+        val curStack = storage.stacks[position]
         holder.itemView.apply {
             tvtitle_stack.text = curStack.name
             tvnumber_of_cards.text = curStack.numberOfCards
@@ -32,6 +33,6 @@ class showStackAdapter (
     }
 
     override fun getItemCount(): Int {
-        return stacks.size
+        return storage.stacks.size
     }
 }

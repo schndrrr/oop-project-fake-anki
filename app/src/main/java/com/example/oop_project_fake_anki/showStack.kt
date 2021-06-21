@@ -6,9 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.Navigation
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.example.oop_project_fake_anki.utility.Storage
+import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.*
 import kotlinx.android.synthetic.main.fragment_show_card.view.*
 import kotlinx.android.synthetic.main.fragment_show_stack.*
@@ -16,19 +16,10 @@ import kotlinx.android.synthetic.main.fragment_show_stack.*
 
 class showStack : Fragment() {
 
-    private lateinit var showStackAdapter: showStackAdapter
-    private lateinit var recv:RecyclerView
-    private lateinit var addbtn:FloatingActionButton
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        showStackAdapter = showStackAdapter(mutableListOf())
-
-
-
-
-        }
-    }
+    private var db = FirebaseFirestore.getInstance()
+    private var s = Storage(db);
+    private var layoutManager: RecyclerView.LayoutManager? = null
+    private var adapter: RecyclerView.Adapter<RecyclerAdapter.ViewHolder>? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -39,4 +30,12 @@ class showStack : Fragment() {
         view.button_home.setOnClickListener{ Navigation.findNavController(view).navigate(R.id.action_home)}
         return view
     }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        recycler_view.apply {
+            
+        }
+    }
+}
 
