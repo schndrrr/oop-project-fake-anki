@@ -40,7 +40,6 @@ class homeScreen : Fragment(), View.OnClickListener {
             param2 = it.getString(ARG_PARAM2)
         }
         // get data from firebase
-        s.getStacks()
     }
 
     override fun onCreateView(

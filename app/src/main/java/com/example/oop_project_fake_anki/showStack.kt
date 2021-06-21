@@ -6,7 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.Navigation
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.oop_project_fake_anki.classes.Stack
 import com.example.oop_project_fake_anki.utility.Storage
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.*
@@ -16,10 +18,10 @@ import kotlinx.android.synthetic.main.fragment_show_stack.*
 
 class showStack : Fragment() {
 
-    private var db = FirebaseFirestore.getInstance()
-    private var s = Storage(db);
-    private var layoutManager: RecyclerView.LayoutManager? = null
-    private var adapter: RecyclerView.Adapter<RecyclerAdapter.ViewHolder>? = null
+    private lateinit var db: FirebaseFirestore
+    private lateinit var stacks: MutableList<Stack>
+    private lateinit var recyclerView: RecyclerView
+    private lateinit var adapter: showStackAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -28,14 +30,30 @@ class showStack : Fragment() {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_show_stack, container, false)
         view.button_home.setOnClickListener{ Navigation.findNavController(view).navigate(R.id.action_home)}
+
+
+        recyclerView = view.findViewById(R.id.rv_stacks)
+        recyclerView.layoutManager = LinearLayoutManager(this.context)
+        recyclerView.setHasFixedSize(true)
+        stacks = mutableListOf()
+
+        adapter = showStackAdapter(stacks)
+
+        recyclerView.adapter = adapter
+
+        EventChangeListener()
         return view
+    }
+
+    private fun EventChangeListener() {
+        db = FirebaseFirestore.getInstance()
+        val storage: Storage = Storage(db)
+        storage.getStacks(adapter, stacks)
+        println(stacks.size)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        recycler_view.apply {
-            
-        }
     }
 }
 
