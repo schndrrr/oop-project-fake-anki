@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.oop_project_fake_anki.classes.Stack
 import com.example.oop_project_fake_anki.utility.Storage
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.*
 import kotlinx.android.synthetic.main.fragment_show_card.view.*
@@ -22,6 +23,7 @@ class showStack : Fragment() {
     private lateinit var stacks: MutableList<Stack>
     private lateinit var recyclerView: RecyclerView
     private lateinit var adapter: showStackAdapter
+    private lateinit var addbtn: FloatingActionButton
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -29,7 +31,7 @@ class showStack : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_show_stack, container, false)
-        view.button_home.setOnClickListener{ Navigation.findNavController(view).navigate(R.id.action_home)}
+        view.button_home.setOnClickListener{Navigation.findNavController(view).navigate(R.id.action_home)}
 
 
         recyclerView = view.findViewById(R.id.rv_stacks)
