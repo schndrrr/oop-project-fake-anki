@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -16,12 +17,14 @@ import kotlinx.android.synthetic.main.fragment_show_card.view.*
 import kotlinx.android.synthetic.main.fragment_show_stack.*
 
 
-class showStack : Fragment() {
+
+class showStack : Fragment()  {
 
     private lateinit var db: FirebaseFirestore
     private lateinit var stacks: MutableList<Stack>
     private lateinit var recyclerView: RecyclerView
     private lateinit var adapter: showStackAdapter
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -29,6 +32,7 @@ class showStack : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_show_stack, container, false)
+
         view.button_home.setOnClickListener{ Navigation.findNavController(view).navigate(R.id.action_home)}
 
 
@@ -56,4 +60,3 @@ class showStack : Fragment() {
         super.onViewCreated(view, savedInstanceState)
     }
 }
-

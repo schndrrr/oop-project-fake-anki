@@ -4,10 +4,15 @@ import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.INVISIBLE
+import android.view.View.VISIBLE
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.TextView
+import androidx.core.view.isVisible
 import androidx.navigation.Navigation
 import androidx.navigation.findNavController
+import kotlinx.android.synthetic.main.fragment_show_card.*
 import kotlinx.android.synthetic.main.fragment_show_card.view.*
 
 // TODO: Rename parameter arguments, choose names that match
@@ -30,6 +35,7 @@ class showCard : Fragment(), View.OnClickListener {
         arguments?.let {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
+
         }
     }
 
@@ -37,30 +43,68 @@ class showCard : Fragment(), View.OnClickListener {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
+        // TODO Navigation to other directions other than homescreen missing
         val view = inflater.inflate(R.layout.fragment_show_card, container, false)
-        view.button_home.setOnClickListener{Navigation.findNavController(view).navigate(R.id.action_home)}
+        view.button_home.setOnClickListener {
+            Navigation.findNavController(view).navigate(R.id.action_home)
+        }
         //view.button_hard.setOnClickListener{Navigation.findNavController(view).navigate(R.id.action_front_of_card)}
         //view.button_normal.setOnClickListener{Navigation.findNavController(view).navigate(R.id.action_front_of_card)}
         //view.button_easy.setOnClickListener{Navigation.findNavController(view).navigate(R.id.action_front_of_card)}
         val btn: Button = view.findViewById(R.id.button_hard)
+        val btnNormal: Button = view.findViewById(R.id.button_normal)
         val btnEasy: Button = view.findViewById(R.id.button_easy)
         btn.setOnClickListener(this)
         btnEasy.setOnClickListener(this)
-        return view
-    }
+        btnNormal.setOnClickListener(this)
 
-    override fun onClick(v: View?) {
-        when(v?.id) {
-            R.id.button_hard -> {
-                // TODO
-                println("hallo button hard")
-            }
-            R.id.button_easy -> {
-                // TODO
-                println("hallo button easy")
+
+        val btnTest: Button = view.findViewById(R.id.button_solution)
+
+
+
+        btnTest.setOnClickListener(this)
+
+
+            return view
+        }
+
+        override fun onClick(v: View?) {
+
+
+            when (v?.id) {
+                R.id.button_hard -> {
+                    button_normal.isVisible = false
+                    button_hard.isVisible = false
+                    button_easy.isVisible = false
+                    answer.text = ""
+                    println("hallo button hard")
+                }
+                R.id.button_easy -> {
+                    button_normal.isVisible = false
+                    button_hard.isVisible = false
+                    button_easy.isVisible = false
+                    answer.text = ""
+                    println("hallo button easy")
+                }
+                R.id.button_normal -> {
+                    button_normal.isVisible = false
+                    button_hard.isVisible = false
+                    button_easy.isVisible = false
+                    answer.text = ""
+                    println("hallo button normal")
+                }
+                R.id.button_solution -> {
+                    // show buttons and textView
+                    answer.text = "Seine Hose ist natürlich blau"
+                    button_easy.isVisible = true
+                    button_normal.isVisible = true
+                    button_hard.isVisible = true
+                }
+
+
             }
         }
     }
 
-}
+
