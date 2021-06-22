@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/home"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:ignore="ExtraText">
@@ -35,19 +36,84 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txt_home_titel" />
 
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/WelcomeHome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:constraint_referenced_ids="txt_home_welcome_title,ic_home_welcome_frame,txt_home_welcome_subtitle,ic_home_welcome_add" />
+
+    <ImageView
+        android:id="@+id/ic_home_welcome_frame"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="55dp"
+        android:layout_marginBottom="125dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_home_subtitle"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/ic_stackbox_welcome"
+        tools:ignore="MissingPrefix,VectorDrawableCompat" />
+
+    <ImageView
+        android:id="@+id/ic_home_welcome_add"
+        android:layout_width="65dp"
+        android:layout_height="65dp"
+        android:layout_marginTop="40dp"
+        app:layout_constraintBottom_toBottomOf="@+id/ic_home_welcome_frame"
+        app:layout_constraintEnd_toEndOf="@+id/ic_home_welcome_frame"
+        app:layout_constraintStart_toStartOf="@+id/ic_home_welcome_frame"
+        app:layout_constraintTop_toBottomOf="@+id/txt_home_welcome_subtitle"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/ic_add_welcome"
+        tools:ignore="MissingPrefix,VectorDrawableCompat" />
+
+    <TextView
+        android:id="@+id/txt_home_welcome_subtitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="erste Lernkarte anzulegen"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="@+id/ic_home_welcome_frame"
+        app:layout_constraintStart_toStartOf="@+id/ic_home_welcome_frame"
+        app:layout_constraintTop_toBottomOf="@+id/txt_home_welcome_title" />
+
+    <TextView
+        android:id="@+id/txt_home_welcome_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="85dp"
+        android:text='Drück auf "+" um deine'
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="@+id/ic_home_welcome_frame"
+        app:layout_constraintStart_toStartOf="@+id/ic_home_welcome_frame"
+        app:layout_constraintTop_toTopOf="@+id/ic_home_welcome_frame" />
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/StandardHome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:constraint_referenced_ids="ic_home_frame,txt_home_frame_cards_number,txt_home_frame_button,txt_home_frame_linie,txt_home_frame_title,txt_home_frame_time_number,txt_home_frame_date,txt_home_frame_time_title,txt_home_frame_subtitle,txt_home_frame_cards_title" />
+
     <ImageView
         android:id="@+id/ic_home_frame"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="55dp"
         android:layout_marginBottom="125dp"
         app:layout_constraintBottom_toTopOf="@+id/ic_home_add"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txt_home_subtitle"
-        app:layout_constraintVertical_bias="1.0"
+        app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/ic_stackbox"
-        tools:ignore="MissingPrefix,VectorDrawableCompat"/>
+        tools:ignore="MissingPrefix,VectorDrawableCompat" />
 
     <TextView
         android:id="@+id/txt_home_frame_title"
@@ -184,7 +250,7 @@
         app:layout_constraintTop_toBottomOf="@+id/txt_home_frame_time_number"
         app:layout_constraintVertical_bias="1.0"
         app:srcCompat="@drawable/ic_start_button"
-        tools:ignore="MissingPrefix,VectorDrawableCompat"/>
+        tools:ignore="MissingPrefix,VectorDrawableCompat" />
 
     <ImageView
         android:id="@+id/ic_home_home"
@@ -198,7 +264,7 @@
         app:layout_constraintHorizontal_bias="0.01"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/ic_home"
-        tools:ignore="MissingPrefix,VectorDrawableCompat"/>
+        tools:ignore="MissingPrefix,VectorDrawableCompat" />
 
     <ImageView
         android:id="@+id/ic_home_add"
@@ -212,7 +278,7 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/ic_add"
-        tools:ignore="MissingPrefix,VectorDrawableCompat"/>
+        tools:ignore="MissingPrefix,VectorDrawableCompat" />
 
     <ImageView
         android:id="@+id/ic_home_favorites"
@@ -226,7 +292,7 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/ic_favorites"
-        tools:ignore="MissingPrefix,VectorDrawableCompat"/>
+        tools:ignore="MissingPrefix,VectorDrawableCompat" />
 
     <ImageView
         android:id="@+id/ic_home_profile"
@@ -240,7 +306,7 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/ic_profile"
-        tools:ignore="MissingPrefix,VectorDrawableCompat"/>
+        tools:ignore="MissingPrefix,VectorDrawableCompat" />
 
     <ImageView
         android:id="@+id/imageView"
@@ -252,6 +318,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_menu"
-        tools:ignore="MissingPrefix,VectorDrawableCompat"/>
+        tools:ignore="MissingPrefix,VectorDrawableCompat" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
