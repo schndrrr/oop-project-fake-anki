@@ -36,5 +36,9 @@ class showStackAdapter (
     class StackViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val name: TextView = itemView.findViewById(R.id.tvtitle_stack)
         val numberOfCards: TextView = itemView.findViewById(R.id.tvnumber_of_cards)
+
+
+
     }
+
 }
