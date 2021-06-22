@@ -76,17 +76,17 @@ class Storage(db: FirebaseFirestore) {
     fun postCard(data: Card) {
 
         // TODO hashMapOf
-        val dataToPost = hashMapOf(
-            "question" to data.question,
-            "answer" to data.answer,
-            "index" to data.index,
-            "stackId" to data.stackId
-
-        )
-        val randomId = System.currentTimeMillis()
-        dataBase.collection("userID/${USERIDdev}/cards")
-            .document(randomId.toString())
-            .set(dataToPost).addOnSuccessListener { println("it worked") }
+//        val dataToPost = hashMapOf(
+//            "question" to data.question,
+//            "answer" to data.answer,
+//            "index" to data.index,
+//            "stackId" to data.stackId
+//
+//        )
+//        val randomId = System.currentTimeMillis()
+//        dataBase.collection("userID/${USERIDdev}/cards")
+//            .document(randomId.toString())
+//            .set(dataToPost).addOnSuccessListener { println("it worked") }
     }
 
 }

@@ -9,13 +9,13 @@ import android.widget.EditText
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
 import androidx.navigation.findNavController
-import com.example.oop_project_fake_anki.classes.DefaultCard
-import kotlinx.android.synthetic.main.fragment_create_card.view.*
-import kotlinx.android.synthetic.main.fragment_create_card.*
-import kotlinx.android.synthetic.main.fragment_show_card.view.*
 import com.example.oop_project_fake_anki.classes.Stack
+//import kotlinx.android.synthetic.main.fragment_create_Stack.view.*
+//import kotlinx.android.synthetic.main.fragment_create_Stack.*
+
 import com.example.oop_project_fake_anki.utility.Storage
 import com.google.firebase.firestore.FirebaseFirestore
+import kotlinx.android.synthetic.main.fragment_show_stack.view.*
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -27,7 +27,7 @@ private const val ARG_PARAM2 = "param2"
  * Use the [createCard.newInstance] factory method to
  * create an instance of this fragment.
  */
-class createCard : Fragment(), View.OnClickListener {
+class CreateStack : Fragment(), View.OnClickListener {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
@@ -45,14 +45,14 @@ class createCard : Fragment(), View.OnClickListener {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val view = inflater.inflate(R.layout.fragment_create_card, container, false)
-        view.button_Home.setOnClickListener{Navigation.findNavController(view).navigate(R.id.action_home)}
+        val view = inflater.inflate(R.layout.fragment_show_stack, container, false)
+        view.button_create_stack.setOnClickListener{Navigation.findNavController(view).navigate(R.id.action_home)}
 
         val btn_home: Button = view.findViewById(R.id.button_Home)
-        val btn_createCard: Button = view.findViewById(R.id.button_create_card)
+        val btn_createStack: Button = view.findViewById(R.id.button_create_stack)
 
-        btn_home.setOnClickListener(this)
-        btn_createCard.setOnClickListener(this)
+//        btn_home.setOnClickListener(this)
+        btn_createStack.setOnClickListener(this)
 
 
         return view
@@ -65,13 +65,14 @@ class createCard : Fragment(), View.OnClickListener {
 
             }
 
-            R.id.button_create_card -> {
-                val card = DefaultCard("asdasd","b")
+            R.id.button_create_stack -> {
+                val stack = Stack("stack_nr_1", "")
 
-                card.description = edittext_add_front.text.toString()
-                card.answer = edittext_add_back.text.toString()
-                println(card.description)
-                println(card.answer)
+                stack.name= "halllooo"
+
+                println(stack.name)
+                println("stack.namestack.namestack.namestack.namestack.namestack.namestack.namestack.name")
+
             }
         }
     }
