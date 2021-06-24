@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/showStack">
+    app:startDestination="@id/createCard">
     <fragment
         android:id="@+id/createCard"
         android:name="com.example.oop_project_fake_anki.createCard"
