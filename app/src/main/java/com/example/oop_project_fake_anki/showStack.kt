@@ -53,7 +53,7 @@ class showStack : Fragment(), showStackAdapter.OnItemClickListener  {
     private fun EventChangeListener() {
         db = FirebaseFirestore.getInstance()
         val storage: Storage = Storage(db)
-        storage.getStacks(adapter, stacks)
+        storage.getStacksForAdapter(adapter, stacks)
         println(stacks.size)
     }
 

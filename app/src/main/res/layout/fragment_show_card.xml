@@ -24,6 +24,12 @@
         tools:layout_conversion_absoluteHeight="27dp"
         tools:layout_conversion_absoluteWidth="151dp" />
 
+    <StackView
+        android:id="@+id/svCardStack"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:animateLayoutChanges="true"/>
+
     <Button
         android:id="@+id/button_hard"
         android:layout_width="wrap_content"

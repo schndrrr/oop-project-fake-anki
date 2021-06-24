@@ -54,5 +54,7 @@ class showStackAdapter (
 
     interface OnItemClickListener {
         fun onClickItem(position: Int)
+
     }
+
 }
