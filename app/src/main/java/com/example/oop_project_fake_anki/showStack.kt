@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.Toast
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -18,7 +19,7 @@ import kotlinx.android.synthetic.main.fragment_show_stack.*
 
 
 
-class showStack : Fragment()  {
+abstract class showStack : Fragment() , showStackAdapter.OnItemClickListener {
 
     private lateinit var db: FirebaseFirestore
     private lateinit var stacks: MutableList<Stack>
@@ -41,7 +42,7 @@ class showStack : Fragment()  {
         recyclerView.setHasFixedSize(true)
         stacks = mutableListOf()
 
-        adapter = showStackAdapter(stacks)
+        adapter = showStackAdapter(stacks, this)
 
         recyclerView.adapter = adapter
 
@@ -58,5 +59,9 @@ class showStack : Fragment()  {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+    }
+
+    override fun onItemClick(position: Int) {
+       println ("HellO")
     }
 }
