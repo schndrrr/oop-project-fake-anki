@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.oop_project_fake_anki.classes.Stack
@@ -61,6 +62,7 @@ class showStack : Fragment(), showStackAdapter.OnItemClickListener  {
     }
 
     override fun onClickItem(position: Int) {
-        println("hallo" + position);
+        println(stacks[position].stackId)
+        findNavController().navigate(R.id.action_showStack_to_showCard)
     }
 }
