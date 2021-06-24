@@ -63,12 +63,14 @@ class showStack : Fragment() {
         val v = inflter.inflate(R.layout.add_stack_pop_up,null)
         val name = v.findViewById<EditText>(R.id.name)
         val addDialog = AlertDialog.Builder(this.context)
+        var storage: Storage = Storage(db)
 
         addDialog.setView(v)
         addDialog.setPositiveButton("Hinzufügen"){
             dialog,_->
             val names = name.text.toString()
-            stacks.add((Stack("","$names")))
+            //stacks.add((Stack("","$names")))
+            storage.postStack((Stack("","$names")))
             adapter.notifyDataSetChanged()
             Toast.makeText(this.context, "Stapel hinzugefügt",Toast.LENGTH_SHORT).show()
             dialog.dismiss()

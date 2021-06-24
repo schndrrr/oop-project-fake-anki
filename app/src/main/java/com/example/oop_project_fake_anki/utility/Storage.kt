@@ -10,6 +10,7 @@ import com.google.firebase.firestore.ktx.toObject
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
+import java.sql.Timestamp
 
 
 const val USERIDdev = "uxlmFFX19O64PveyJc6l"
@@ -49,14 +50,15 @@ class Storage(db: FirebaseFirestore) {
 
     fun postStack(data: Stack) {
 
+        val id = System.currentTimeMillis() / 1000L
+        // TODO create random id generator
         val dataToPost = hashMapOf(
-            "id" to data.stackId,
+            "id" to id,
             "name" to data.name
             // TODO add all properties of Stack
         )
-        val random = "123"
-        dataBase.collection("stacks")
-            .document(random)
+        dataBase.collection("userID/${USERIDdev}/stacks")
+            .document(id.toString())
             .set(dataToPost).addOnSuccessListener { println("it worked") }
     }
 
