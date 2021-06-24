@@ -18,7 +18,7 @@ import kotlinx.android.synthetic.main.fragment_show_stack.*
 
 
 
-class showStack : Fragment()  {
+class showStack : Fragment(), showStackAdapter.OnItemClickListener  {
 
     private lateinit var db: FirebaseFirestore
     private lateinit var stacks: MutableList<Stack>
@@ -41,7 +41,7 @@ class showStack : Fragment()  {
         recyclerView.setHasFixedSize(true)
         stacks = mutableListOf()
 
-        adapter = showStackAdapter(stacks)
+        adapter = showStackAdapter(stacks, this)
 
         recyclerView.adapter = adapter
 
@@ -58,5 +58,9 @@ class showStack : Fragment()  {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+    }
+
+    override fun onClickItem(position: Int) {
+        println("hallo" + position);
     }
 }

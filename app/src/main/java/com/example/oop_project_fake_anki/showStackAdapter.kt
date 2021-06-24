@@ -10,7 +10,8 @@ import com.example.oop_project_fake_anki.utility.Storage
 import kotlinx.android.synthetic.main.item_stack.view.*
 
 class showStackAdapter (
-    private val stacks: MutableList<Stack>
+    private val stacks: MutableList<Stack>,
+    private val listener: OnItemClickListener
     ) : RecyclerView.Adapter<showStackAdapter.StackViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): StackViewHolder {
@@ -27,14 +28,31 @@ class showStackAdapter (
         val stack: Stack = stacks[position]
         holder.name.text = stack.name
         holder.numberOfCards.text = stack.numberOfCards
+
+
     }
 
     override fun getItemCount(): Int {
         return stacks.size
     }
 
-    class StackViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    inner class StackViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView), View.OnClickListener {
         val name: TextView = itemView.findViewById(R.id.tvtitle_stack)
         val numberOfCards: TextView = itemView.findViewById(R.id.tvnumber_of_cards)
+
+        init {
+            itemView.setOnClickListener(this)
+        }
+
+        override fun onClick(v: View?) {
+            val position = adapterPosition
+            if (position != RecyclerView.NO_POSITION) {
+                listener.onClickItem(position)
+            }
+        }
+    }
+
+    interface OnItemClickListener {
+        fun onClickItem(position: Int)
     }
 }
