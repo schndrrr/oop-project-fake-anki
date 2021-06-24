@@ -50,7 +50,7 @@ class Storage(db: FirebaseFirestore) {
 
     fun postStack(data: Stack) {
 
-        val id = System.currentTimeMillis() / 1000L
+        val id = generateUniqueIdFromTimestamp()
         // TODO create random id generator
         val dataToPost = hashMapOf(
             "id" to id,
@@ -96,6 +96,11 @@ class Storage(db: FirebaseFirestore) {
         dataBase.collection("userID/${USERIDdev}/cards")
             .document(randomId.toString())
             .set(dataToPost).addOnSuccessListener { println("it worked") }
+    }
+
+    fun generateUniqueIdFromTimestamp(): String {
+        val uniqueId = 	System.currentTimeMillis().toString()
+        return uniqueId
     }
 
 }
