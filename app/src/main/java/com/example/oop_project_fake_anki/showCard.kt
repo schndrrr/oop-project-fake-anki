@@ -4,21 +4,20 @@ import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
-import android.view.View.INVISIBLE
-import android.view.View.VISIBLE
 import android.view.ViewGroup
 import android.widget.Button
-import android.widget.TextView
 import androidx.core.view.isVisible
 import androidx.navigation.Navigation
-import androidx.navigation.findNavController
+import android.widget.StackView
+import com.example.oop_project_fake_anki.classes.Card
+import com.example.oop_project_fake_anki.utility.Storage
+import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.fragment_show_card.*
 import kotlinx.android.synthetic.main.fragment_show_card.view.*
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
+private const val ARG_STACKID = "BL6i6JL4DAakxUxjnowB"
 
 /**
  * A simple [Fragment] subclass.
@@ -26,18 +25,19 @@ private const val ARG_PARAM2 = "param2"
  * create an instance of this fragment.
  */
 class showCard : Fragment(), View.OnClickListener {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+    private var stackId: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-
+            stackId = it.getString(ARG_STACKID)
         }
     }
+
+    private lateinit var db: FirebaseFirestore
+    private lateinit var cards: MutableList<Card>
+    private lateinit var svCardStack: StackView
+    private lateinit var adapter: cardAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -57,54 +57,63 @@ class showCard : Fragment(), View.OnClickListener {
         btn.setOnClickListener(this)
         btnEasy.setOnClickListener(this)
         btnNormal.setOnClickListener(this)
-
-
         val btnTest: Button = view.findViewById(R.id.button_solution)
-
-
 
         btnTest.setOnClickListener(this)
 
+        svCardStack = view.findViewById(R.id.svCardStack)
+        cards = mutableListOf()
 
-            return view
-        }
+        adapter = cardAdapter(this.context, cards)
+        svCardStack.adapter = adapter
 
-        override fun onClick(v: View?) {
+        EventChangeListener()
 
+        return view
+    }
 
-            when (v?.id) {
-                R.id.button_hard -> {
-                    button_normal.isVisible = false
-                    button_hard.isVisible = false
-                    button_easy.isVisible = false
-                    answer.text = ""
-                    println("hallo button hard")
-                }
-                R.id.button_easy -> {
-                    button_normal.isVisible = false
-                    button_hard.isVisible = false
-                    button_easy.isVisible = false
-                    answer.text = ""
-                    println("hallo button easy")
-                }
-                R.id.button_normal -> {
-                    button_normal.isVisible = false
-                    button_hard.isVisible = false
-                    button_easy.isVisible = false
-                    answer.text = ""
-                    println("hallo button normal")
-                }
-                R.id.button_solution -> {
-                    // show buttons and textView
-                    answer.text = "Seine Hose ist natürlich blau"
-                    button_easy.isVisible = true
-                    button_normal.isVisible = true
-                    button_hard.isVisible = true
-                }
+    override fun onClick(v: View?) {
 
 
+        when (v?.id) {
+            R.id.button_hard -> {
+                button_normal.isVisible = false
+                button_hard.isVisible = false
+                button_easy.isVisible = false
+                answer.text = ""
+                println("hallo button hard")
+            }
+            R.id.button_easy -> {
+                button_normal.isVisible = false
+                button_hard.isVisible = false
+                button_easy.isVisible = false
+                answer.text = ""
+                println("hallo button easy")
+            }
+            R.id.button_normal -> {
+                button_normal.isVisible = false
+                button_hard.isVisible = false
+                button_easy.isVisible = false
+                answer.text = ""
+                println("hallo button normal")
+            }
+            R.id.button_solution -> {
+                // show buttons and textView
+                answer.text = "Seine Hose ist natürlich blau"
+                button_easy.isVisible = true
+                button_normal.isVisible = true
+                button_hard.isVisible = true
             }
         }
     }
+
+    private fun EventChangeListener() {
+        db = FirebaseFirestore.getInstance()
+        val storage: Storage = Storage(db)
+        storage.getCardsForStackId(stackId.toString(), adapter, cards)
+        println(cards.size)
+    }
+}
+
 
 

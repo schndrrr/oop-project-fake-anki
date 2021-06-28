@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.Toast
 import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.oop_project_fake_anki.classes.Stack
@@ -19,8 +20,7 @@ import kotlinx.android.synthetic.*
 import kotlinx.android.synthetic.main.fragment_show_card.view.*
 import kotlinx.android.synthetic.main.fragment_show_stack.*
 
-
-class showStack : Fragment() {
+class showStack : Fragment(), showStackAdapter.OnItemClickListener  {
 
     private lateinit var db: FirebaseFirestore
     private lateinit var stacks: MutableList<Stack>
@@ -43,7 +43,7 @@ class showStack : Fragment() {
         recyclerView.setHasFixedSize(true)
         stacks = mutableListOf()
 
-        adapter = showStackAdapter(stacks)
+        adapter = showStackAdapter(stacks, this)
 
         recyclerView.adapter = adapter
 
@@ -54,7 +54,7 @@ class showStack : Fragment() {
     private fun EventChangeListener() {
         db = FirebaseFirestore.getInstance()
         val storage: Storage = Storage(db)
-        storage.getStacks(adapter, stacks)
+        storage.getStacksForAdapter(adapter, stacks)
         println(stacks.size)
     }
 
@@ -87,6 +87,11 @@ class showStack : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+    }
+
+    override fun onClickItem(position: Int) {
+        println(stacks[position].stackId)
+        findNavController().navigate(R.id.action_showStack_to_showCard)
     }
 }
 
