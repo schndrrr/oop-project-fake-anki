@@ -20,7 +20,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun test(view: View) {
-        view.findNavController().navigate(R.id.homeScreen)
+        view.findNavController().navigate(R.id.home)
 //        hier mal ein teil der default card mit Wertezuweisung
 
         val defCard1 = DefaultCard("testCard", "1")

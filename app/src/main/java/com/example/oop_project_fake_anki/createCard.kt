@@ -41,7 +41,7 @@ class createCard : Fragment(), View.OnClickListener {
     ): View? {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_create_card, container, false)
-        view.button_Home.setOnClickListener{Navigation.findNavController(view).navigate(R.id.action_home)}
+        view.button_Home.setOnClickListener{Navigation.findNavController(view).navigate(R.id.action_createCard_to_home)}
 
         val btn_home: Button = view.findViewById(R.id.button_Home)
         val btn_createCard: Button = view.findViewById(R.id.button_create_card)

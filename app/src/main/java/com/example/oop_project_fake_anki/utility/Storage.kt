@@ -98,7 +98,7 @@ class Storage(db: FirebaseFirestore) {
     }
 
     fun generateUniqueIdFromTimestamp(): String {
-        val uniqueId = 	System.currentTimeMillis().toString()
+        val uniqueId = System.currentTimeMillis().toString()
         return uniqueId
     }
 

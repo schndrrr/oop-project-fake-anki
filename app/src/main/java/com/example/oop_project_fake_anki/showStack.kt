@@ -34,7 +34,7 @@ class showStack : Fragment(), showStackAdapter.OnItemClickListener  {
     ): View? {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_show_stack, container, false)
-        view.button_home.setOnClickListener{ Navigation.findNavController(view).navigate(R.id.action_home)}
+        view.button_home.setOnClickListener{ Navigation.findNavController(view).navigate(R.id.action_showStack_to_home)}
 
         addbtn = view.findViewById(R.id.button_add_stack)
         addbtn.setOnClickListener{addStack()}

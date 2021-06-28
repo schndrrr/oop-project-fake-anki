@@ -42,7 +42,7 @@ class home : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_home, container, false)
-        view.ic_home_home.setOnClickListener{ Navigation.findNavController(view).navigate(R.id.action_home)}
+        //        view.ic_home_home.setOnClickListener{ Navigation.findNavController(view).navigate(R.id.ac)}
 
         //NumberStacks gets information about existing stacks
         val NumberStacks = 1

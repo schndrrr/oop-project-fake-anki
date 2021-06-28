@@ -3,27 +3,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/showCard">
+    app:startDestination="@id/showStack">
     <fragment
         android:id="@+id/createCard"
         android:name="com.example.oop_project_fake_anki.createCard"
         android:label="fragment_create_card"
         tools:layout="@layout/fragment_create_card" >
         <action
-            android:id="@+id/action_home"
-            app:destination="@id/homeScreen" />
-    </fragment>
-    <fragment
-        android:id="@+id/homeScreen"
-        android:name="com.example.oop_project_fake_anki.homeScreen"
-        android:label="fragment_home_screen"
-        tools:layout="@layout/fragment_home_screen" >
-        <action
-            android:id="@+id/action_homeScreen_to_createCard"
-            app:destination="@id/createCard" />
-        <action
-            android:id="@+id/action_homeScreen_to_showStack"
-            app:destination="@id/showStack" />
+            android:id="@+id/action_createCard_to_home"
+            app:destination="@id/home" />
     </fragment>
     <fragment
         android:id="@+id/showStack"
@@ -33,6 +21,9 @@
         <action
             android:id="@+id/action_showStack_to_showCard"
             app:destination="@id/showCard" />
+        <action
+            android:id="@+id/action_showStack_to_home"
+            app:destination="@id/home" />
     </fragment>
     <fragment
         android:id="@+id/showCard"
@@ -40,7 +31,16 @@
         android:label="fragment_show_card"
         tools:layout="@layout/fragment_show_card" >
         <action
-            android:id="@+id/action_home"
-            app:destination="@id/homeScreen" />
+            android:id="@+id/action_showCard_to_home"
+            app:destination="@id/home" />
+    </fragment>
+    <fragment
+        android:id="@+id/home"
+        android:name="com.example.oop_project_fake_anki.home"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_home_to_createCard"
+            app:destination="@id/createCard" />
     </fragment>
 </navigation>
