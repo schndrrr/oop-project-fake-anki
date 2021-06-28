@@ -1,5 +1,6 @@
 package com.example.oop_project_fake_anki
 
+import android.media.Image
 import android.opengl.Visibility
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -7,11 +8,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageView
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.Group
 import androidx.navigation.Navigation
 import io.grpc.util.TransmitStatusRuntimeExceptionInterceptor
 import kotlinx.android.synthetic.main.fragment_home.view.*
 import kotlinx.android.synthetic.main.fragment_show_card.view.*
+
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -24,8 +29,11 @@ private const val ARG_PARAM2 = "param2"
  * create an instance of this fragment.
  */
 @Suppress("UNREACHABLE_CODE")
-class home : Fragment() {
-    // TODO: Rename and change types of parameters
+class home : Fragment(), View.OnClickListener
+
+    //private val listener: OnItemClickListener)
+ {
+
     private var param1: String? = null
     private var param2: String? = null
 
@@ -59,6 +67,15 @@ class home : Fragment() {
             Standard.visibility = View.INVISIBLE
             Welcome.visibility = View.VISIBLE
         }
+        val addbtn = view.findViewById(R.id.ic_home_add) as ImageView
+
+        addbtn.setOnClickListener{
+            println("You've clicked the button")
+        }
         return view
     }
-}
+
+     override fun onClick(v: View?) {
+         TODO("Not yet implemented")
+     }
+ }
