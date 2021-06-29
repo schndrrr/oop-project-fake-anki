@@ -47,10 +47,11 @@ class createCard : Fragment(), View.OnClickListener {
         btn_home.setOnClickListener {
             Navigation.findNavController(view).navigate(R.id.action_createCard_to_home)
         }
-        val btn_createCard: Button = view.findViewById(R.id.button_create_card)
 
-      //  btn_home.setOnClickListener(this)
-        btn_createCard.setOnClickListener(this)
+        val btn_createCard: Button = view.findViewById(R.id.button_create_card)
+        btn_createCard.setOnClickListener {
+            println("Irgendwann kannst du hiermit deine Karten adden")
+        }
 
         return view
     }
