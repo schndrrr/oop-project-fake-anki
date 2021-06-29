@@ -40,7 +40,7 @@
         android:id="@+id/WelcomeHome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:visibility="gone"
+        android:visibility="invisible"
         app:constraint_referenced_ids="txt_home_welcome_title,ic_home_welcome_frame,txt_home_welcome_subtitle,ic_home_welcome_add" />
 
     <ImageView
@@ -98,7 +98,7 @@
         android:id="@+id/StandardHome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:visibility="gone"
+        android:visibility="visible"
         app:constraint_referenced_ids="ic_home_frame,txt_home_frame_cards_number,txt_home_frame_button,txt_home_frame_linie,txt_home_frame_title,txt_home_frame_time_number,txt_home_frame_date,txt_home_frame_time_title,txt_home_frame_subtitle,txt_home_frame_cards_title" />
 
     <ImageView
@@ -253,20 +253,6 @@
         tools:ignore="MissingPrefix,VectorDrawableCompat" />
 
     <ImageView
-        android:id="@+id/ic_home_home"
-        android:layout_width="50dp"
-        android:layout_height="15dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginLeft="40dp"
-        android:layout_marginBottom="30dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/ic_home_add"
-        app:layout_constraintHorizontal_bias="0.01"
-        app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/ic_home"
-        tools:ignore="MissingPrefix,VectorDrawableCompat" />
-
-    <ImageView
         android:id="@+id/ic_home_add"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -281,11 +267,23 @@
         tools:ignore="MissingPrefix,VectorDrawableCompat" />
 
     <ImageView
+        android:id="@+id/ic_home_home"
+        android:layout_width="50dp"
+        android:layout_height="15dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginBottom="30dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/ic_home_add"
+        app:layout_constraintHorizontal_bias="0.01"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/ic_home"
+        tools:ignore="MissingPrefix,VectorDrawableCompat" />
+
+    <ImageView
         android:id="@+id/ic_home_favorites"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="8dp"
+        android:layout_height="8dp"
         android:layout_marginEnd="30dp"
-        android:layout_marginRight="30dp"
         android:layout_marginBottom="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/ic_home_profile"
@@ -296,10 +294,9 @@
 
     <ImageView
         android:id="@+id/ic_home_profile"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="9dp"
+        android:layout_height="8dp"
         android:layout_marginEnd="40dp"
-        android:layout_marginRight="40dp"
         android:layout_marginBottom="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
