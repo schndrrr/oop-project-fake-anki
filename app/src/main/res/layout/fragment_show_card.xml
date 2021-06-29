@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/frameLayout4"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".showCard">
-
 
     <TextView
         android:id="@+id/answer"
@@ -25,17 +25,16 @@
 
     <StackView
         android:id="@+id/svCardStack"
-        android:layout_width="410dp"
-        android:layout_height="558dp"
+        android:layout_width="414dp"
+        android:layout_height="729dp"
         android:animateLayoutChanges="true"
-        android:padding="20dp"
-        android:visibility="visible"
-        app:layout_constraintBottom_toTopOf="@+id/button_normal"
+        android:gravity="center"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
-        tools:visibility="visible" />
+        app:layout_constraintVertical_bias="0.299" />
 
     <Button
         android:id="@+id/button_hard"
@@ -81,16 +80,15 @@
         android:id="@+id/button_solution"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="196dp"
         android:text="Lösung"
-        android:textColor="@color/black"
-        app:backgroundTint="#19ED24"
-        app:layout_constraintBottom_toBottomOf="@+id/button_normal"
+        android:textColor="@color/white"
+        app:backgroundTint="#000000"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.52"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.939" />
+        app:layout_constraintTop_toBottomOf="@+id/button_normal"
+        app:layout_constraintVertical_bias="0.181" />
 
     <ImageView
         android:id="@+id/button_home"
@@ -101,11 +99,5 @@
         android:src="@drawable/ic_home"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
-
-    <androidx.constraintlayout.widget.Group
-        android:id="@+id/group"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:constraint_referenced_ids="frameLayout4" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
