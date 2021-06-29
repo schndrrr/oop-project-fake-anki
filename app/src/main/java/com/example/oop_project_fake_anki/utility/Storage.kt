@@ -1,6 +1,9 @@
 package com.example.oop_project_fake_anki.utility
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.util.Log
+import android.widget.Toast
 import com.example.oop_project_fake_anki.cardAdapter
 import com.example.oop_project_fake_anki.classes.Card
 import com.example.oop_project_fake_anki.classes.Stack
@@ -14,10 +17,9 @@ import kotlinx.coroutines.runBlocking
 import java.sql.Timestamp
 
 
-const val USERIDdev = "uxlmFFX19O64PveyJc6l"
+var USERIDdev : String = "uxlmFFX19O64PveyJc6l"
 
 class Storage(db: FirebaseFirestore) {
-
 
     private var dataBase: FirebaseFirestore = db
 
@@ -50,7 +52,6 @@ class Storage(db: FirebaseFirestore) {
     }
 
     fun postStack(data: Stack) {
-
         val id = generateUniqueIdFromTimestamp()
         // TODO create random id generator
         val dataToPost = hashMapOf(
@@ -102,4 +103,28 @@ class Storage(db: FirebaseFirestore) {
         return uniqueId
     }
 
+    // on function call use requireActivity()
+    private fun saveData(context : Context) {
+        val id = "UID" + System.currentTimeMillis().toString()
+        val sharedPreferences : SharedPreferences = context.getSharedPreferences("shared", Context.MODE_PRIVATE)
+        val editor : SharedPreferences.Editor = sharedPreferences.edit()
+        editor.apply{
+            putString("KEY_ID", id)
+        }.apply()
+        //        println("$id")
+    }
+
+    private fun loadData(context : Context): String {
+        val sharedPreferences : SharedPreferences = context.getSharedPreferences("shared", Context.MODE_PRIVATE)
+        val savedId: String = sharedPreferences.getString("KEY_ID", null).toString()
+        //        println("UserID = $savedId")
+        return savedId
+    }
+
+    fun checkForUID(context: Context) {
+        if (USERIDdev.isNullOrEmpty()) {
+            saveData(context)
+            USERIDdev = loadData(context)
+        }
+    }
 }
