@@ -33,7 +33,7 @@ class createCard : Fragment(), View.OnClickListener, AdapterView.OnItemSelectedL
     private lateinit var db: FirebaseFirestore
     private lateinit var stacks: MutableList<Stack>
     private lateinit var spinner: Spinner
-    private lateinit var stacksList: List<String>
+    private lateinit var stacksList: ArrayList<String>
     private lateinit var adapter: ArrayAdapter<String>
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -56,15 +56,13 @@ class createCard : Fragment(), View.OnClickListener, AdapterView.OnItemSelectedL
 
         spinner = view.findViewById(R.id.spinner_select_stack)
         stacks = mutableListOf()
-        stacksList = listOf()
+        stacksList = arrayListOf()
         adapter = ArrayAdapter<String>(
             requireActivity(),
-            android.R.layout.simple_spinner_dropdown_item, stacksList
-        )
+            android.R.layout.simple_spinner_dropdown_item)
+
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         spinner.adapter = adapter
-
-        //adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
 
         EventChangeListener()
 
@@ -74,10 +72,7 @@ class createCard : Fragment(), View.OnClickListener, AdapterView.OnItemSelectedL
     private fun EventChangeListener() {
         db = FirebaseFirestore.getInstance()
         val storage = Storage(db)
-        storage.getStacksForSpinner(stacks)
-        stacksList = stacks.map { it.name }
-
-        println(stacks.size)
+        storage.getStacksForSpinner(stacks, stacksList, adapter)
     }
 
     override fun onClick(v: View?) {
@@ -103,6 +98,7 @@ class createCard : Fragment(), View.OnClickListener, AdapterView.OnItemSelectedL
 
     override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
         TODO("Not yet implemented")
+        //println(stacks[position].stackId)
     }
 
     override fun onNothingSelected(parent: AdapterView<*>?) {

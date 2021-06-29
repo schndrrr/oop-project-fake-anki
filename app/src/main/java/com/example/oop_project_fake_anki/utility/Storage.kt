@@ -50,7 +50,7 @@ class Storage(db: FirebaseFirestore) {
         })
     }
 
-    fun getStacksForSpinner(stacks: MutableList<Stack>) {
+    fun getStacksForSpinner(stacks: MutableList<Stack>, mapedStack: ArrayList<String>, adapter: ArrayAdapter<String>) {
         val colRef = dataBase.collection("userID/${USERIDdev}/stacks")
         colRef.addSnapshotListener(object: EventListener<QuerySnapshot> {
             override fun onEvent(value: QuerySnapshot?, error: FirebaseFirestoreException?) {
@@ -58,8 +58,11 @@ class Storage(db: FirebaseFirestore) {
                     Log.e("Firebase Error:", error.message.toString())
                 }
                 for (dc: DocumentChange in value?.documentChanges!!) {
-                    stacks.add(dc.document.toObject<Stack>())
+                    val doc = dc.document.toObject<Stack>();
+                    stacks.add(doc)
+                    mapedStack.add(doc.name)
                 }
+                adapter.addAll(mapedStack)
             }
         })
     }
