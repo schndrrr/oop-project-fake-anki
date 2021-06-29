@@ -104,7 +104,7 @@ class Storage(db: FirebaseFirestore) {
     }
 
     // on function call use requireActivity()
-    fun saveData(context : Context) {
+    private fun saveData(context : Context) {
         val id = "UID" + System.currentTimeMillis().toString()
         val sharedPreferences : SharedPreferences = context.getSharedPreferences("shared", Context.MODE_PRIVATE)
         val editor : SharedPreferences.Editor = sharedPreferences.edit()
@@ -114,7 +114,7 @@ class Storage(db: FirebaseFirestore) {
         //        println("$id")
     }
 
-    fun loadData(context : Context): String {
+    private fun loadData(context : Context): String {
         val sharedPreferences : SharedPreferences = context.getSharedPreferences("shared", Context.MODE_PRIVATE)
         val savedId: String = sharedPreferences.getString("KEY_ID", null).toString()
         //        println("UserID = $savedId")
