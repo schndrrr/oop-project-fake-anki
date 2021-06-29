@@ -7,19 +7,42 @@
     android:layout_height="match_parent"
     tools:context=".createCard">
 
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="80dp"
+        android:layout_height="20dp"
+        android:text="Karteneditor"
+        app:layout_constraintBottom_toTopOf="@+id/spinner_select_stack"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.851"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.591" />
+
     <Spinner
         android:id="@+id/spinner_select_stack"
-        android:layout_width="300dp"
+        android:layout_width="295dp"
         android:layout_height="62dp"
         android:layout_marginBottom="390dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintHorizontal_bias="0.474"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.236"
+        app:layout_constraintVertical_bias="0.225"
         tools:ignore="MissingConstraints" />
 
+    <TextView
+        android:id="@+id/stackname"
+        android:layout_width="235dp"
+        android:layout_height="62dp"
+        android:text="Stapel wählen"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.312"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.094" />
 
     <EditText
         android:id="@+id/edittext_add_front"
@@ -73,18 +96,6 @@
         app:layout_constraintTop_toBottomOf="@+id/spinner_select_stack"
         app:layout_constraintVertical_bias="1.0"
         tools:ignore="MissingConstraints" />
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="80dp"
-        android:layout_height="20dp"
-        android:text="Karteneditor"
-        app:layout_constraintBottom_toTopOf="@+id/spinner_select_stack"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.851"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.591" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

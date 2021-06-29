@@ -3,18 +3,13 @@ package com.example.oop_project_fake_anki.utility
 import android.content.Context
 import android.content.SharedPreferences
 import android.util.Log
-import android.widget.Toast
+import android.widget.ArrayAdapter
 import com.example.oop_project_fake_anki.cardAdapter
 import com.example.oop_project_fake_anki.classes.Card
 import com.example.oop_project_fake_anki.classes.Stack
 import com.example.oop_project_fake_anki.showStackAdapter
 import com.google.firebase.firestore.*
-import java.io.*
 import com.google.firebase.firestore.ktx.toObject
-import kotlinx.coroutines.async
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
-import java.sql.Timestamp
 
 
 var USERIDdev : String = "uxlmFFX19O64PveyJc6l"
@@ -51,11 +46,28 @@ class Storage(db: FirebaseFirestore) {
         })
     }
 
+    fun getStacksForSpinner(stacks: MutableList<Stack>, mapedStack: ArrayList<String>, adapter: ArrayAdapter<String>) {
+        val colRef = dataBase.collection("userID/${USERIDdev}/stacks")
+        colRef.addSnapshotListener(object: EventListener<QuerySnapshot> {
+            override fun onEvent(value: QuerySnapshot?, error: FirebaseFirestoreException?) {
+                if (error != null) {
+                    Log.e("Firebase Error:", error.message.toString())
+                }
+                for (dc: DocumentChange in value?.documentChanges!!) {
+                    val doc = dc.document.toObject<Stack>();
+                    stacks.add(doc)
+                    mapedStack.add(doc.name)
+                }
+                adapter.addAll(mapedStack)
+            }
+        })
+    }
+
     fun postStack(data: Stack) {
         val id = generateUniqueIdFromTimestamp()
         // TODO create random id generator
         val dataToPost = hashMapOf(
-            "id" to id,
+            "stackId" to id,
             "name" to data.name
             // TODO add all properties of Stack
         )
