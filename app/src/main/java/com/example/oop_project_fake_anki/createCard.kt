@@ -4,10 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView
-import android.widget.ArrayAdapter
-import android.widget.Button
-import android.widget.Spinner
+import android.widget.*
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
 import com.example.oop_project_fake_anki.classes.DefaultCard
@@ -97,8 +94,8 @@ class createCard : Fragment(), View.OnClickListener, AdapterView.OnItemSelectedL
     }
 
     override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-        TODO("Not yet implemented")
-        //println(stacks[position].stackId)
+        val newItem = spinner.getSelectedItem().toString()
+        Toast.makeText(this.context, "Du hast $newItem ausgewählt!", Toast.LENGTH_LONG)
     }
 
     override fun onNothingSelected(parent: AdapterView<*>?) {
