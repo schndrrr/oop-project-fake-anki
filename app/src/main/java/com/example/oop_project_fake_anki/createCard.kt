@@ -8,6 +8,7 @@ import android.widget.*
 import android.widget.AdapterView.OnItemSelectedListener
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
+import com.example.oop_project_fake_anki.classes.Card
 import com.example.oop_project_fake_anki.classes.DefaultCard
 import com.example.oop_project_fake_anki.classes.Stack
 import com.example.oop_project_fake_anki.utility.Storage
@@ -34,6 +35,8 @@ class createCard : Fragment(), View.OnClickListener {
     private lateinit var spinner: Spinner
     private lateinit var stacksList: ArrayList<String>
     private lateinit var adapter: ArrayAdapter<String>
+    var selectedStackId: String = ""
+    private lateinit var storage: Storage
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -53,6 +56,8 @@ class createCard : Fragment(), View.OnClickListener {
         btn_home.setOnClickListener(this)
         btn_createCard.setOnClickListener(this)
 
+        db = FirebaseFirestore.getInstance()
+        storage = Storage(db)
         spinner = view.findViewById(R.id.spinner_select_stack)
         stacks = mutableListOf()
         stacksList = arrayListOf()
@@ -65,8 +70,7 @@ class createCard : Fragment(), View.OnClickListener {
         spinner.adapter = adapter
         spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                val newItem = spinner.selectedItem.toString()
-                Toast.makeText(requireActivity(), "Du hast $newItem ausgewählt!", Toast.LENGTH_LONG).show()
+                selectedStackId = stacks[position].stackId
             }
 
             override fun onNothingSelected(parent: AdapterView<*>?) {
@@ -80,8 +84,6 @@ class createCard : Fragment(), View.OnClickListener {
     }
 
     private fun EventChangeListener() {
-        db = FirebaseFirestore.getInstance()
-        val storage = Storage(db)
         storage.getStacksForSpinner(stacks, stacksList, adapter)
     }
 
@@ -96,12 +98,13 @@ class createCard : Fragment(), View.OnClickListener {
             }
 
             R.id.button_create_card -> {
-                val card = DefaultCard("asdasd", "b")
+                val card = Card("", "", "", "")
 
-                card.description = edittext_add_front.text.toString()
+                card.question = edittext_add_front.text.toString()
                 card.answer = edittext_add_back.text.toString()
-                println(card.description)
-                println(card.answer)
+                card.stackId = selectedStackId
+                storage.postCard(card)
+                Toast.makeText(requireActivity(), "Deine Karte wurde gespeichert", Toast.LENGTH_LONG).show()
             }
         }
     }

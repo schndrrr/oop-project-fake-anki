@@ -72,7 +72,7 @@ class Storage(db: FirebaseFirestore) {
         val id = System.currentTimeMillis() / 1000L
         // TODO create random id generator
         val dataToPost = hashMapOf(
-            "id" to id,
+            "stackId" to id,
             "name" to data.name
             // TODO add all properties of Stack
         )
