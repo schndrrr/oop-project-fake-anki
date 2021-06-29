@@ -32,7 +32,7 @@ private const val ARG_PARAM2 = "param2"
 class home : Fragment(), View.OnClickListener
 
     //private val listener: OnItemClickListener)
- {
+{
 
     private var param1: String? = null
     private var param2: String? = null
@@ -43,57 +43,59 @@ class home : Fragment(), View.OnClickListener
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
         }
+
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_home, container, false)
-        //        view.ic_home_home.setOnClickListener{ Navigation.findNavController(view).navigate(R.id.ac)}
 
-        //NumberStacks gets information about existing stacks
-        val NumberStacks = 1
-        //Declaration of the two groups
-        val Welcome: Group = view.findViewById(R.id.WelcomeHome)
-        val Standard: Group = view.findViewById(R.id.StandardHome)
+            val view = inflater.inflate(R.layout.fragment_home, container, false)
+            //        view.ic_home_home.setOnClickListener{ Navigation.findNavController(view).navigate(R.id.ac)}
 
-        //If the number of stacks is greater than or equal to one, the standard view becomes active
-        if (NumberStacks >= 1) {
-            Standard.visibility = View.VISIBLE
-            Welcome.visibility = View.INVISIBLE
-        //Otherwise the welcome view will be activated
-        } else {
-            Standard.visibility = View.INVISIBLE
-            Welcome.visibility = View.VISIBLE
-        }
-        val addbtn = view.findViewById(R.id.ic_home_add) as ImageView
+            //NumberStacks gets information about existing stacks
+            val NumberStacks = 1
+            //Declaration of the two groups
+            val Welcome: Group = view.findViewById(R.id.WelcomeHome)
+            val Standard: Group = view.findViewById(R.id.StandardHome)
 
-        addbtn.setOnClickListener{
-            println("You've clicked the button")
-        }
-        val starbtn = view.findViewById(R.id.ic_home_favorites) as ImageView
-        starbtn.setOnClickListener {
-            println("You've chosen the star icon")
+            //If the number of stacks is greater than or equal to one, the standard view becomes active
+            if (NumberStacks >= 1) {
+                Standard.visibility = View.VISIBLE
+                Welcome.visibility = View.INVISIBLE
+                //Otherwise the welcome view will be activated
+            } else {
+                Standard.visibility = View.INVISIBLE
+                Welcome.visibility = View.VISIBLE
+            }
+            val addbtn = view.findViewById(R.id.ic_home_add) as ImageView
+            addbtn.setOnClickListener {
+                Navigation.findNavController(view).navigate(R.id.action_home_to_createCard)
+                //navigate to createCard
+            }
+            val starbtn = view.findViewById(R.id.ic_home_favorites) as ImageView
+            starbtn.setOnClickListener {
+                println("You've chosen the star icon")
+            }
+            val headbtn = view.findViewById(R.id.ic_home_profile) as ImageView
+            headbtn.setOnClickListener {
+                println("Get your personal information")
+            }
+            val optnbtn = view.findViewById(R.id.imageView) as ImageView
+            optnbtn.setOnClickListener {
+                println("You can open options here!")
+            }
+            val wlcmbtn = view.findViewById(R.id.txt_home_frame_button) as ImageView
+            wlcmbtn.setOnClickListener {
+                Navigation.findNavController(view).navigate(R.id.action_home_to_showStack)
+                //navigate to showStack action_home_to_showStack
+            }
+
+            return view
         }
 
-        return view
-
-        val headbtn = view.findViewById(R.id.ic_home_profile) as ImageView
-        headbtn.setOnClickListener {
-            println("Get your personal information")
-        }
-        val optnbtn = view.findViewById(R.id.imageView) as ImageView
-        optnbtn.setOnClickListener{
-            println ("You can open options here!")
-        }
-        val welcomebtn = view.findViewById(R.id.txt_home_frame_button) as ImageView
-        welcomebtn.setOnClickListener {
-            println ("You've activated the whole group")
+        override fun onClick(v: View?) {
+            TODO("Not yet implemented")
         }
     }
-
-     override fun onClick(v: View?) {
-         TODO("Not yet implemented")
-     }
- }

@@ -44,9 +44,12 @@ class createCard : Fragment(), View.OnClickListener {
         view.button_Home.setOnClickListener{Navigation.findNavController(view).navigate(R.id.action_createCard_to_home)}
 
         val btn_home: Button = view.findViewById(R.id.button_Home)
+        btn_home.setOnClickListener {
+            Navigation.findNavController(view).navigate(R.id.action_createCard_to_home)
+        }
         val btn_createCard: Button = view.findViewById(R.id.button_create_card)
 
-        btn_home.setOnClickListener(this)
+      //  btn_home.setOnClickListener(this)
         btn_createCard.setOnClickListener(this)
 
         return view

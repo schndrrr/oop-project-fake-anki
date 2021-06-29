@@ -42,5 +42,8 @@
         <action
             android:id="@+id/action_home_to_createCard"
             app:destination="@id/createCard" />
+        <action
+            android:id="@+id/action_home_to_showStack"
+            app:destination="@id/showStack" />
     </fragment>
 </navigation>

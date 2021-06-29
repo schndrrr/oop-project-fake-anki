@@ -46,7 +46,7 @@ class showCard : Fragment(), View.OnClickListener {
         // TODO Navigation to other directions other than homescreen missing
         val view = inflater.inflate(R.layout.fragment_show_card, container, false)
         view.button_home.setOnClickListener {
-            Navigation.findNavController(view).navigate(R.id.action_showCard_to_home)
+            Navigation.findNavController(view).navigate(R.id.action_createCard_to_home)
         }
         //view.button_hard.setOnClickListener{Navigation.findNavController(view).navigate(R.id.action_front_of_card)}
         //view.button_normal.setOnClickListener{Navigation.findNavController(view).navigate(R.id.action_front_of_card)}
@@ -54,10 +54,15 @@ class showCard : Fragment(), View.OnClickListener {
         val btn: Button = view.findViewById(R.id.button_hard)
         val btnNormal: Button = view.findViewById(R.id.button_normal)
         val btnEasy: Button = view.findViewById(R.id.button_easy)
+        val button_Home: Button = view.findViewById(R.id.button_Home)
         btn.setOnClickListener(this)
         btnEasy.setOnClickListener(this)
         btnNormal.setOnClickListener(this)
+        button_Home.setOnClickListener {
+            Navigation.findNavController(view).navigate(R.id.action_createCard_to_home)
+        }
         val btnTest: Button = view.findViewById(R.id.button_solution)
+
 
         btnTest.setOnClickListener(this)
 
