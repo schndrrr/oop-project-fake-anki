@@ -1,6 +1,9 @@
 package com.example.oop_project_fake_anki.utility
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.util.Log
+import android.widget.Toast
 import com.example.oop_project_fake_anki.cardAdapter
 import com.example.oop_project_fake_anki.classes.Card
 import com.example.oop_project_fake_anki.classes.Stack
@@ -50,7 +53,6 @@ class Storage(db: FirebaseFirestore) {
     }
 
     fun postStack(data: Stack) {
-
         val id = generateUniqueIdFromTimestamp()
         // TODO create random id generator
         val dataToPost = hashMapOf(
@@ -102,4 +104,20 @@ class Storage(db: FirebaseFirestore) {
         return uniqueId
     }
 
+    // on function call use requireActivity()
+    fun saveData(context : Context) {
+        val id = "UID" + System.currentTimeMillis().toString()
+        val sharedPreferences : SharedPreferences = context.getSharedPreferences("shared", Context.MODE_PRIVATE)
+        val editor : SharedPreferences.Editor = sharedPreferences.edit()
+        editor.apply{
+            putString("KEY_ID", id)
+        }.apply()
+        //        println("$id")
+    }
+
+    fun loadData(context : Context){
+        val sharedPreferences : SharedPreferences = context.getSharedPreferences("shared", Context.MODE_PRIVATE)
+        val savedId: String? = sharedPreferences.getString("KEY_ID", null)
+        //        println("UserID = $savedId")
+    }
 }
