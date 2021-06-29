@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.oop_project_fake_anki.classes.Stack
 import com.example.oop_project_fake_anki.utility.Storage
+import com.example.oop_project_fake_anki.utility.StorageService
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.*
@@ -27,6 +28,7 @@ class showStack : Fragment(), showStackAdapter.OnItemClickListener  {
     private lateinit var recyclerView: RecyclerView
     private lateinit var adapter: showStackAdapter
     private lateinit var addbtn: FloatingActionButton
+    private lateinit var storageService: StorageService
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -42,10 +44,13 @@ class showStack : Fragment(), showStackAdapter.OnItemClickListener  {
         recyclerView.layoutManager = LinearLayoutManager(this.context)
         recyclerView.setHasFixedSize(true)
         stacks = mutableListOf()
+        storageService = StorageService()
 
         adapter = showStackAdapter(stacks, this)
 
         recyclerView.adapter = adapter
+
+        println(storageService.test)
 
         EventChangeListener()
         return view

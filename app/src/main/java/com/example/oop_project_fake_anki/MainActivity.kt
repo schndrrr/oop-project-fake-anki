@@ -7,16 +7,25 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.oop_project_fake_anki.classes.DefaultCard
 import com.example.oop_project_fake_anki.utility.Storage
+import com.example.oop_project_fake_anki.utility.StorageService
 import com.google.firebase.FirebaseApp
 import com.google.firebase.firestore.FirebaseFirestore
 
 //new layout branch
 class MainActivity : AppCompatActivity() {
 
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         FirebaseApp.initializeApp(this)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        val storageService = StorageService()
+        startService(intent)
+        println(storageService.test)
+        storageService.test = "Moin moin"
+        println(storageService.test)
     }
 
     fun test(view: View) {
