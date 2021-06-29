@@ -72,7 +72,25 @@ class home : Fragment(), View.OnClickListener
         addbtn.setOnClickListener{
             println("You've clicked the button")
         }
+        val starbtn = view.findViewById(R.id.ic_home_favorites) as ImageView
+        starbtn.setOnClickListener {
+            println("You've chosen the star icon")
+        }
+
         return view
+
+        val headbtn = view.findViewById(R.id.ic_home_profile) as ImageView
+        headbtn.setOnClickListener {
+            println("Get your personal information")
+        }
+        val optnbtn = view.findViewById(R.id.imageView) as ImageView
+        optnbtn.setOnClickListener{
+            println ("You can open options here!")
+        }
+        val welcomebtn = view.findViewById(R.id.txt_home_frame_button) as ImageView
+        welcomebtn.setOnClickListener {
+            println ("You've activated the whole group")
+        }
     }
 
      override fun onClick(v: View?) {
