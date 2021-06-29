@@ -1,6 +1,8 @@
 package com.example.oop_project_fake_anki.utility
 
 import android.util.Log
+import android.widget.ArrayAdapter
+import android.widget.SpinnerAdapter
 import com.example.oop_project_fake_anki.classes.Card
 import com.example.oop_project_fake_anki.classes.Stack
 import com.example.oop_project_fake_anki.showStackAdapter
@@ -44,6 +46,20 @@ class Storage(db: FirebaseFirestore) {
                 }
                 adapter.notifyDataSetChanged()
 
+            }
+        })
+    }
+
+    fun getStacksForSpinner(stacks: MutableList<Stack>) {
+        val colRef = dataBase.collection("userID/${USERIDdev}/stacks")
+        colRef.addSnapshotListener(object: EventListener<QuerySnapshot> {
+            override fun onEvent(value: QuerySnapshot?, error: FirebaseFirestoreException?) {
+                if (error != null) {
+                    Log.e("Firebase Error:", error.message.toString())
+                }
+                for (dc: DocumentChange in value?.documentChanges!!) {
+                    stacks.add(dc.document.toObject<Stack>())
+                }
             }
         })
     }
