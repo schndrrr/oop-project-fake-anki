@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
+import android.widget.AdapterView.OnItemSelectedListener
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
 import com.example.oop_project_fake_anki.classes.DefaultCard
@@ -14,6 +15,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.fragment_create_card.*
 import kotlinx.android.synthetic.main.fragment_create_card.view.*
 import kotlinx.android.synthetic.main.fragment_show_card.view.*
+
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -25,7 +27,7 @@ private const val ARG_PARAM2 = "param2"
  * Use the [createCard.newInstance] factory method to
  * create an instance of this fragment.
  */
-class createCard : Fragment(), View.OnClickListener, AdapterView.OnItemSelectedListener {
+class createCard : Fragment(), View.OnClickListener {
 
     private lateinit var db: FirebaseFirestore
     private lateinit var stacks: MutableList<Stack>
@@ -56,10 +58,21 @@ class createCard : Fragment(), View.OnClickListener, AdapterView.OnItemSelectedL
         stacksList = arrayListOf()
         adapter = ArrayAdapter<String>(
             requireActivity(),
-            android.R.layout.simple_spinner_dropdown_item)
+            android.R.layout.simple_spinner_dropdown_item
+        )
 
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         spinner.adapter = adapter
+        spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                val newItem = spinner.selectedItem.toString()
+                Toast.makeText(requireActivity(), "Du hast $newItem ausgewählt!", Toast.LENGTH_LONG).show()
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+                TODO("Not yet implemented")
+            }
+        }
 
         EventChangeListener()
 
@@ -83,7 +96,7 @@ class createCard : Fragment(), View.OnClickListener, AdapterView.OnItemSelectedL
             }
 
             R.id.button_create_card -> {
-                val card = DefaultCard("asdasd","b")
+                val card = DefaultCard("asdasd", "b")
 
                 card.description = edittext_add_front.text.toString()
                 card.answer = edittext_add_back.text.toString()
@@ -92,14 +105,4 @@ class createCard : Fragment(), View.OnClickListener, AdapterView.OnItemSelectedL
             }
         }
     }
-
-    override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-        val newItem = spinner.getSelectedItem().toString()
-        Toast.makeText(this.context, "Du hast $newItem ausgewählt!", Toast.LENGTH_LONG)
-    }
-
-    override fun onNothingSelected(parent: AdapterView<*>?) {
-        TODO("Not yet implemented")
-    }
-
 }
