@@ -17,10 +17,9 @@ import kotlinx.coroutines.runBlocking
 import java.sql.Timestamp
 
 
-const val USERIDdev = "uxlmFFX19O64PveyJc6l"
+var USERIDdev : String = "uxlmFFX19O64PveyJc6l"
 
 class Storage(db: FirebaseFirestore) {
-
 
     private var dataBase: FirebaseFirestore = db
 
@@ -115,9 +114,17 @@ class Storage(db: FirebaseFirestore) {
         //        println("$id")
     }
 
-    fun loadData(context : Context){
+    fun loadData(context : Context): String {
         val sharedPreferences : SharedPreferences = context.getSharedPreferences("shared", Context.MODE_PRIVATE)
-        val savedId: String? = sharedPreferences.getString("KEY_ID", null)
+        val savedId: String = sharedPreferences.getString("KEY_ID", null).toString()
         //        println("UserID = $savedId")
+        return savedId
+    }
+
+    fun checkForUID(context: Context) {
+        if (USERIDdev.isNullOrEmpty()) {
+            saveData(context)
+            USERIDdev = loadData(context)
+        }
     }
 }
