@@ -8,10 +8,10 @@ import android.view.ViewGroup
 import android.widget.Button
 import androidx.core.view.isVisible
 import androidx.navigation.Navigation
-import android.widget.StackView
 import com.example.oop_project_fake_anki.classes.Card
 import com.example.oop_project_fake_anki.utility.Storage
 import com.google.firebase.firestore.FirebaseFirestore
+import com.yuyakaido.android.cardstackview.CardStackView
 import kotlinx.android.synthetic.main.fragment_show_card.*
 import kotlinx.android.synthetic.main.fragment_show_card.view.*
 
@@ -36,7 +36,7 @@ class showCard : Fragment(), View.OnClickListener {
 
     private lateinit var db: FirebaseFirestore
     private lateinit var cards: MutableList<Card>
-    private lateinit var svCardStack: StackView
+    private lateinit var svCardStack: CardStackView
     private lateinit var adapter: cardAdapter
 
     override fun onCreateView(
@@ -54,7 +54,7 @@ class showCard : Fragment(), View.OnClickListener {
         val btn: Button = view.findViewById(R.id.button_hard)
         val btnNormal: Button = view.findViewById(R.id.button_normal)
         val btnEasy: Button = view.findViewById(R.id.button_easy)
-        val button_Home: Button = view.findViewById(R.id.button_Home)
+        val button_Home: Button = view.findViewById(R.id.button_home)
         btn.setOnClickListener(this)
         btnEasy.setOnClickListener(this)
         btnNormal.setOnClickListener(this)
@@ -66,10 +66,10 @@ class showCard : Fragment(), View.OnClickListener {
 
         btnTest.setOnClickListener(this)
 
-        svCardStack = view.findViewById(R.id.svCardStack)
+        svCardStack = view.findViewById(R.id.sv)
         cards = mutableListOf()
 
-        adapter = cardAdapter(this.context, cards)
+        adapter = cardAdapter(requireActivity(), cards)
         svCardStack.adapter = adapter
 
         EventChangeListener()
@@ -85,26 +85,22 @@ class showCard : Fragment(), View.OnClickListener {
                 button_normal.isVisible = false
                 button_hard.isVisible = false
                 button_easy.isVisible = false
-                answer.text = ""
                 println("hallo button hard")
             }
             R.id.button_easy -> {
                 button_normal.isVisible = false
                 button_hard.isVisible = false
                 button_easy.isVisible = false
-                answer.text = ""
                 println("hallo button easy")
             }
             R.id.button_normal -> {
                 button_normal.isVisible = false
                 button_hard.isVisible = false
                 button_easy.isVisible = false
-                answer.text = ""
                 println("hallo button normal")
             }
             R.id.button_solution -> {
                 // show buttons and textView
-                answer.text = "Seine Hose ist natürlich blau"
                 button_easy.isVisible = true
                 button_normal.isVisible = true
                 button_hard.isVisible = true

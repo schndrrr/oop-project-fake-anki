@@ -9,27 +9,6 @@
     tools:context=".showCard">
 
 
-    <TextView
-        android:id="@+id/answer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="312dp"
-        android:text="Welche Farbe hat Florians Hose?"
-        android:textSize="20sp"
-        android:textColor="@color/black"
-        app:layout_constraintBottom_toTopOf="@+id/button_normal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-
-        tools:layout_conversion_absoluteHeight="27dp"
-        tools:layout_conversion_absoluteWidth="151dp" />
-
-    <StackView
-        android:id="@+id/svCardStack"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:animateLayoutChanges="true"/>
-
     <Button
         android:id="@+id/button_hard"
         android:layout_width="wrap_content"
