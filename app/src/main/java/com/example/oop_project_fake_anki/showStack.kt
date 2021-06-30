@@ -50,8 +50,6 @@ class showStack : Fragment(), showStackAdapter.OnItemClickListener  {
 
         recyclerView.adapter = adapter
 
-        println(storageService.test)
-
         EventChangeListener()
         return view
     }
@@ -60,7 +58,6 @@ class showStack : Fragment(), showStackAdapter.OnItemClickListener  {
         db = FirebaseFirestore.getInstance()
         val storage: Storage = Storage(db)
         storage.getStacksForAdapter(adapter, stacks)
-        println(stacks.size)
     }
 
     private fun addStack() {
@@ -95,7 +92,6 @@ class showStack : Fragment(), showStackAdapter.OnItemClickListener  {
     }
 
     override fun onClickItem(position: Int) {
-        println(stacks[position].stackId)
         findNavController().navigate(R.id.action_showStack_to_showCard)
     }
 }

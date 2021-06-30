@@ -76,15 +76,15 @@ class home : Fragment(), View.OnClickListener
             }
             val starbtn = view.findViewById(R.id.ic_home_favorites) as ImageView
             starbtn.setOnClickListener {
-                println("You've chosen the star icon")
+
             }
             val headbtn = view.findViewById(R.id.ic_home_profile) as ImageView
             headbtn.setOnClickListener {
-                println("Get your personal information")
+
             }
             val optnbtn = view.findViewById(R.id.imageView) as ImageView
             optnbtn.setOnClickListener {
-                println("You can open options here!")
+
             }
             val wlcmbtn = view.findViewById(R.id.txt_home_frame_button) as ImageView
             wlcmbtn.setOnClickListener {

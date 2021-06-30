@@ -86,21 +86,18 @@ class showCard : Fragment(), View.OnClickListener {
                 button_hard.isVisible = false
                 button_easy.isVisible = false
                 answer.text = ""
-                println("hallo button hard")
             }
             R.id.button_easy -> {
                 button_normal.isVisible = false
                 button_hard.isVisible = false
                 button_easy.isVisible = false
                 answer.text = ""
-                println("hallo button easy")
             }
             R.id.button_normal -> {
                 button_normal.isVisible = false
                 button_hard.isVisible = false
                 button_easy.isVisible = false
                 answer.text = ""
-                println("hallo button normal")
             }
             R.id.button_solution -> {
                 // show buttons and textView
@@ -116,7 +113,6 @@ class showCard : Fragment(), View.OnClickListener {
         db = FirebaseFirestore.getInstance()
         val storage: Storage = Storage(db)
         storage.getCardsForStackId(stackId.toString(), adapter, cards)
-        println(cards.size)
     }
 }
 

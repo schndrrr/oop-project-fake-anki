@@ -123,13 +123,11 @@ class Storage(db: FirebaseFirestore) {
         editor.apply{
             putString("KEY_ID", id)
         }.apply()
-        //        println("$id")
     }
 
     private fun loadData(context : Context): String {
         val sharedPreferences : SharedPreferences = context.getSharedPreferences("shared", Context.MODE_PRIVATE)
         val savedId: String = sharedPreferences.getString("KEY_ID", null).toString()
-        //        println("UserID = $savedId")
         return savedId
     }
 

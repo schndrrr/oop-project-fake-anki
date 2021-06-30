@@ -21,21 +21,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val storageService = StorageService()
-        startService(intent)
-        println(storageService.test)
-        storageService.test = "Moin moin"
-        println(storageService.test)
-    }
-
-    fun test(view: View) {
-        view.findNavController().navigate(R.id.home)
-//        hier mal ein teil der default card mit Wertezuweisung
-
-        val defCard1 = DefaultCard("testCard", "1")
-        defCard1.description="testcard description or answer"
-        defCard1.answer="testcard answer"
-        println("${defCard1.description}")
-        println("${defCard1.answer}")
+//        val storageService = StorageService()
+//        startService(intent)
+//        storageService.test = "Moin moin"
     }
 }
