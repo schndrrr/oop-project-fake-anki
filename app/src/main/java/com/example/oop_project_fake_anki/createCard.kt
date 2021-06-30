@@ -106,8 +106,8 @@ class createCard : Fragment(), View.OnClickListener {
                 storage.postCard(card)
                 Toast.makeText(requireActivity(), "Deine Karte wurde gespeichert", Toast.LENGTH_LONG).show()
 
-                edittext1.getText().clear()
-                edittext2.getText().clear()
+                edittext1.text.clear()
+                edittext2.text.clear()
             }
         }
     }
