@@ -52,9 +52,7 @@ class createCard : Fragment(), View.OnClickListener {
         }
 
         val btn_createCard: Button = view.findViewById(R.id.button_create_card)
-        btn_createCard.setOnClickListener {
-            println("Irgendwann kannst du hiermit deine Karten adden")
-        }
+        btn_createCard.setOnClickListener(this)
 
         edittext1 = view.findViewById(R.id.edittext_add_front)
         edittext2 = view.findViewById(R.id.edittext_add_back)
