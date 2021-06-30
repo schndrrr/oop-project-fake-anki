@@ -5,11 +5,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
-import android.widget.AdapterView.OnItemSelectedListener
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
 import com.example.oop_project_fake_anki.classes.Card
-import com.example.oop_project_fake_anki.classes.DefaultCard
 import com.example.oop_project_fake_anki.classes.Stack
 import com.example.oop_project_fake_anki.utility.Storage
 import com.google.firebase.firestore.FirebaseFirestore
@@ -23,11 +21,7 @@ import kotlinx.android.synthetic.main.fragment_show_card.view.*
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [createCard.newInstance] factory method to
- * create an instance of this fragment.
- */
+
 class createCard : Fragment(), View.OnClickListener {
 
     private lateinit var db: FirebaseFirestore
@@ -37,6 +31,8 @@ class createCard : Fragment(), View.OnClickListener {
     private lateinit var adapter: ArrayAdapter<String>
     var selectedStackId: String = ""
     private lateinit var storage: Storage
+    private lateinit var edittext1: EditText
+    private lateinit var edittext2: EditText
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -59,6 +55,9 @@ class createCard : Fragment(), View.OnClickListener {
         btn_createCard.setOnClickListener {
             println("Irgendwann kannst du hiermit deine Karten adden")
         }
+
+        edittext1 = view.findViewById(R.id.edittext_add_front)
+        edittext2 = view.findViewById(R.id.edittext_add_back)
 
         db = FirebaseFirestore.getInstance()
         storage = Storage(db)
@@ -92,9 +91,6 @@ class createCard : Fragment(), View.OnClickListener {
     }
 
     override fun onClick(v: View?) {
-
-
-
         when (v?.id) {
             // TODO
             R.id.button_Home -> {
@@ -109,6 +105,9 @@ class createCard : Fragment(), View.OnClickListener {
                 card.stackId = selectedStackId
                 storage.postCard(card)
                 Toast.makeText(requireActivity(), "Deine Karte wurde gespeichert", Toast.LENGTH_LONG).show()
+
+                edittext1.getText().clear()
+                edittext2.getText().clear()
             }
         }
     }
