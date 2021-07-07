@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.navigation.Navigation
@@ -27,7 +28,7 @@ class showStack : Fragment(), showStackAdapter.OnItemClickListener  {
     private lateinit var stacks: MutableList<Stack>
     private lateinit var recyclerView: RecyclerView
     private lateinit var adapter: showStackAdapter
-    private lateinit var addbtn: FloatingActionButton
+    private lateinit var addbtn: Button
     private lateinit var storageService: StorageService
 
     override fun onCreateView(
