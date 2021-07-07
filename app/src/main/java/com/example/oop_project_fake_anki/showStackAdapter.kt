@@ -28,7 +28,7 @@ class showStackAdapter (
         val stack: Stack = stacks[position]
         holder.name.text = stack.name
         holder.numberOfCards.text = stack.numberOfCards
-
+        holder.adapterPosition
 
     }
 

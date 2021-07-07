@@ -8,6 +8,10 @@
     android:background="@color/brown"
     tools:context=".showCard">
 
+    <argument
+        android:name="stackIdValue"
+        android:defaultValue="1"
+        tools:ignore="MissingConstraints" />
 
     <TextView
         android:id="@+id/answer"
@@ -85,7 +89,7 @@
         app:layout_constraintVertical_bias="1.0" />
 
     <Button
-        android:id="@+id/button_home"
+        android:id="@+id/button_home_card"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="580dp"
