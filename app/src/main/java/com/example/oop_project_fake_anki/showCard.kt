@@ -54,7 +54,7 @@ class showCard : Fragment(), View.OnClickListener {
         val btn: Button = view.findViewById(R.id.button_hard)
         val btnNormal: Button = view.findViewById(R.id.button_normal)
         val btnEasy: Button = view.findViewById(R.id.button_easy)
-        val button_Home: Button = view.findViewById(R.id.button_Home)
+        val button_Home: Button = view.findViewById(R.id.button_home_editor)
         btn.setOnClickListener(this)
         btnEasy.setOnClickListener(this)
         btnNormal.setOnClickListener(this)

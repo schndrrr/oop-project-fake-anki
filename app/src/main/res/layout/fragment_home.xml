@@ -254,10 +254,9 @@
 
     <ImageView
         android:id="@+id/ic_home_add"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
         android:layout_marginEnd="30dp"
-        android:layout_marginRight="30dp"
         android:layout_marginBottom="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/ic_home_favorites"
@@ -281,8 +280,8 @@
 
     <ImageView
         android:id="@+id/ic_home_favorites"
-        android:layout_width="8dp"
-        android:layout_height="8dp"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
         android:layout_marginEnd="30dp"
         android:layout_marginBottom="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -294,8 +293,8 @@
 
     <ImageView
         android:id="@+id/ic_home_profile"
-        android:layout_width="9dp"
-        android:layout_height="8dp"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
         android:layout_marginEnd="40dp"
         android:layout_marginBottom="30dp"
         app:layout_constraintBottom_toBottomOf="parent"

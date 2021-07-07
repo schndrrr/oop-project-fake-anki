@@ -7,95 +7,136 @@
     android:layout_height="match_parent"
     tools:context=".createCard">
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="80dp"
-        android:layout_height="20dp"
-        android:text="Karteneditor"
-        app:layout_constraintBottom_toTopOf="@+id/spinner_select_stack"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.851"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.591" />
-
-    <Spinner
-        android:id="@+id/spinner_select_stack"
-        android:layout_width="295dp"
-        android:layout_height="62dp"
-        android:layout_marginBottom="390dp"
+    <ImageView
+        android:id="@+id/ic_home_profile2"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginBottom="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.474"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/ic_profile"
+        tools:ignore="MissingPrefix,VectorDrawableCompat" />
+
+    <ImageView
+        android:id="@+id/ic_home_favorites2"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="30dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/ic_home_add2"
+        app:srcCompat="@drawable/ic_favorites"
+        tools:ignore="MissingPrefix,VectorDrawableCompat" />
+
+    <ImageView
+        android:id="@+id/button_home_editor"
+        android:layout_width="50dp"
+        android:layout_height="15dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginBottom="30dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/ic_home_add"
+        app:layout_constraintHorizontal_bias="0.01"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/ic_home"
+        tools:ignore="MissingPrefix,UnknownIdInLayout,VectorDrawableCompat" />
+
+    <ImageView
+        android:id="@+id/ic_home_add2"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="30dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/ic_home_profile2"
+        app:srcCompat="@drawable/ic_add"
+        tools:ignore="MissingPrefix,VectorDrawableCompat" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="30dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.225"
-        tools:ignore="MissingConstraints" />
+        app:srcCompat="@drawable/ic_menu"
+        tools:ignore="MissingPrefix,VectorDrawableCompat" />
 
     <TextView
         android:id="@+id/stackname"
         android:layout_width="235dp"
         android:layout_height="62dp"
+        android:layout_marginTop="30dp"
         android:text="Stapel wählen"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.312"
+        app:layout_constraintHorizontal_bias="0.329"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.094" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView2"
+        app:layout_constraintVertical_bias="0.0" />
 
-    <EditText
-        android:id="@+id/edittext_add_front"
-        android:layout_width="300dp"
-        android:layout_height="200dp"
-        android:layout_marginBottom="38dp"
-        android:hint="Vorderseite eingeben"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <Spinner
+        android:id="@+id/spinner_select_stack"
+        android:layout_width="295dp"
+        android:layout_height="62dp"
+        android:layout_marginTop="30dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.292" />
-
-    <EditText
-        android:id="@+id/edittext_add_back"
-        android:layout_width="300dp"
-        android:layout_height="200dp"
-        android:hint="Rückseite eingeben"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.67" />
-
-
-    <Button
-        android:id="@+id/button_Home"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="52dp"
-        android:layout_marginLeft="52dp"
-        android:text="Home"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edittext_add_back"
-        app:layout_constraintVertical_bias="0.677"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2"
         tools:ignore="MissingConstraints" />
+
 
     <Button
         android:id="@+id/button_create_card"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="113dp"
+        android:layout_marginTop="15dp"
         android:text="Hinzufügen"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/button_home_editor"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinner_select_stack"
-        app:layout_constraintVertical_bias="1.0"
+        app:layout_constraintTop_toBottomOf="@+id/edittext_add_back"
+        app:layout_constraintVertical_bias="0.0"
         tools:ignore="MissingConstraints" />
+
+    <EditText
+        android:id="@+id/edittext_add_back"
+        android:layout_width="300dp"
+        android:layout_height="200dp"
+        android:layout_marginTop="25dp"
+        android:hint="Rückseite eingeben"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edittext_add_front" />
+
+    <EditText
+        android:id="@+id/edittext_add_front"
+        android:layout_width="300dp"
+        android:layout_height="200dp"
+        android:layout_marginTop="25dp"
+        android:hint="Vorderseite eingeben"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinner_select_stack" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="93dp"
+        android:layout_height="29dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="40dp"
+        android:src="@drawable/txt_editor"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/imageView4"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
