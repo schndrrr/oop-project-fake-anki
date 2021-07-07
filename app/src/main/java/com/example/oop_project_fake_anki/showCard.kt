@@ -17,7 +17,7 @@ import kotlinx.android.synthetic.main.fragment_show_card.view.*
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_STACKID = "BL6i6JL4DAakxUxjnowB"
+//private const val ARG_STACKID = "BL6i6JL4DAakxUxjnowB"
 
 /**
  * A simple [Fragment] subclass.
@@ -30,7 +30,8 @@ class showCard : Fragment(), View.OnClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
-            stackId = it.getString(ARG_STACKID)
+            stackId = it.getString("stackIdValue")
+            println("$stackId")
         }
     }
 

@@ -85,7 +85,7 @@ class Storage(db: FirebaseFirestore) {
                     Log.e("Firebase Error:", error.message.toString())
                 }
                 for (dc: DocumentChange in value?.documentChanges!!) {
-                    if (dc != null) {
+                    if (dc.document.toObject<Card>().stackId == stackId) {
                         cards.add(dc.document.toObject<Card>())
                     }
                 }

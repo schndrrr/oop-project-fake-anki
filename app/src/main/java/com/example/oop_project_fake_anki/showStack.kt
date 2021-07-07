@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.Toast
+import androidx.core.os.bundleOf
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -95,9 +96,11 @@ class showStack : Fragment(), showStackAdapter.OnItemClickListener  {
 
     override fun onClickItem(position: Int) {
         val stackspostitionvalue = stacks[position].stackId
-        val action = SpecifyAmountFragmentDirections.confirmationAction(stackspostitionvalue)
-        println("${stacks[position].name}")
-        findNavController().navigate(R.id.action_showStack_to_showCard)
+//        val action = SpecifyAmountFragmentDirections.confirmationAction(stackspostitionvalue)
+//        println("${stacks[position].name}")
+        val bundle = bundleOf("stackIdValue" to stackspostitionvalue)
+
+        findNavController().navigate(R.id.action_showStack_to_showCard, bundle)
     }
 }
 

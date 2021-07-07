@@ -8,11 +8,6 @@
     android:background="@color/brown"
     tools:context=".showCard">
 
-    <argument
-        android:name="stackIdValue"
-        android:defaultValue="1"
-        tools:ignore="MissingConstraints" />
-
     <TextView
         android:id="@+id/answer"
         android:layout_width="wrap_content"
