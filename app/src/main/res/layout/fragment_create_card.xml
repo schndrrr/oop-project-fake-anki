@@ -9,42 +9,7 @@
 
 
     <ImageView
-        android:id="@+id/ic_home_favorites2"
-        android:layout_width="15dp"
-        android:layout_height="15dp"
-        android:layout_marginEnd="30dp"
-        android:layout_marginBottom="30dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/ic_home_add2"
-        app:srcCompat="@drawable/ic_favorites"
-        tools:ignore="MissingPrefix,VectorDrawableCompat" />
-
-    <ImageView
-        android:id="@+id/button_home_editor"
-        android:layout_width="50dp"
-        android:layout_height="15dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginBottom="30dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/ic_home_add"
-        app:layout_constraintHorizontal_bias="0.01"
-        app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/ic_home"
-        tools:ignore="MissingPrefix,UnknownIdInLayout,VectorDrawableCompat" />
-
-    <ImageView
-        android:id="@+id/ic_home_add2"
-        android:layout_width="15dp"
-        android:layout_height="15dp"
-        android:layout_marginEnd="30dp"
-        android:layout_marginBottom="30dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/ic_frame_createcard"
-        app:srcCompat="@drawable/ic_add"
-        tools:ignore="MissingPrefix,VectorDrawableCompat" />
-
-    <ImageView
-        android:id="@+id/imageView4"
+        android:id="@+id/ic_createcard_menue"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
@@ -54,17 +19,57 @@
         app:srcCompat="@drawable/ic_menu"
         tools:ignore="MissingPrefix,VectorDrawableCompat" />
 
+    <ImageView
+        android:id="@+id/ic_createcard_editor"
+        android:layout_width="93dp"
+        android:layout_height="29dp"
+        android:layout_marginTop="23dp"
+        android:layout_marginEnd="40dp"
+        android:src="@drawable/txt_editor"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/ic_createcard_menue"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <Spinner
         android:id="@+id/spinner_select_stack"
         android:layout_width="300dp"
         android:layout_height="50dp"
         android:layout_marginTop="50dp"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#FFFFFF"
         android:radius="15dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2"
+        app:layout_constraintTop_toBottomOf="@+id/ic_createcard_editor"
         tools:ignore="MissingConstraints" />
 
+    <EditText
+        android:id="@+id/edittext_add_front"
+        android:layout_width="300dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="25dp"
+        android:gravity="start"
+        android:hint="Vorderseite eingeben"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinner_select_stack" />
+
+    <EditText
+        android:id="@+id/edittext_add_back"
+        android:layout_width="300dp"
+        android:layout_height="200dp"
+        android:layout_marginTop="25dp"
+        android:gravity="start"
+        android:hint="Rückseite eingeben"
+        android:textColorHint="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edittext_add_front" />
 
     <Button
         android:id="@+id/button_create_card"
@@ -80,52 +85,54 @@
         app:layout_constraintVertical_bias="0.0"
         tools:ignore="MissingConstraints" />
 
-    <EditText
-        android:id="@+id/edittext_add_back"
-        android:layout_width="300dp"
-        android:layout_height="200dp"
-        android:layout_marginTop="25dp"
-        android:gravity="start"
-        android:hint="Rückseite eingeben"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edittext_add_front" />
-
-    <EditText
-        android:id="@+id/edittext_add_front"
-        android:layout_width="300dp"
-        android:layout_height="150dp"
-        android:layout_marginTop="25dp"
-        android:gravity="start"
-        android:hint="Vorderseite eingeben"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinner_select_stack" />
-
     <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="93dp"
-        android:layout_height="29dp"
-        android:layout_marginTop="23dp"
-        android:layout_marginEnd="40dp"
-        android:src="@drawable/txt_editor"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/imageView4"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageView
-        android:id="@+id/imageView5"
+        android:id="@+id/ic_createcard_frame"
         android:layout_width="375dp"
         android:layout_height="575dp"
         android:src="@drawable/ic_boxcreatecard"
-        tools:layout_editor_absoluteX="18dp"
-        tools:layout_editor_absoluteY="78dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/ic_frame_createcard"
+        android:id="@+id/button_home_editor"
+        android:layout_width="50dp"
+        android:layout_height="15dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginBottom="30dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/ic_home_add"
+        app:layout_constraintHorizontal_bias="0.01"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/ic_home"
+        tools:ignore="MissingPrefix,UnknownIdInLayout,VectorDrawableCompat" />
+
+    <ImageView
+        android:id="@+id/ic_createcard_favorites"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="30dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/ic_createcard_add"
+        app:srcCompat="@drawable/ic_favorites"
+        tools:ignore="MissingPrefix,VectorDrawableCompat" />
+
+    <ImageView
+        android:id="@+id/ic_createcard_add"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="30dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/ic_createcard_profile"
+        app:srcCompat="@drawable/ic_add"
+        tools:ignore="MissingPrefix,VectorDrawableCompat" />
+
+
+    <ImageView
+        android:id="@+id/ic_createcard_profile"
         android:layout_width="15dp"
         android:layout_height="15dp"
         android:layout_marginEnd="40dp"
