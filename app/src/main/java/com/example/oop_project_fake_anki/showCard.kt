@@ -106,6 +106,12 @@ class showCard : Fragment(), View.OnClickListener {
                 button_easy.isVisible = true
                 button_normal.isVisible = true
                 button_hard.isVisible = true
+                val tempcard2 = Card("early","","22","5")
+                val tempcard1 = Card("late","","22","15")
+                cards.add(tempcard1)
+                cards.add(tempcard2)
+                cards.sortBy { it.index }
+                adapter.notifyDataSetChanged()
             }
         }
     }
