@@ -20,10 +20,5 @@ private lateinit var db: FirebaseFirestore
         FirebaseApp.initializeApp(this)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-        db = FirebaseFirestore.getInstance()
-        val storage: Storage = Storage(db)
-        storage.saveData(this)
-        storage.loadData(this)
     }
 }

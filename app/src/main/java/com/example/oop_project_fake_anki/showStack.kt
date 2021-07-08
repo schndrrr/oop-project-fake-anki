@@ -97,8 +97,6 @@ class showStack : Fragment(), showStackAdapter.OnItemClickListener  {
 
     override fun onClickItem(position: Int) {
         val stackspostitionvalue = stacks[position].stackId
-//        val action = SpecifyAmountFragmentDirections.confirmationAction(stackspostitionvalue)
-//        println("${stacks[position].name}")
         val bundle = bundleOf("stackIdValue" to stackspostitionvalue)
 
         findNavController().navigate(R.id.action_showStack_to_showCard, bundle)
