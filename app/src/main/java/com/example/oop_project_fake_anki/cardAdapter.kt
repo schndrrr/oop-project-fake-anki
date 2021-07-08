@@ -6,39 +6,53 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.TextView
+import androidx.recyclerview.widget.RecyclerView
 import com.example.oop_project_fake_anki.classes.Card
+import com.example.oop_project_fake_anki.classes.Stack
 
-class cardAdapter internal constructor(context: Context?, private val cards: MutableList<Card>): BaseAdapter(){
+class cardAdapter internal constructor(context: Context?, private val cards: MutableList<Card>):
+    RecyclerView.Adapter<cardAdapter.ViewHolder>() {
 
     private val inflater: LayoutInflater = LayoutInflater.from(context)
-    override fun getCount(): Int {
+
+    inner class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView), View.OnClickListener  {
+        internal var cardQuestion: TextView? = null
+        val question: TextView = itemView.findViewById(R.id.tvCardQuestion)
+        val answer: TextView = itemView.findViewById(R.id.tvCardAnswer)
+
+        init {
+            itemView.setOnClickListener(this)
+        }
+
+        override fun onClick(v: View?) {
+            val position = adapterPosition
+            answer.text = cards[position].answer
+        }
+    }
+
+    override fun onCreateViewHolder(
+        parent: ViewGroup,
+        viewType: Int
+    ): cardAdapter.ViewHolder {
+        val itemView = LayoutInflater.from(parent.context).inflate(
+            R.layout.item_card,
+            parent,
+            false
+        )
+        return ViewHolder(itemView)
+    }
+
+    override fun onBindViewHolder(holder: cardAdapter.ViewHolder, position: Int) {
+        val card: Card = cards[position]
+        holder.question.text = card.question
+    }
+
+    override fun getItemCount(): Int {
         return cards.size
     }
 
-    override fun getItem(position: Int): Any {
-        return cards[position]
-    }
-
-    override fun getItemId(position: Int): Long {
-        return position.toLong()
-    }
-
-    override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
-        var convertView = convertView
-        val holder: ViewHolder
-        if (convertView == null) {
-            convertView = inflater.inflate(R.layout.item_card, parent, false)
-            holder = ViewHolder()
-            holder.cardQuestion = convertView!!.findViewById(R.id.tvCardQuestion)
-        } else {
-            holder = convertView.tag as ViewHolder
-        }
-        holder.cardQuestion!!.text = cards[position].question
-        return convertView
-    }
-
-    inner class ViewHolder {
-        internal var cardQuestion: TextView? = null
+    interface OnItemClickListener {
+        fun onClickItem(position: Int)
     }
 
 }
