@@ -25,56 +25,47 @@
         android:layout_height="29dp"
         android:layout_marginTop="23dp"
         android:layout_marginEnd="40dp"
-        android:src="@drawable/txt_editor"
+        android:src="@drawable/ic_editor"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/ic_createcard_menue"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginRight="3dp"
-        android:layout_weight=".28"
-        android:background="@drawable/background_spinner"
-        android:orientation="horizontal"
-        tools:ignore="MissingConstraints">
-
-        <Spinner
+    <Spinner
             android:id="@+id/spinner_select_stack"
+            android:dropDownVerticalOffset="50dp"
             android:layout_width="300dp"
             android:layout_height="50dp"
             android:layout_marginTop="50dp"
-            android:radius="15dp"
-            android:textColor="#FFFFFF"
-            android:textColorHint="#FFFFFF"
+            android:paddingLeft="20dp"
+            android:background="@drawable/layout_spinner"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/ic_createcard_editor"
             tools:ignore="MissingConstraints,NotSibling" />
 
-    </RelativeLayout>
-
     <EditText
         android:id="@+id/edittext_add_front"
         android:layout_width="300dp"
-        android:layout_height="150dp"
+        android:layout_height="175dp"
         android:layout_marginTop="20dp"
-        android:background="@drawable/layout_createcard_edittext"
+        android:background="@drawable/layout_edittext"
         android:gravity="start"
         android:hint="Vorderseite eingeben"
         android:textColor="#000000"
         android:textColorHint="#000000"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinner_select_stack" />
+        app:layout_constraintTop_toBottomOf="@+id/spinner_select_stack"
+        tools:ignore="MissingConstraints" />
 
     <EditText
         android:id="@+id/edittext_add_back"
         android:layout_width="300dp"
-        android:layout_height="200dp"
+        android:layout_height="175dp"
         android:layout_marginTop="20dp"
-        android:background="@drawable/layout_createcard_edittext"
+        android:background="@drawable/layout_edittext"
         android:gravity="start"
         android:hint="Rückseite eingeben"
         android:textColor="#000000"
@@ -100,44 +91,46 @@
 
     <ImageView
         android:id="@+id/button_home_editor"
-        android:layout_width="50dp"
-        android:layout_height="15dp"
+        android:layout_width="90dp"
+        android:layout_height="30dp"
         android:layout_marginStart="40dp"
         android:layout_marginBottom="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/ic_home_add"
-        app:layout_constraintHorizontal_bias="0.01"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/ic_home"
         tools:ignore="MissingPrefix,UnknownIdInLayout,VectorDrawableCompat" />
 
     <ImageView
         android:id="@+id/ic_createcard_favorites"
-        android:layout_width="15dp"
-        android:layout_height="15dp"
-        android:layout_marginEnd="30dp"
-        android:layout_marginBottom="30dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/ic_createcard_add"
-        app:srcCompat="@drawable/ic_favorites"
-        tools:ignore="MissingPrefix,VectorDrawableCompat" />
-
-    <ImageView
-        android:id="@+id/ic_createcard_add"
-        android:layout_width="15dp"
-        android:layout_height="15dp"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
         android:layout_marginEnd="30dp"
         android:layout_marginBottom="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/ic_createcard_profile"
-        app:srcCompat="@drawable/ic_add"
+        app:srcCompat="@drawable/ic_favorites"
         tools:ignore="MissingPrefix,VectorDrawableCompat" />
 
 
     <ImageView
+        android:id="@+id/ic_createcard_add"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="30dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/ic_createcard_favorites"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/button_home_editor"
+        app:srcCompat="@drawable/ic_add"
+        tools:ignore="MissingPrefix,VectorDrawableCompat" />
+
+    <ImageView
         android:id="@+id/ic_createcard_profile"
-        android:layout_width="15dp"
-        android:layout_height="15dp"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
         android:layout_marginEnd="40dp"
         android:layout_marginBottom="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
