@@ -23,7 +23,9 @@ private lateinit var db: FirebaseFirestore
 
         db = FirebaseFirestore.getInstance()
         val storage: Storage = Storage(db)
-        storage.saveData(this)
-        storage.loadData(this)
+//        storage.saveData(this)
+//        storage.loadData(this)
+//        storage.saveIndex(this)
+//        storage.loadIndex(this)
     }
 }

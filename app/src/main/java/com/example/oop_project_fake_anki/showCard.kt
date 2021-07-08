@@ -14,6 +14,8 @@ import com.example.oop_project_fake_anki.utility.Storage
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.fragment_show_card.*
 import kotlinx.android.synthetic.main.fragment_show_card.view.*
+import java.util.ArrayList
+import kotlin.math.round
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -34,6 +36,8 @@ class showCard : Fragment(), View.OnClickListener {
             println("$stackId")
         }
     }
+
+    var indexarray = ArrayList<Int>()
 
     private lateinit var db: FirebaseFirestore
     private lateinit var cards: MutableList<Card>
@@ -87,18 +91,27 @@ class showCard : Fragment(), View.OnClickListener {
                 button_hard.isVisible = false
                 button_easy.isVisible = false
                 answer.text = ""
+                cards.add((cards.size/4).toInt(), cards[0])
+                cards.remove(cards[0])
+                print("hello")
             }
             R.id.button_easy -> {
                 button_normal.isVisible = false
                 button_hard.isVisible = false
                 button_easy.isVisible = false
                 answer.text = ""
+                cards.add(cards.size, cards[0])
+                cards.remove(cards[0])
+                print("hello")
             }
             R.id.button_normal -> {
                 button_normal.isVisible = false
                 button_hard.isVisible = false
                 button_easy.isVisible = false
                 answer.text = ""
+                cards.add((cards.size/2).toInt(), cards[0])
+                cards.remove(cards[0])
+                print("hello")
             }
             R.id.button_solution -> {
                 // show buttons and textView
@@ -106,14 +119,23 @@ class showCard : Fragment(), View.OnClickListener {
                 button_easy.isVisible = true
                 button_normal.isVisible = true
                 button_hard.isVisible = true
-                val tempcard2 = Card("early","","22","5")
-                val tempcard1 = Card("late","","22","15")
-                cards.add(tempcard1)
-                cards.add(tempcard2)
-                cards.sortBy { it.index }
-                adapter.notifyDataSetChanged()
+//                val tempcard2 = Card("early","","22","5")
+//                val tempcard1 = Card("late","","22","15")
+//                println("${tempcard1.index}")
+//                cards.add(tempcard1)
+//                cards.add(tempcard2)
+//                cards.sortBy { it.index }
+//                adapter.notifyDataSetChanged()
+//
+//
+//                for(card in cards) {
+//                    println(card.answer)
+//                    indexarray.add(card.index.toInt())
+//                }
+//                println(indexarray)
             }
         }
+        adapter.notifyDataSetChanged()
     }
 
     private fun EventChangeListener() {
