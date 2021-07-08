@@ -16,6 +16,7 @@ import com.yuyakaido.android.cardstackview.CardStackView
 import com.yuyakaido.android.cardstackview.StackFrom
 import kotlinx.android.synthetic.main.fragment_show_card.*
 import kotlinx.android.synthetic.main.fragment_show_card.view.*
+import kotlin.math.roundToInt
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -94,24 +95,54 @@ class showCard : Fragment(), View.OnClickListener {
                 button_normal.isVisible = false
                 button_hard.isVisible = false
                 button_easy.isVisible = false
+                cards.add((cards.size*0.2).roundToInt(), cards[0])
+//                card stays at pos 1
+                cards.remove(cards[0])
+                print("hello")
             }
-            R.id.button_easy -> {
-                button_normal.isVisible = false
-                button_hard.isVisible = false
-                button_easy.isVisible = false
-            }
+
             R.id.button_normal -> {
                 button_normal.isVisible = false
                 button_hard.isVisible = false
                 button_easy.isVisible = false
+                cards.add((cards.size*0.6).roundToInt(), cards[0])
+//                card to middle pos
+                cards.remove(cards[0])
+                print("hello")
             }
+
+            R.id.button_easy -> {
+                button_normal.isVisible = false
+                button_hard.isVisible = false
+                button_easy.isVisible = false
+                cards.add((cards.size*0.9).roundToInt(), cards[0])
+//                card to last pos
+                cards.remove(cards[0])
+                print("hello")
+            }
+
             R.id.button_solution -> {
                 // show buttons and textView
                 button_easy.isVisible = true
                 button_normal.isVisible = true
                 button_hard.isVisible = true
+//                val tempcard2 = Card("early","","22","5")
+//                val tempcard1 = Card("late","","22","15")
+//                println("${tempcard1.index}")
+//                cards.add(tempcard1)
+//                cards.add(tempcard2)
+//                cards.sortBy { it.index }
+//                adapter.notifyDataSetChanged()
+//
+//
+//                for(card in cards) {
+//                    println(card.answer)
+//                    indexarray.add(card.index.toInt())
+//                }
+//                println(indexarray)
             }
         }
+        adapter.notifyDataSetChanged()
     }
 
     private fun EventChangeListener() {
