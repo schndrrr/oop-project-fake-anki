@@ -17,7 +17,7 @@ import kotlinx.android.synthetic.main.fragment_show_card.view.*
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_STACKID = "BL6i6JL4DAakxUxjnowB"
+//private const val ARG_STACKID = "BL6i6JL4DAakxUxjnowB"
 
 /**
  * A simple [Fragment] subclass.
@@ -30,7 +30,8 @@ class showCard : Fragment(), View.OnClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
-            stackId = it.getString(ARG_STACKID)
+            stackId = it.getString("stackIdValue")
+            println("$stackId")
         }
     }
 
@@ -45,7 +46,7 @@ class showCard : Fragment(), View.OnClickListener {
     ): View? {
         // TODO Navigation to other directions other than homescreen missing
         val view = inflater.inflate(R.layout.fragment_show_card, container, false)
-        view.button_home.setOnClickListener {
+        view.button_home_card.setOnClickListener {
             Navigation.findNavController(view).navigate(R.id.action_createCard_to_home)
         }
         //view.button_hard.setOnClickListener{Navigation.findNavController(view).navigate(R.id.action_front_of_card)}
@@ -54,12 +55,12 @@ class showCard : Fragment(), View.OnClickListener {
         val btn: Button = view.findViewById(R.id.button_hard)
         val btnNormal: Button = view.findViewById(R.id.button_normal)
         val btnEasy: Button = view.findViewById(R.id.button_easy)
-        val button_Home: Button = view.findViewById(R.id.button_Home)
+        val btnhomecard: Button = view.findViewById(R.id.button_home_card)
         btn.setOnClickListener(this)
         btnEasy.setOnClickListener(this)
         btnNormal.setOnClickListener(this)
-        button_Home.setOnClickListener {
-            Navigation.findNavController(view).navigate(R.id.action_createCard_to_home)
+        btnhomecard.setOnClickListener {
+            Navigation.findNavController(view).navigate(R.id.action_showCard_to_home)
         }
         val btnTest: Button = view.findViewById(R.id.button_solution)
 

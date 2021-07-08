@@ -85,7 +85,7 @@ class Storage(db: FirebaseFirestore) {
                     Log.e("Firebase Error:", error.message.toString())
                 }
                 for (dc: DocumentChange in value?.documentChanges!!) {
-                    if (dc != null) {
+                    if (dc.document.toObject<Card>().stackId == stackId) {
                         cards.add(dc.document.toObject<Card>())
                     }
                 }
@@ -116,7 +116,7 @@ class Storage(db: FirebaseFirestore) {
     }
 
     // on function call use requireActivity()
-    private fun saveData(context : Context) {
+    fun saveData(context : Context) {
         val id = "UID" + System.currentTimeMillis().toString()
         val sharedPreferences : SharedPreferences = context.getSharedPreferences("shared", Context.MODE_PRIVATE)
         val editor : SharedPreferences.Editor = sharedPreferences.edit()
@@ -125,9 +125,10 @@ class Storage(db: FirebaseFirestore) {
         }.apply()
     }
 
-    private fun loadData(context : Context): String {
+    fun loadData(context : Context): String {
         val sharedPreferences : SharedPreferences = context.getSharedPreferences("shared", Context.MODE_PRIVATE)
         val savedId: String = sharedPreferences.getString("KEY_ID", null).toString()
+        println("$savedId")
         return savedId
     }
 

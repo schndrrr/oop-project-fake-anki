@@ -71,7 +71,7 @@
 
 
     <Button
-        android:id="@+id/button_Home"
+        android:id="@+id/button_home"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="52dp"

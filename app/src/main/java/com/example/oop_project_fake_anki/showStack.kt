@@ -9,10 +9,12 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import androidx.core.os.bundleOf
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.oop_project_fake_anki.classes.Card
 import com.example.oop_project_fake_anki.classes.Stack
 import com.example.oop_project_fake_anki.utility.Storage
 import com.example.oop_project_fake_anki.utility.StorageService
@@ -21,6 +23,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.*
 import kotlinx.android.synthetic.main.fragment_show_card.view.*
 import kotlinx.android.synthetic.main.fragment_show_stack.*
+import kotlinx.android.synthetic.main.fragment_show_stack.view.*
 
 class showStack : Fragment(), showStackAdapter.OnItemClickListener  {
 
@@ -93,7 +96,12 @@ class showStack : Fragment(), showStackAdapter.OnItemClickListener  {
     }
 
     override fun onClickItem(position: Int) {
-        findNavController().navigate(R.id.action_showStack_to_showCard)
+        val stackspostitionvalue = stacks[position].stackId
+//        val action = SpecifyAmountFragmentDirections.confirmationAction(stackspostitionvalue)
+//        println("${stacks[position].name}")
+        val bundle = bundleOf("stackIdValue" to stackspostitionvalue)
+
+        findNavController().navigate(R.id.action_showStack_to_showCard, bundle)
     }
 }
 

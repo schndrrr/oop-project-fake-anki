@@ -14,12 +14,16 @@ import com.google.firebase.firestore.FirebaseFirestore
 //new layout branch
 class MainActivity : AppCompatActivity() {
 
-
+private lateinit var db: FirebaseFirestore
 
     override fun onCreate(savedInstanceState: Bundle?) {
         FirebaseApp.initializeApp(this)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        db = FirebaseFirestore.getInstance()
+        val storage: Storage = Storage(db)
+        storage.saveData(this)
+        storage.loadData(this)
     }
 }
