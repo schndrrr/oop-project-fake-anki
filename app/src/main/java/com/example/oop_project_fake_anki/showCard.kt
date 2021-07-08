@@ -11,7 +11,9 @@ import androidx.navigation.Navigation
 import com.example.oop_project_fake_anki.classes.Card
 import com.example.oop_project_fake_anki.utility.Storage
 import com.google.firebase.firestore.FirebaseFirestore
+import com.yuyakaido.android.cardstackview.CardStackLayoutManager
 import com.yuyakaido.android.cardstackview.CardStackView
+import com.yuyakaido.android.cardstackview.StackFrom
 import kotlinx.android.synthetic.main.fragment_show_card.*
 import kotlinx.android.synthetic.main.fragment_show_card.view.*
 
@@ -59,18 +61,24 @@ class showCard : Fragment(), View.OnClickListener {
         btnEasy.setOnClickListener(this)
         btnNormal.setOnClickListener(this)
         button_Home.setOnClickListener {
-            Navigation.findNavController(view).navigate(R.id.action_createCard_to_home)
+            Navigation.findNavController(view).navigate(R.id.action_showCard_to_home)
         }
         val btnTest: Button = view.findViewById(R.id.button_solution)
 
 
         btnTest.setOnClickListener(this)
 
-        svCardStack = view.findViewById(R.id.sv)
+        //svCardStack = view.findViewById(R.id.svCardStack)
         cards = mutableListOf()
 
         adapter = cardAdapter(requireActivity(), cards)
-        svCardStack.adapter = adapter
+        //svCardStack.adapter = adapter
+        val cardStackView = view.findViewById<CardStackView>(R.id.card_stack_view)
+        val cardLayout = CardStackLayoutManager(requireActivity())
+        cardLayout.setStackFrom(StackFrom.Top)
+        cardStackView.layoutManager = cardLayout
+        cardStackView.layoutManager
+        cardStackView.adapter = adapter
 
         EventChangeListener()
 

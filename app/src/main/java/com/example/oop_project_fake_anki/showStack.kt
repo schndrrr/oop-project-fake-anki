@@ -95,7 +95,6 @@ class showStack : Fragment(), showStackAdapter.OnItemClickListener  {
     }
 
     override fun onClickItem(position: Int) {
-        println(stacks[position].stackId)
         findNavController().navigate(R.id.action_showStack_to_showCard)
     }
 }
