@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AccelerateInterpolator
 import android.widget.Button
-import androidx.core.view.isVisible
+import android.widget.ImageView
 import androidx.navigation.Navigation
 import com.example.oop_project_fake_anki.classes.Card
 import com.example.oop_project_fake_anki.utility.Storage
@@ -59,7 +59,7 @@ class showCard : Fragment(), View.OnClickListener {
         val btnHard: Button = view.findViewById(R.id.button_hard)
         val btnNormal: Button = view.findViewById(R.id.button_normal)
         val btnEasy: Button = view.findViewById(R.id.button_easy)
-        val btnhomecard: Button = view.findViewById(R.id.button_home_card)
+        val btnhomecard: ImageView = view.findViewById(R.id.button_home_card)
         btnHard.setOnClickListener(this)
         btnEasy.setOnClickListener(this)
         btnNormal.setOnClickListener(this)
