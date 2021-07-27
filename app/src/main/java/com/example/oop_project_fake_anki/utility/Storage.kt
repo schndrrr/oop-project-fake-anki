@@ -15,7 +15,6 @@ import com.google.firebase.firestore.ktx.toObject
 var USERIDdev : String = "uxlmFFX19O64PveyJc6l"
 
 class Storage(db: FirebaseFirestore) {
-
     private var dataBase: FirebaseFirestore = db
 
     var stacks: MutableList<Stack> = mutableListOf<Stack>()
@@ -102,7 +101,6 @@ class Storage(db: FirebaseFirestore) {
             "answer" to data.answer,
             "index" to data.index,
             "stackId" to data.stackId
-
         )
         val randomId = System.currentTimeMillis()
         dataBase.collection("userID/${USERIDdev}/cards")
@@ -138,4 +136,20 @@ class Storage(db: FirebaseFirestore) {
             USERIDdev = loadData(context)
         }
     }
+
+//    fun saveIndex(context : Context) {
+//
+//        val sharedPreferences : SharedPreferences = context.getSharedPreferences("shared", Context.MODE_PRIVATE)
+//        val editor : SharedPreferences.Editor = sharedPreferences.edit()
+//        editor.apply{
+//            putString("INDEX", cardindex.toString())
+//        }.apply()
+//    }
+//
+//    fun loadIndex(context : Context): String {
+//        val sharedPreferences : SharedPreferences = context.getSharedPreferences("shared", Context.MODE_PRIVATE)
+//        val loadedcardindex: String = sharedPreferences.getString("INDEX", null).toString()
+//        println("$loadedcardindex")
+//        return loadedcardindex
+//    }
 }

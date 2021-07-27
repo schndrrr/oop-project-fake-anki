@@ -21,6 +21,7 @@ import kotlinx.android.synthetic.main.fragment_show_card.view.*
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 
+var cardindex: Int  = 0
 
 class createCard : Fragment(), View.OnClickListener {
 
@@ -98,14 +99,21 @@ class createCard : Fragment(), View.OnClickListener {
             R.id.button_create_card -> {
                 val card = Card("", "", "", "")
 
+                card.stackId = selectedStackId
                 card.question = edittext_add_front.text.toString()
                 card.answer = edittext_add_back.text.toString()
-                card.stackId = selectedStackId
-                storage.postCard(card)
-                Toast.makeText(requireActivity(), "Deine Karte wurde gespeichert", Toast.LENGTH_LONG).show()
 
-                edittext1.text.clear()
-                edittext2.text.clear()
+                if(edittext_add_front.text.toString().isEmpty() || edittext_add_back.text.toString().isEmpty()){
+                    Toast.makeText(requireActivity(), "bitte Vorderseite und Rückseite eingeben", Toast.LENGTH_LONG).show()
+                }else{
+                    card.index = cardindex.toString()
+                    storage.postCard(card)
+                    Toast.makeText(requireActivity(), "Deine Karte wurde gespeichert", Toast.LENGTH_LONG).show()
+                    edittext1.text.clear()
+                    edittext2.text.clear()
+                    cardindex++
+                    println(cardindex)
+                }
             }
         }
     }

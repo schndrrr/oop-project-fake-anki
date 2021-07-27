@@ -45,7 +45,7 @@ class showCard : Fragment(), View.OnClickListener {
     ): View? {
         // TODO Navigation to other directions other than homescreen missing
         val view = inflater.inflate(R.layout.fragment_show_card, container, false)
-        view.button_home.setOnClickListener {
+        view.button_home_card.setOnClickListener {
             Navigation.findNavController(view).navigate(R.id.action_createCard_to_home)
         }
         //view.button_hard.setOnClickListener{Navigation.findNavController(view).navigate(R.id.action_front_of_card)}
