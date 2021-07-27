@@ -4,16 +4,15 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.BaseAdapter
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.oop_project_fake_anki.classes.Card
-import com.example.oop_project_fake_anki.classes.Stack
 
-class cardAdapter internal constructor(context: Context?, private val cards: MutableList<Card>):
+class cardAdapter internal constructor(context: Context?, private val cards: MutableList<Card>, helper: showCard.Helper):
     RecyclerView.Adapter<cardAdapter.ViewHolder>() {
 
     private val inflater: LayoutInflater = LayoutInflater.from(context)
+    private val help: showCard.Helper = helper
 
     inner class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView), View.OnClickListener  {
         internal var cardQuestion: TextView? = null
@@ -27,6 +26,8 @@ class cardAdapter internal constructor(context: Context?, private val cards: Mut
         override fun onClick(v: View?) {
             val position = adapterPosition
             answer.text = cards[position].answer
+            help.activateButton()
+            //showCard().Helper().activateButton()
         }
     }
 
