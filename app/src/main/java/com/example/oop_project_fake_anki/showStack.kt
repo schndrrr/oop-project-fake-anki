@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
@@ -21,6 +22,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.*
 import kotlinx.android.synthetic.main.fragment_show_card.view.*
 import kotlinx.android.synthetic.main.fragment_show_stack.*
+import kotlinx.android.synthetic.main.fragment_show_stack.view.*
 
 class showStack : Fragment(), showStackAdapter.OnItemClickListener  {
 
@@ -37,7 +39,7 @@ class showStack : Fragment(), showStackAdapter.OnItemClickListener  {
     ): View? {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_show_stack, container, false)
-        view.button_home.setOnClickListener{ Navigation.findNavController(view).navigate(R.id.action_showStack_to_home)}
+        view.button_home_showstack.setOnClickListener{ Navigation.findNavController(view).navigate(R.id.action_showStack_to_home)}
 
         addbtn = view.findViewById(R.id.button_add_stack)
         addbtn.setOnClickListener{addStack()}
@@ -54,7 +56,6 @@ class showStack : Fragment(), showStackAdapter.OnItemClickListener  {
         EventChangeListener()
         return view
     }
-
     private fun EventChangeListener() {
         db = FirebaseFirestore.getInstance()
         val storage: Storage = Storage(db)
