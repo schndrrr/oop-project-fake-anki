@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/showStack">
+    app:startDestination="@id/home">
 
     <fragment
         android:id="@+id/createCard"
@@ -24,10 +24,10 @@
             app:destination="@id/showCard" />
         <action
             android:id="@+id/action_showStack_to_home"
-            app:destination="@id/showStack" />
+            app:destination="@id/home" />
         <action
             android:id="@+id/action_showStack_to_CreateCard"
-            app:destination="@id/showStack" />
+            app:destination="@id/createCard" />
     </fragment>
     <fragment
         android:id="@+id/showCard"
