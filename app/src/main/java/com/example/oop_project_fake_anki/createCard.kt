@@ -44,9 +44,9 @@ class createCard : Fragment(), View.OnClickListener {
     ): View? {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_create_card, container, false)
-        view.button_home.setOnClickListener{Navigation.findNavController(view).navigate(R.id.action_createCard_to_home)}
+        view.button_home_editor.setOnClickListener{Navigation.findNavController(view).navigate(R.id.action_createCard_to_home)}
 
-        val btn_home: Button = view.findViewById(R.id.button_home)
+        val btn_home: ImageView = view.findViewById(R.id.button_home_editor)
         btn_home.setOnClickListener {
             Navigation.findNavController(view).navigate(R.id.action_createCard_to_home)
         }
@@ -91,7 +91,7 @@ class createCard : Fragment(), View.OnClickListener {
     override fun onClick(v: View?) {
         when (v?.id) {
             // TODO
-            R.id.button_home -> {
+            R.id.button_home_editor -> {
 
             }
 
