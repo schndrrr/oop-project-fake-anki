@@ -6,13 +6,11 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.oop_project_fake_anki.classes.Stack
-import com.example.oop_project_fake_anki.utility.Storage
-import kotlinx.android.synthetic.main.item_stack.view.*
 
-class showStackAdapter (
+class ShowStackAdapter (
     private val stacks: MutableList<Stack>,
     private val listener: OnItemClickListener
-    ) : RecyclerView.Adapter<showStackAdapter.StackViewHolder>() {
+    ) : RecyclerView.Adapter<ShowStackAdapter.StackViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): StackViewHolder {
 

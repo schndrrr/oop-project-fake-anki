@@ -8,32 +8,27 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
-import android.widget.ImageView
 import android.widget.Toast
 import androidx.core.os.bundleOf
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.oop_project_fake_anki.classes.Card
 import com.example.oop_project_fake_anki.classes.Stack
 import com.example.oop_project_fake_anki.utility.Storage
-import com.example.oop_project_fake_anki.utility.StorageService
-import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.*
 import kotlinx.android.synthetic.main.fragment_show_card.view.*
 import kotlinx.android.synthetic.main.fragment_show_stack.*
 import kotlinx.android.synthetic.main.fragment_show_stack.view.*
 
-class showStack : Fragment(), showStackAdapter.OnItemClickListener  {
+class ShowStack : Fragment(), ShowStackAdapter.OnItemClickListener  {
 
     private lateinit var db: FirebaseFirestore
     private lateinit var stacks: MutableList<Stack>
     private lateinit var recyclerView: RecyclerView
-    private lateinit var adapter: showStackAdapter
+    private lateinit var adapter: ShowStackAdapter
     private lateinit var addbtn: Button
-    private lateinit var storageService: StorageService
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -49,9 +44,8 @@ class showStack : Fragment(), showStackAdapter.OnItemClickListener  {
         recyclerView.layoutManager = LinearLayoutManager(this.context)
         recyclerView.setHasFixedSize(true)
         stacks = mutableListOf()
-        storageService = StorageService()
 
-        adapter = showStackAdapter(stacks, this)
+        adapter = ShowStackAdapter(stacks, this)
 
         recyclerView.adapter = adapter
 
@@ -60,7 +54,7 @@ class showStack : Fragment(), showStackAdapter.OnItemClickListener  {
     }
     private fun EventChangeListener() {
         db = FirebaseFirestore.getInstance()
-        val storage: Storage = Storage(db)
+        val storage: Storage = Storage(db, requireContext())
         storage.getStacksForAdapter(adapter, stacks)
     }
 
@@ -69,7 +63,7 @@ class showStack : Fragment(), showStackAdapter.OnItemClickListener  {
         val v = inflter.inflate(R.layout.add_stack_pop_up,null)
         val name = v.findViewById<EditText>(R.id.name)
         val addDialog = AlertDialog.Builder(this.context)
-        var storage: Storage = Storage(db)
+        var storage: Storage = Storage(db, requireContext())
 
         addDialog.setView(v)
         addDialog.setPositiveButton("Hinzufügen"){

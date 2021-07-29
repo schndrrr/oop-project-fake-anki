@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/showStack"
-        android:name="com.example.oop_project_fake_anki.showStack"
+        android:name="com.example.oop_project_fake_anki.ShowStack"
         android:label="fragment_show_stack"
         tools:layout="@layout/fragment_show_stack" >
         <action
@@ -31,7 +31,7 @@
     </fragment>
     <fragment
         android:id="@+id/showCard"
-        android:name="com.example.oop_project_fake_anki.showCard"
+        android:name="com.example.oop_project_fake_anki.ShowCard"
         android:label="fragment_show_card"
         tools:layout="@layout/fragment_show_card" >
         <action

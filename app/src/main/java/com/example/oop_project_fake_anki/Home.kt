@@ -1,19 +1,13 @@
 package com.example.oop_project_fake_anki
 
-import android.media.Image
-import android.opengl.Visibility
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.ImageView
-import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.Group
 import androidx.navigation.Navigation
-import io.grpc.util.TransmitStatusRuntimeExceptionInterceptor
 import kotlinx.android.synthetic.main.fragment_home.view.*
 import kotlinx.android.synthetic.main.fragment_show_card.view.*
 
@@ -25,7 +19,7 @@ private const val ARG_PARAM2 = "param2"
 
 /**
  * A simple [Fragment] subclass.
- * Use the [showCard.newInstance] factory method to
+ * Use the [ShowCard.newInstance] factory method to
  * create an instance of this fragment.
  */
 @Suppress("UNREACHABLE_CODE")

@@ -8,6 +8,7 @@ import android.widget.*
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
 import com.example.oop_project_fake_anki.classes.Card
+import com.example.oop_project_fake_anki.classes.DefaultCard
 import com.example.oop_project_fake_anki.classes.Stack
 import com.example.oop_project_fake_anki.utility.Storage
 import com.google.firebase.firestore.FirebaseFirestore
@@ -20,8 +21,6 @@ import kotlinx.android.synthetic.main.fragment_show_card.view.*
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
-
-var cardindex: Int  = 0
 
 class createCard : Fragment(), View.OnClickListener {
 
@@ -59,7 +58,7 @@ class createCard : Fragment(), View.OnClickListener {
         edittext2 = view.findViewById(R.id.edittext_add_back)
 
         db = FirebaseFirestore.getInstance()
-        storage = Storage(db)
+        storage = Storage(db, requireContext())
         spinner = view.findViewById(R.id.spinner_select_stack)
         stacks = mutableListOf()
         stacksList = arrayListOf()
@@ -97,7 +96,7 @@ class createCard : Fragment(), View.OnClickListener {
             }
 
             R.id.button_create_card -> {
-                val card = Card("", "", "", "")
+                val card = DefaultCard("","")
 
                 card.stackId = selectedStackId
                 card.question = edittext_add_front.text.toString()
@@ -106,13 +105,10 @@ class createCard : Fragment(), View.OnClickListener {
                 if(edittext_add_front.text.toString().isEmpty() || edittext_add_back.text.toString().isEmpty()){
                     Toast.makeText(requireActivity(), "bitte Vorderseite und Rückseite eingeben", Toast.LENGTH_LONG).show()
                 }else{
-                    card.index = cardindex.toString()
                     storage.postCard(card)
                     Toast.makeText(requireActivity(), "Deine Karte wurde gespeichert", Toast.LENGTH_LONG).show()
                     edittext1.text.clear()
                     edittext2.text.clear()
-                    cardindex++
-                    println(cardindex)
                 }
             }
         }
