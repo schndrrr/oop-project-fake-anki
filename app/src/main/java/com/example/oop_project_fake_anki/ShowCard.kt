@@ -9,7 +9,7 @@ import android.view.animation.AccelerateInterpolator
 import android.widget.Button
 import android.widget.ImageView
 import androidx.navigation.Navigation
-import com.example.oop_project_fake_anki.classes.Card
+import com.example.oop_project_fake_anki.classes.DefaultCard
 import com.example.oop_project_fake_anki.utility.Storage
 import com.google.firebase.firestore.FirebaseFirestore
 import com.yuyakaido.android.cardstackview.*
@@ -38,7 +38,7 @@ class ShowCard : Fragment(), View.OnClickListener {
     }
 
     private lateinit var db: FirebaseFirestore
-    private lateinit var cards: MutableList<Card>
+    private lateinit var cards: MutableList<DefaultCard>
     private lateinit var svCardStack: CardStackView
     private lateinit var adapter: CardAdapter
     private lateinit var cardStackView: CardStackView
