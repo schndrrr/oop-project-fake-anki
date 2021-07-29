@@ -10,7 +10,7 @@
 
 
     <ImageView
-        android:id="@+id/ic_createcard_menue2"
+        android:id="@+id/ic_showcard_menue"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
@@ -19,6 +19,68 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_menu"
         tools:ignore="MissingPrefix,VectorDrawableCompat" />
+
+    <ImageView
+        android:id="@+id/ic_showcard_lernen"
+        android:layout_width="93dp"
+        android:layout_height="29dp"
+        android:layout_marginTop="23dp"
+        android:layout_marginEnd="40dp"
+        android:src="@drawable/ic_lernen"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/ic_showcard_menue"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.yuyakaido.android.cardstackview.CardStackView
+        android:id="@+id/card_stack_view"
+        android:layout_width="416dp"
+        android:layout_height="490dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginBottom="25dp"
+        app:layout_constraintBottom_toTopOf="@+id/button_normal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.6"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ic_showcard_lernen"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/button_hard"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginBottom="35dp"
+        android:text="Schwer"
+        app:layout_constraintBottom_toTopOf="@+id/button_home_card"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_conversion_absoluteHeight="48dp"
+        tools:layout_conversion_absoluteWidth="96dp" />
+
+    <Button
+        android:id="@+id/button_normal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="35dp"
+        android:text="Normal"
+        app:layout_constraintBottom_toTopOf="@+id/button_home_card"
+        app:layout_constraintEnd_toStartOf="@+id/button_easy"
+        app:layout_constraintHorizontal_bias="0.465"
+        app:layout_constraintStart_toEndOf="@+id/button_hard"
+        tools:layout_conversion_absoluteHeight="198dp"
+        tools:layout_conversion_absoluteWidth="98dp" />
+
+    <Button
+        android:id="@+id/button_easy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="40dp"
+        android:layout_marginBottom="35dp"
+        android:text="Leicht"
+        app:layout_constraintBottom_toTopOf="@+id/button_home_card"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:layout_conversion_absoluteHeight="48dp"
+        tools:layout_conversion_absoluteWidth="88dp" />
 
     <ImageView
         android:id="@+id/button_home_card"
@@ -71,67 +133,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/ic_profile"
         tools:ignore="MissingPrefix,VectorDrawableCompat" />
-
-    <com.yuyakaido.android.cardstackview.CardStackView
-        android:id="@+id/card_stack_view"
-        android:layout_width="match_parent"
-        android:layout_height="475dp"
-        android:layout_marginTop="25dp"
-        android:layout_marginBottom="25dp"
-        app:layout_constraintBottom_toTopOf="@+id/button_normal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView5"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <Button
-        android:id="@+id/button_hard"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginBottom="35dp"
-        android:text="Schwer"
-        app:layout_constraintBottom_toTopOf="@+id/button_home_card"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_conversion_absoluteHeight="48dp"
-        tools:layout_conversion_absoluteWidth="96dp" />
-
-    <Button
-        android:id="@+id/button_normal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="35dp"
-        android:text="Normal"
-        app:layout_constraintBottom_toTopOf="@+id/button_home_card"
-        app:layout_constraintEnd_toStartOf="@+id/button_easy"
-        app:layout_constraintHorizontal_bias="0.465"
-        app:layout_constraintStart_toEndOf="@+id/button_hard"
-        tools:layout_conversion_absoluteHeight="198dp"
-        tools:layout_conversion_absoluteWidth="98dp" />
-
-    <Button
-        android:id="@+id/button_easy"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="40dp"
-        android:layout_marginBottom="35dp"
-        android:text="Leicht"
-        app:layout_constraintBottom_toTopOf="@+id/button_home_card"
-        app:layout_constraintEnd_toEndOf="parent"
-        tools:layout_conversion_absoluteHeight="48dp"
-        tools:layout_conversion_absoluteWidth="88dp" />
-
-    <ImageView
-        android:id="@+id/imageView5"
-        android:layout_width="93dp"
-        android:layout_height="29dp"
-        android:layout_marginTop="23dp"
-        android:layout_marginEnd="40dp"
-        android:src="@drawable/ic_lernen"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/ic_createcard_menue2"
-        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
