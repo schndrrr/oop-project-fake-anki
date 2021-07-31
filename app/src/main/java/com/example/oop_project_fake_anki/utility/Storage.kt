@@ -20,8 +20,7 @@ class Storage(db: FirebaseFirestore, context: Context) {
 
     fun getStacksForAdapter(adapter: ShowStackAdapter, stacksAdapter: MutableList<Stack>) {
         checkForUID()
-        println(productionDefId)
-
+        println("get: " + productionDefId)
         val colRef = dataBase.collection("userID/${productionDefId}/stacks")
         colRef.addSnapshotListener(object: EventListener<QuerySnapshot> {
             override fun onEvent(value: QuerySnapshot?, error: FirebaseFirestoreException?) {
@@ -39,10 +38,10 @@ class Storage(db: FirebaseFirestore, context: Context) {
         })
     }
 
-    fun getStacksForSpinner(stacks: MutableList<Stack>, mapedStack: ArrayList<String>, adapter: ArrayAdapter<String>) {
+    fun getStacksForSpinner(stacks: MutableList<Stack>, adapter: ArrayAdapter<String>) {
         checkForUID()
+        println("get S: " + productionDefId)
         val colRef = dataBase.collection("userID/${productionDefId}/stacks")
-
         colRef.addSnapshotListener(object: EventListener<QuerySnapshot> {
             override fun onEvent(value: QuerySnapshot?, error: FirebaseFirestoreException?) {
                 if (error != null) {
@@ -51,16 +50,16 @@ class Storage(db: FirebaseFirestore, context: Context) {
                 for (dc: DocumentChange in value?.documentChanges!!) {
                     val doc = dc.document.toObject<Stack>();
                     stacks.add(doc)
-                    mapedStack.add(doc.name)
+                    adapter.add(doc.name)
                 }
-                adapter.addAll(mapedStack)
             }
         })
     }
 
     fun postStack(data: Stack) {
         checkForUID()
-        val id = generateUniqueIdFromTimestamp()
+        println("post: " + productionDefId)
+        val id = generateUniqueId()
         val dataToPost = hashMapOf(
             "stackId" to id,
             "name" to data.name
@@ -102,14 +101,18 @@ class Storage(db: FirebaseFirestore, context: Context) {
             .set(dataToPost).addOnSuccessListener { println("it worked") }
     }
 
-    fun generateUniqueIdFromTimestamp(): String {
-        val uniqueId = System.currentTimeMillis().toString()
+    fun generateUniqueId(): String {
+        val alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+        var uniqueId: String = "";
+        for (i in 0..20) {
+            uniqueId += alphabet[(0..61).random()]
+        }
         return uniqueId
     }
 
     // on function call use requireActivity()
     fun saveData(context : Context) {
-        val id = "UID" + System.currentTimeMillis().toString()
+        val id = "UID" + generateUniqueId()
         val sharedPreferences : SharedPreferences = context.getSharedPreferences("shared", Context.MODE_PRIVATE)
         val editor : SharedPreferences.Editor = sharedPreferences.edit()
         editor.apply{
@@ -126,8 +129,10 @@ class Storage(db: FirebaseFirestore, context: Context) {
 
     fun checkForUID() {
         if (productionDefId.isNullOrEmpty()) {
-            saveData(scope)
             productionDefId = loadData(scope)
+            if (productionDefId.isNullOrEmpty()) {
+                saveData(scope)
+            }
         }
     }
 }

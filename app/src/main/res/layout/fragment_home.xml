@@ -12,14 +12,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="88dp"
         android:text="Hallo,"
         android:textSize="25dp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.006"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/txt_home_subtitle"
@@ -248,64 +248,14 @@
         android:id="@+id/ic_home_add"
         android:layout_width="20dp"
         android:layout_height="20dp"
-        android:layout_marginEnd="30dp"
-        android:layout_marginBottom="30dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/ic_home_favorites"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/ic_add"
-        tools:ignore="MissingPrefix,VectorDrawableCompat" />
-
-    <ImageView
-        android:id="@+id/ic_home_home"
-        android:layout_width="90dp"
-        android:layout_height="30dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginBottom="30dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/ic_home_add"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/ic_home"
-        tools:ignore="MissingPrefix,VectorDrawableCompat" />
-
-    <ImageView
-        android:id="@+id/ic_home_favorites"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        android:layout_marginEnd="30dp"
-        android:layout_marginBottom="30dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/ic_home_profile"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/ic_favorites"
-        tools:ignore="MissingPrefix,VectorDrawableCompat" />
-
-    <ImageView
-        android:id="@+id/ic_home_profile"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        android:layout_marginEnd="40dp"
+        android:layout_marginEnd="20dp"
         android:layout_marginBottom="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/ic_profile"
+        app:srcCompat="@drawable/ic_add"
         tools:ignore="MissingPrefix,VectorDrawableCompat" />
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginLeft="40dp"
-        android:layout_marginTop="30dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_menu"
-        tools:ignore="MissingPrefix,VectorDrawableCompat" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

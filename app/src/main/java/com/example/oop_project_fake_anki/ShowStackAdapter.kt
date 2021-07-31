@@ -25,7 +25,6 @@ class ShowStackAdapter (
     override fun onBindViewHolder(holder: StackViewHolder, position: Int) {
         val stack: Stack = stacks[position]
         holder.name.text = stack.name
-        holder.numberOfCards.text = stack.numberOfCards
         holder.adapterPosition
 
     }
@@ -36,7 +35,6 @@ class ShowStackAdapter (
 
     inner class StackViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView), View.OnClickListener {
         val name: TextView = itemView.findViewById(R.id.tvtitle_stack)
-        val numberOfCards: TextView = itemView.findViewById(R.id.tvnumber_of_cards)
 
         init {
             itemView.setOnClickListener(this)

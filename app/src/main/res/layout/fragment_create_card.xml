@@ -7,18 +7,6 @@
     android:layout_height="match_parent"
     tools:context=".createCard">
 
-
-    <ImageView
-        android:id="@+id/ic_createcard_menue"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="30dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_menu"
-        tools:ignore="MissingPrefix,VectorDrawableCompat" />
-
     <ImageView
         android:id="@+id/ic_createcard_editor"
         android:layout_width="93dp"
@@ -28,27 +16,25 @@
         android:src="@drawable/ic_editor"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/ic_createcard_menue"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Spinner
-        android:id="@+id/spinner_select_stack"
-        android:layout_width="300dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="50dp"
-        android:background="@drawable/layout_spinner"
-        android:dropDownVerticalOffset="50dp"
-        android:paddingLeft="20dp"
+    <Button
+        android:id="@+id/button_create_stack"
+        android:layout_width="299dp"
+        android:layout_height="44dp"
+        android:text="Stapel Erstellen"
+        app:layout_constraintBottom_toTopOf="@+id/spinner_select_stack"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ic_createcard_editor"
-        tools:ignore="MissingConstraints,NotSibling" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.906"
+        tools:ignore="MissingConstraints" />
 
     <EditText
         android:id="@+id/edittext_add_front"
         android:layout_width="300dp"
         android:layout_height="175dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="16dp"
         android:background="@drawable/layout_edittext"
         android:gravity="start"
         android:hint="Vorderseite eingeben"
@@ -56,16 +42,30 @@
         android:textColorHint="#000000"
         android:textSize="20dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spinner_select_stack"
         tools:ignore="MissingConstraints" />
+
+    <Spinner
+        android:id="@+id/spinner_select_stack"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="92dp"
+        android:background="@drawable/layout_spinner"
+        android:dropDownVerticalOffset="50dp"
+        android:paddingLeft="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.513"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ic_createcard_editor"
+        tools:ignore="MissingConstraints,NotSibling" />
 
     <EditText
         android:id="@+id/edittext_add_back"
         android:layout_width="300dp"
         android:layout_height="175dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="24dp"
         android:background="@drawable/layout_edittext"
         android:gravity="start"
         android:hint="Rückseite eingeben"
@@ -73,14 +73,14 @@
         android:textColorHint="#000000"
         android:textSize="20dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edittext_add_front" />
 
     <Button
         android:id="@+id/button_create_card"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="288dp"
+        android:layout_height="46dp"
         android:layout_marginTop="20dp"
         android:layout_marginBottom="35dp"
         android:text="Karte hinzufügen"
@@ -104,43 +104,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/ic_home"
         tools:ignore="MissingPrefix,UnknownIdInLayout,VectorDrawableCompat" />
-
-    <ImageView
-        android:id="@+id/ic_createcard_favorites"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        android:layout_marginEnd="30dp"
-        android:layout_marginBottom="30dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/ic_createcard_profile"
-        app:srcCompat="@drawable/ic_favorites"
-        tools:ignore="MissingPrefix,VectorDrawableCompat" />
-
-
-    <ImageView
-        android:id="@+id/ic_createcard_add"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        android:layout_marginEnd="30dp"
-        android:layout_marginBottom="30dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/ic_createcard_favorites"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/button_home_editor"
-        app:srcCompat="@drawable/ic_add"
-        tools:ignore="MissingPrefix,VectorDrawableCompat" />
-
-    <ImageView
-        android:id="@+id/ic_createcard_profile"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        android:layout_marginEnd="40dp"
-        android:layout_marginBottom="30dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/ic_profile"
-        tools:ignore="MissingPrefix,VectorDrawableCompat" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

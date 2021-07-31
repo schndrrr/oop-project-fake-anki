@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.core.os.bundleOf
 import androidx.navigation.Navigation
@@ -29,6 +30,8 @@ class ShowStack : Fragment(), ShowStackAdapter.OnItemClickListener  {
     private lateinit var recyclerView: RecyclerView
     private lateinit var adapter: ShowStackAdapter
     private lateinit var addbtn: Button
+    private lateinit var storage: Storage
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -37,9 +40,12 @@ class ShowStack : Fragment(), ShowStackAdapter.OnItemClickListener  {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_show_stack, container, false)
         view.button_home_showstack.setOnClickListener{ Navigation.findNavController(view).navigate(R.id.action_showStack_to_home)}
+        view.ic_showstack_add.setOnClickListener{ Navigation.findNavController(view).navigate(R.id.action_showStack_to_CreateCard)}
 
-        addbtn = view.findViewById(R.id.button_add_stack)
-        addbtn.setOnClickListener{addStack()}
+        db = FirebaseFirestore.getInstance()
+        storage = Storage(db, requireActivity())
+
+
         recyclerView = view.findViewById(R.id.rv_stacks)
         recyclerView.layoutManager = LinearLayoutManager(this.context)
         recyclerView.setHasFixedSize(true)
@@ -53,36 +59,7 @@ class ShowStack : Fragment(), ShowStackAdapter.OnItemClickListener  {
         return view
     }
     private fun EventChangeListener() {
-        db = FirebaseFirestore.getInstance()
-        val storage: Storage = Storage(db, requireContext())
         storage.getStacksForAdapter(adapter, stacks)
-    }
-
-    private fun addStack() {
-        val inflter = LayoutInflater.from(this.context)
-        val v = inflter.inflate(R.layout.add_stack_pop_up,null)
-        val name = v.findViewById<EditText>(R.id.name)
-        val addDialog = AlertDialog.Builder(this.context)
-        var storage: Storage = Storage(db, requireContext())
-
-        addDialog.setView(v)
-        addDialog.setPositiveButton("Hinzufügen"){
-            dialog,_->
-            val names = name.text.toString()
-            //stacks.add((Stack("","$names")))
-            storage.postStack((Stack("","$names")))
-            adapter.notifyDataSetChanged()
-            Toast.makeText(this.context, "Stapel hinzugefügt",Toast.LENGTH_SHORT).show()
-            dialog.dismiss()
-        }
-        addDialog.setNegativeButton("Abbrechen"){
-            dialog,_->
-            dialog.dismiss()
-            Toast.makeText(this.context, "Abbrechen",Toast.LENGTH_SHORT).show()
-
-        }
-        addDialog.create()
-        addDialog.show()
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

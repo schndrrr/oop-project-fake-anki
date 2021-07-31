@@ -85,13 +85,12 @@ class ShowCard : Fragment(), View.OnClickListener {
     }
 
     override fun onClick(v: View?) {
-
+        val helper = Helper()
 
         when (v?.id) {
             R.id.button_hard -> {
-                button_normal.isActivated = false
-                button_hard.isActivated = false
-                button_easy.isActivated = false
+                helper.deactivateButton()
+                // card stays at pos 1
                 cards.add((cards.size*0.2).roundToInt(), cards[0])
                 val setting = SwipeAnimationSetting.Builder()
                     .setDirection(Direction.Left)
@@ -100,15 +99,14 @@ class ShowCard : Fragment(), View.OnClickListener {
                     .build()
                 cardLayout.setSwipeAnimationSetting(setting)
                 cardStackView.swipe()
-//                card stays at pos 1
-                cards.remove(cards[0])
-                print("hello")
+//                cards.removeAt(0)
+//                adapter.notifyDataSetChanged()
+//                helper.noCards()
             }
 
             R.id.button_normal -> {
-                button_normal.isActivated = false
-                button_hard.isActivated = false
-                button_easy.isActivated = false
+                helper.deactivateButton()
+                // card to middle pos
                 cards.add((cards.size*0.6).roundToInt(), cards[0])
                 val setting = SwipeAnimationSetting.Builder()
                     .setDirection(Direction.Top)
@@ -117,17 +115,14 @@ class ShowCard : Fragment(), View.OnClickListener {
                     .build()
                 cardLayout.setSwipeAnimationSetting(setting)
                 cardStackView.swipe()
-//                card to middle pos
-                cards.remove(cards[0])
-                print("hello")
+//                cards.removeAt(0)
+//                adapter.notifyDataSetChanged()
+//                helper.noCards()
             }
 
             R.id.button_easy -> {
-                button_normal.isActivated = false
-                button_hard.isActivated = false
-                button_easy.isActivated = false
-                cards.add((cards.size*0.9).roundToInt(), cards[0])
-                cards.add((cards.size*0.2).roundToInt(), cards[0])
+                helper.deactivateButton()
+                // card to last pos
                 val setting = SwipeAnimationSetting.Builder()
                     .setDirection(Direction.Right)
                     .setDuration(Duration.Normal.duration)
@@ -135,9 +130,9 @@ class ShowCard : Fragment(), View.OnClickListener {
                     .build()
                 cardLayout.setSwipeAnimationSetting(setting)
                 cardStackView.swipe()
-//                card to last pos
-                cards.remove(cards[0])
-                print("hello")
+//                cards.removeAt(0)
+//                adapter.notifyDataSetChanged()
+//                helper.noCards()
             }
 
         }
@@ -146,8 +141,9 @@ class ShowCard : Fragment(), View.OnClickListener {
 
     private fun EventChangeListener() {
         db = FirebaseFirestore.getInstance()
-        val storage: Storage = Storage(db, requireContext())
+        val storage: Storage = Storage(db, requireActivity())
         storage.getCardsForStackId(stackId.toString(), adapter, cards)
+        println(cards.size)
     }
 
     inner class Helper {
@@ -155,6 +151,16 @@ class ShowCard : Fragment(), View.OnClickListener {
             button_easy.isActivated = true
             button_normal.isActivated = true
             button_hard.isActivated = true
+        }
+        fun deactivateButton() {
+            button_normal.isActivated = false
+            button_hard.isActivated = false
+            button_easy.isActivated = false
+        }
+        fun noCards() {
+            if (cards.size == 0) {
+                deactivateButton()
+            }
         }
     }
 }

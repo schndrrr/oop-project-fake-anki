@@ -1,5 +1,6 @@
 package com.example.oop_project_fake_anki
 
+import android.app.AlertDialog
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -27,7 +28,6 @@ class createCard : Fragment(), View.OnClickListener {
     private lateinit var db: FirebaseFirestore
     private lateinit var stacks: MutableList<Stack>
     private lateinit var spinner: Spinner
-    private lateinit var stacksList: ArrayList<String>
     private lateinit var adapter: ArrayAdapter<String>
     var selectedStackId: String = ""
     private lateinit var storage: Storage
@@ -46,13 +46,16 @@ class createCard : Fragment(), View.OnClickListener {
         val view = inflater.inflate(R.layout.fragment_create_card, container, false)
         view.button_home_editor.setOnClickListener{Navigation.findNavController(view).navigate(R.id.action_createCard_to_home)}
 
-        val btn_home: ImageView = view.findViewById(R.id.button_home_editor)
-        btn_home.setOnClickListener {
+        val btnHome: ImageView = view.findViewById(R.id.button_home_editor)
+        btnHome.setOnClickListener {
             Navigation.findNavController(view).navigate(R.id.action_createCard_to_home)
         }
 
-        val btn_createCard: Button = view.findViewById(R.id.button_create_card)
-        btn_createCard.setOnClickListener(this)
+        val btnCreateCard: Button = view.findViewById(R.id.button_create_card)
+        btnCreateCard.setOnClickListener(this)
+
+        val btnCreateStack: Button = view.findViewById(R.id.button_create_stack)
+        btnCreateStack.setOnClickListener(this)
 
         edittext1 = view.findViewById(R.id.edittext_add_front)
         edittext2 = view.findViewById(R.id.edittext_add_back)
@@ -61,7 +64,6 @@ class createCard : Fragment(), View.OnClickListener {
         storage = Storage(db, requireContext())
         spinner = view.findViewById(R.id.spinner_select_stack)
         stacks = mutableListOf()
-        stacksList = arrayListOf()
         adapter = ArrayAdapter<String>(
             requireActivity(),
             android.R.layout.simple_spinner_dropdown_item
@@ -85,14 +87,14 @@ class createCard : Fragment(), View.OnClickListener {
     }
 
     private fun EventChangeListener() {
-        storage.getStacksForSpinner(stacks, stacksList, adapter)
+        storage.getStacksForSpinner(stacks, adapter)
     }
 
     override fun onClick(v: View?) {
         when (v?.id) {
             // TODO
-            R.id.button_home_editor -> {
-
+            R.id.button_create_stack -> {
+                addStack()
             }
 
             R.id.button_create_card -> {
@@ -112,5 +114,28 @@ class createCard : Fragment(), View.OnClickListener {
                 }
             }
         }
+    }
+    fun addStack() {
+        val inflter = LayoutInflater.from(this.context)
+        val v = inflter.inflate(R.layout.add_stack_pop_up,null)
+        val name = v.findViewById<EditText>(R.id.name)
+        val addDialog = AlertDialog.Builder(this.context)
+
+        addDialog.setView(v)
+        addDialog.setPositiveButton("Hinzufügen"){
+                dialog,_->
+            val names = name.text.toString()
+            storage.postStack((Stack("","$names")))
+            Toast.makeText(this.context, "Stapel hinzugefügt",Toast.LENGTH_SHORT).show()
+            dialog.dismiss()
+        }
+        addDialog.setNegativeButton("Abbrechen"){
+                dialog,_->
+            dialog.dismiss()
+            Toast.makeText(this.context, "Abbrechen",Toast.LENGTH_SHORT).show()
+
+        }
+        addDialog.create()
+        addDialog.show()
     }
 }

@@ -68,18 +68,6 @@ class home : Fragment(), View.OnClickListener
                 Navigation.findNavController(view).navigate(R.id.action_home_to_createCard)
                 //navigate to createCard
             }
-            val starbtn = view.findViewById(R.id.ic_home_favorites) as ImageView
-            starbtn.setOnClickListener {
-
-            }
-            val headbtn = view.findViewById(R.id.ic_home_profile) as ImageView
-            headbtn.setOnClickListener {
-
-            }
-            val optnbtn = view.findViewById(R.id.imageView) as ImageView
-            optnbtn.setOnClickListener {
-
-            }
             val wlcmbtn = view.findViewById(R.id.txt_home_frame_button) as ImageView
             wlcmbtn.setOnClickListener {
                 Navigation.findNavController(view).navigate(R.id.action_home_to_showStack)

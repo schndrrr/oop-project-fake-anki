@@ -11,50 +11,25 @@
     <!-- TODO: Update blank fragment layout -->
 
     <ImageView
-        android:id="@+id/ic_showstack_menue"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="30dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_menu"
-        tools:ignore="MissingPrefix,VectorDrawableCompat" />
-
-    <ImageView
         android:id="@+id/ic_showstack_stapel"
         android:layout_width="93dp"
         android:layout_height="29dp"
-        android:layout_marginTop="23dp"
-        android:layout_marginEnd="40dp"
+        android:layout_marginTop="24dp"
         android:src="@drawable/ic_stapel"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/ic_showstack_menue"
+        app:layout_constraintHorizontal_bias="0.874"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_stacks"
         android:layout_width="match_parent"
-        android:layout_height="500dp"
+        android:layout_height="579dp"
         android:layout_marginTop="25dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ic_showstack_stapel" />
-
-    <Button
-        android:id="@+id/button_add_stack"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="35dp"
-        android:text="Neuen Stapel hinzufügen"
-        app:layout_constraintBottom_toTopOf="@+id/button_home_showstack"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rv_stacks"
-        app:layout_constraintVertical_bias="1.0" />
 
     <ImageView
         android:id="@+id/button_home_showstack"
@@ -73,35 +48,13 @@
         android:id="@+id/ic_showstack_add"
         android:layout_width="20dp"
         android:layout_height="20dp"
-        android:layout_marginEnd="30dp"
-        android:layout_marginBottom="30dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/ic_showstack_favorites"
-        app:srcCompat="@drawable/ic_add"
-        tools:ignore="MissingPrefix,VectorDrawableCompat" />
-
-    <ImageView
-        android:id="@+id/ic_showstack_favorites"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        android:layout_marginEnd="30dp"
-        android:layout_marginBottom="30dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/ic_showstack_profile"
-        app:srcCompat="@drawable/ic_favorites"
-        tools:ignore="MissingPrefix,VectorDrawableCompat" />
-
-    <ImageView
-        android:id="@+id/ic_showstack_profile"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        android:layout_marginEnd="40dp"
+        android:layout_marginEnd="20dp"
         android:layout_marginBottom="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/ic_profile"
+        app:srcCompat="@drawable/ic_add"
         tools:ignore="MissingPrefix,VectorDrawableCompat" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
