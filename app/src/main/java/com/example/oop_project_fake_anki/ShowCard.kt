@@ -38,39 +38,34 @@ class ShowCard : Fragment(), View.OnClickListener {
     }
 
     private lateinit var db: FirebaseFirestore
-    private lateinit var cards: MutableList<DefaultCard>
     private lateinit var svCardStack: CardStackView
     private lateinit var adapter: CardAdapter
     private lateinit var cardStackView: CardStackView
     private lateinit var cardLayout: CardStackLayoutManager
+    private lateinit var helper: Helper
+    private var cards: MutableList<DefaultCard> = mutableListOf()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // TODO Navigation to other directions other than homescreen missing
+        /** initiate view */
         val view = inflater.inflate(R.layout.fragment_show_card, container, false)
+        helper = Helper(view)
+        /** Set on click listeners */
+        view.button_hard.setOnClickListener(this)
+        view.button_easy.setOnClickListener(this)
+        view.button_normal.setOnClickListener(this)
+
+        /** ROUTING */
         view.button_home_card.setOnClickListener {
             Navigation.findNavController(view).navigate(R.id.action_createCard_to_home)
         }
-        //view.button_hard.setOnClickListener{Navigation.findNavController(view).navigate(R.id.action_front_of_card)}
-        //view.button_normal.setOnClickListener{Navigation.findNavController(view).navigate(R.id.action_front_of_card)}
-        //view.button_easy.setOnClickListener{Navigation.findNavController(view).navigate(R.id.action_front_of_card)}
-        val btnHard: Button = view.findViewById(R.id.button_hard)
-        val btnNormal: Button = view.findViewById(R.id.button_normal)
-        val btnEasy: Button = view.findViewById(R.id.button_easy)
-        val btnhomecard: ImageView = view.findViewById(R.id.button_home_card)
-        btnHard.setOnClickListener(this)
-        btnEasy.setOnClickListener(this)
-        btnNormal.setOnClickListener(this)
-        btnhomecard.setOnClickListener {
+        view.button_home_card.setOnClickListener {
             Navigation.findNavController(view).navigate(R.id.action_showCard_to_home)
         }
 
 
-        val helper = Helper()
-
-        cards = mutableListOf()
         adapter = CardAdapter(requireActivity(), cards, helper)
         cardStackView = view.findViewById(R.id.card_stack_view)
         cardLayout = CardStackLayoutManager(requireActivity())
@@ -79,60 +74,52 @@ class ShowCard : Fragment(), View.OnClickListener {
         cardStackView.layoutManager
         cardStackView.adapter = adapter
 
+        // cardLayout.cardStackListener.onCardSwiped()
+
         EventChangeListener()
 
         return view
     }
 
     override fun onClick(v: View?) {
-        val helper = Helper()
-
+        if (cards.size <= 3) {
+            val copy = cards[0]
+            for (i in 0..(3 - cards.size)) {
+                cards.add(copy)
+            }
+            adapter.notifyDataSetChanged()
+        }
         when (v?.id) {
             R.id.button_hard -> {
                 helper.deactivateButton()
-                // card stays at pos 1
-                cards.add((cards.size*0.2).roundToInt(), cards[0])
-                val setting = SwipeAnimationSetting.Builder()
-                    .setDirection(Direction.Left)
-                    .setDuration(Duration.Normal.duration)
-                    .setInterpolator(AccelerateInterpolator())
-                    .build()
-                cardLayout.setSwipeAnimationSetting(setting)
+                val firstCard = cards[0]
+                cards.add((cards.size*0.2).roundToInt(), firstCard)
+                cards.removeAt(0)
+                adapter.notifyDataSetChanged()
+                cardLayout.setSwipeAnimationSetting(helper.swipeLeft)
                 cardStackView.swipe()
-//                cards.removeAt(0)
-//                adapter.notifyDataSetChanged()
-//                helper.noCards()
+                println(cards[0].answer)
+                helper.noCards()
             }
 
             R.id.button_normal -> {
                 helper.deactivateButton()
-                // card to middle pos
-                cards.add((cards.size*0.6).roundToInt(), cards[0])
-                val setting = SwipeAnimationSetting.Builder()
-                    .setDirection(Direction.Top)
-                    .setDuration(Duration.Normal.duration)
-                    .setInterpolator(AccelerateInterpolator())
-                    .build()
-                cardLayout.setSwipeAnimationSetting(setting)
+                val firstCard = cards[0]
+                cards.add((cards.size*0.6).roundToInt(), firstCard)
+                cards.removeAt(0)
+                adapter.notifyDataSetChanged()
+                cardLayout.setSwipeAnimationSetting(helper.swipeUp)
                 cardStackView.swipe()
-//                cards.removeAt(0)
-//                adapter.notifyDataSetChanged()
-//                helper.noCards()
+                helper.noCards()
             }
 
             R.id.button_easy -> {
                 helper.deactivateButton()
-                // card to last pos
-                val setting = SwipeAnimationSetting.Builder()
-                    .setDirection(Direction.Right)
-                    .setDuration(Duration.Normal.duration)
-                    .setInterpolator(AccelerateInterpolator())
-                    .build()
-                cardLayout.setSwipeAnimationSetting(setting)
+                cards.removeAt(0)
+                adapter.notifyDataSetChanged()
+                cardLayout.setSwipeAnimationSetting(helper.swipeRight)
                 cardStackView.swipe()
-//                cards.removeAt(0)
-//                adapter.notifyDataSetChanged()
-//                helper.noCards()
+                helper.noCards()
             }
 
         }
@@ -146,7 +133,22 @@ class ShowCard : Fragment(), View.OnClickListener {
         println(cards.size)
     }
 
-    inner class Helper {
+    inner class Helper(v: View?) {
+        val swipeLeft: SwipeAnimationSetting = SwipeAnimationSetting.Builder()
+                .setDirection(Direction.Left)
+                .setDuration(Duration.Normal.duration)
+                .setInterpolator(AccelerateInterpolator())
+                .build()
+        val swipeUp: SwipeAnimationSetting = SwipeAnimationSetting.Builder()
+                .setDirection(Direction.Top)
+                .setDuration(Duration.Normal.duration)
+                .setInterpolator(AccelerateInterpolator())
+                .build()
+        val swipeRight: SwipeAnimationSetting = SwipeAnimationSetting.Builder()
+                .setDirection(Direction.Right)
+                .setDuration(Duration.Normal.duration)
+                .setInterpolator(AccelerateInterpolator())
+                .build()
         fun activateButton() {
             button_easy.isActivated = true
             button_normal.isActivated = true
@@ -156,9 +158,10 @@ class ShowCard : Fragment(), View.OnClickListener {
             button_normal.isActivated = false
             button_hard.isActivated = false
             button_easy.isActivated = false
+
         }
         fun noCards() {
-            if (cards.size == 0) {
+            if (adapter.itemCount == 0) {
                 deactivateButton()
             }
         }

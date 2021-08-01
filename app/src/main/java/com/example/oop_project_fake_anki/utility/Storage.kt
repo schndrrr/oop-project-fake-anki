@@ -20,7 +20,6 @@ class Storage(db: FirebaseFirestore, context: Context) {
 
     fun getStacksForAdapter(adapter: ShowStackAdapter, stacksAdapter: MutableList<Stack>) {
         checkForUID()
-        println("get: " + productionDefId)
         val colRef = dataBase.collection("userID/${productionDefId}/stacks")
         colRef.addSnapshotListener(object: EventListener<QuerySnapshot> {
             override fun onEvent(value: QuerySnapshot?, error: FirebaseFirestoreException?) {
@@ -40,7 +39,6 @@ class Storage(db: FirebaseFirestore, context: Context) {
 
     fun getStacksForSpinner(stacks: MutableList<Stack>, adapter: ArrayAdapter<String>) {
         checkForUID()
-        println("get S: " + productionDefId)
         val colRef = dataBase.collection("userID/${productionDefId}/stacks")
         colRef.addSnapshotListener(object: EventListener<QuerySnapshot> {
             override fun onEvent(value: QuerySnapshot?, error: FirebaseFirestoreException?) {
@@ -58,7 +56,6 @@ class Storage(db: FirebaseFirestore, context: Context) {
 
     fun postStack(data: Stack) {
         checkForUID()
-        println("post: " + productionDefId)
         val id = generateUniqueId()
         val dataToPost = hashMapOf(
             "stackId" to id,
@@ -123,7 +120,6 @@ class Storage(db: FirebaseFirestore, context: Context) {
     fun loadData(context : Context): String {
         val sharedPreferences : SharedPreferences = context.getSharedPreferences("shared", Context.MODE_PRIVATE)
         val savedId: String = sharedPreferences.getString("KEY_ID", null).toString()
-        println("$savedId")
         return savedId
     }
 

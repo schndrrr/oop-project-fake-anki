@@ -35,7 +35,7 @@ class CardAdapter internal constructor(context: Context?, private val cards: Mut
         parent: ViewGroup,
         viewType: Int
     ): CardAdapter.ViewHolder {
-        val itemView = LayoutInflater.from(parent.context).inflate(
+        val itemView = inflater.inflate(
             R.layout.item_card,
             parent,
             false
@@ -46,14 +46,11 @@ class CardAdapter internal constructor(context: Context?, private val cards: Mut
     override fun onBindViewHolder(holder: CardAdapter.ViewHolder, position: Int) {
         val card: DefaultCard = cards[position]
         holder.question.text = card.question
+        holder.answer.text = ""
     }
 
     override fun getItemCount(): Int {
         return cards.size
-    }
-
-    interface OnItemClickListener {
-        fun onClickItem(position: Int)
     }
 
 }
