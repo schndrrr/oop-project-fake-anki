@@ -43,6 +43,10 @@ class home : Fragment() {
         val view = inflater.inflate(R.layout.fragment_home, container, false)
         //        view.ic_home_home.setOnClickListener{ Navigation.findNavController(view).navigate(R.id.ac)}
 
+        //Declaration of the two groups
+        val welcome: Group = view.findViewById(R.id.WelcomeHome)
+        val standard: Group = view.findViewById(R.id.StandardHome)
+
         db = FirebaseFirestore.getInstance()
         storage = Storage(db, requireActivity())
         val userData = storage.getUserData()
@@ -52,14 +56,16 @@ class home : Fragment() {
             var userData = document.toObject<User>()
             view.txt_home_frame_cards_number.text = userData?.numberOfCards
             view.txt_home_frame_time_number.text = userData?.numberOfStacks
+
+            println(userData?.numberOfStacks)
+            if (userData?.numberOfStacks == "" || userData?.numberOfStacks.isNullOrEmpty() || userData?.numberOfStacks == "0") {
+                standard.visibility = View.INVISIBLE
+                welcome.visibility = View.VISIBLE
+            } else {
+                standard.visibility = View.VISIBLE
+                welcome.visibility = View.INVISIBLE
+            }
         }
-
-        //Declaration of the two groups
-        val welcome: Group = view.findViewById(R.id.WelcomeHome)
-        val standard: Group = view.findViewById(R.id.StandardHome)
-
-        standard.visibility = View.VISIBLE
-        welcome.visibility = View.INVISIBLE
 
         val addbtn = view.findViewById(R.id.ic_home_add) as ImageView
         addbtn.setOnClickListener {

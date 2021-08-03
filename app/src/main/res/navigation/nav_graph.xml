@@ -37,6 +37,9 @@
         <action
             android:id="@+id/action_showCard_to_home"
             app:destination="@id/home" />
+        <action
+            android:id="@+id/action_showCard_to_createCard"
+            app:destination="@id/createCard" />
     </fragment>
     <fragment
         android:id="@+id/home"

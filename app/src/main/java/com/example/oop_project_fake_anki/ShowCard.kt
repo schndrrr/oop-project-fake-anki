@@ -58,8 +58,8 @@ class ShowCard : Fragment(), View.OnClickListener {
         view.button_normal.setOnClickListener(this)
 
         /** ROUTING */
-        view.button_home_card.setOnClickListener {
-            Navigation.findNavController(view).navigate(R.id.action_createCard_to_home)
+        view.ic_showcard_add.setOnClickListener {
+            Navigation.findNavController(view).navigate(R.id.action_showCard_to_createCard)
         }
         view.button_home_card.setOnClickListener {
             Navigation.findNavController(view).navigate(R.id.action_showCard_to_home)

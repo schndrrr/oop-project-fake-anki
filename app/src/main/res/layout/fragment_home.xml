@@ -97,7 +97,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:visibility="visible"
-        app:constraint_referenced_ids="ic_home_frame,txt_home_frame_cards_number,txt_home_frame_button,txt_home_frame_linie,txt_home_frame_title,txt_home_frame_time_number,txt_home_frame_date,txt_home_frame_time_title,txt_home_frame_subtitle,txt_home_frame_cards_title" />
+        app:constraint_referenced_ids="ic_home_frame,txt_home_frame_cards_number,txt_home_frame_button,txt_home_frame_linie,txt_home_frame_title,txt_home_frame_time_number,txt_home_frame_date,txt_home_frame_time_title,txt_home_frame_subtitle,txt_home_frame_cards_title"
+        tools:ignore="UnknownId" />
 
     <ImageView
         android:id="@+id/ic_home_frame"
@@ -230,13 +231,12 @@
 
     <ImageView
         android:id="@+id/ic_home_add"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        android:layout_marginEnd="40dp"
-        android:layout_marginBottom="30dp"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginBottom="40dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/ic_add"
         tools:ignore="MissingPrefix,VectorDrawableCompat" />
