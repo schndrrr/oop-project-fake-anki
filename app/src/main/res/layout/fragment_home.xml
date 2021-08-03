@@ -232,7 +232,7 @@
         android:id="@+id/ic_home_add"
         android:layout_width="20dp"
         android:layout_height="20dp"
-        android:layout_marginEnd="20dp"
+        android:layout_marginEnd="40dp"
         android:layout_marginBottom="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
