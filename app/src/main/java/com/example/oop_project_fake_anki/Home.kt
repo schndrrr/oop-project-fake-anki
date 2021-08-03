@@ -8,6 +8,10 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.constraintlayout.widget.Group
 import androidx.navigation.Navigation
+import com.example.oop_project_fake_anki.classes.User
+import com.example.oop_project_fake_anki.utility.Storage
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.ktx.toObject
 import kotlinx.android.synthetic.main.fragment_home.view.*
 import kotlinx.android.synthetic.main.fragment_show_card.view.*
 
@@ -23,61 +27,50 @@ private const val ARG_PARAM2 = "param2"
  * create an instance of this fragment.
  */
 @Suppress("UNREACHABLE_CODE")
-class home : Fragment(), View.OnClickListener
-
-    //private val listener: OnItemClickListener)
-{
-
-    private var param1: String? = null
-    private var param2: String? = null
+class home : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-
     }
+    private lateinit var db: FirebaseFirestore
+    private lateinit var storage: Storage
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
 
-            val view = inflater.inflate(R.layout.fragment_home, container, false)
-            //        view.ic_home_home.setOnClickListener{ Navigation.findNavController(view).navigate(R.id.ac)}
+        val view = inflater.inflate(R.layout.fragment_home, container, false)
+        //        view.ic_home_home.setOnClickListener{ Navigation.findNavController(view).navigate(R.id.ac)}
 
-            //NumberStacks gets information about existing stacks
-            val NumberStacks = 1
-            //Declaration of the two groups
-            val Welcome: Group = view.findViewById(R.id.WelcomeHome)
-            val Standard: Group = view.findViewById(R.id.StandardHome)
+        db = FirebaseFirestore.getInstance()
+        storage = Storage(db, requireActivity())
+        val userData = storage.getUserData()
 
-            //If the number of stacks is greater than or equal to one, the standard view becomes active
-            if (NumberStacks >= 1) {
-                Standard.visibility = View.VISIBLE
-                Welcome.visibility = View.INVISIBLE
-                //Otherwise the welcome view will be activated
-            } else {
-                Standard.visibility = View.INVISIBLE
-                Welcome.visibility = View.VISIBLE
-            }
-            val addbtn = view.findViewById(R.id.ic_home_add) as ImageView
-            addbtn.setOnClickListener {
-                Navigation.findNavController(view).navigate(R.id.action_home_to_createCard)
-                //navigate to createCard
-            }
-            val wlcmbtn = view.findViewById(R.id.txt_home_frame_button) as ImageView
-            wlcmbtn.setOnClickListener {
-                Navigation.findNavController(view).navigate(R.id.action_home_to_showStack)
-                //navigate to showStack action_home_to_showStack
-            }
-
-            return view
+        val colRef = db.collection("userID/${storage.productionDefId}/userData").document(storage.productionDefId)
+        colRef.get().addOnSuccessListener { document ->
+            var userData = document.toObject<User>()
+            view.txt_home_frame_cards_number.text = userData?.numberOfCards
+            view.txt_home_frame_time_number.text = userData?.numberOfStacks
         }
 
-        override fun onClick(v: View?) {
-            TODO("Not yet implemented")
+        //Declaration of the two groups
+        val welcome: Group = view.findViewById(R.id.WelcomeHome)
+        val standard: Group = view.findViewById(R.id.StandardHome)
+
+        standard.visibility = View.VISIBLE
+        welcome.visibility = View.INVISIBLE
+
+        val addbtn = view.findViewById(R.id.ic_home_add) as ImageView
+        addbtn.setOnClickListener {
+            Navigation.findNavController(view).navigate(R.id.action_home_to_createCard)
         }
+        val wlcmbtn = view.findViewById(R.id.txt_home_frame_button) as ImageView
+        wlcmbtn.setOnClickListener {
+            Navigation.findNavController(view).navigate(R.id.action_home_to_showStack)
+            //navigate to showStack action_home_to_showStack
+        }
+
+        return view
     }
+}

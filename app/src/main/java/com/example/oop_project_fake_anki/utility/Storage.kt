@@ -8,6 +8,7 @@ import com.example.oop_project_fake_anki.classes.Card
 import com.example.oop_project_fake_anki.classes.Stack
 import com.example.oop_project_fake_anki.ShowStackAdapter
 import com.example.oop_project_fake_anki.classes.DefaultCard
+import com.example.oop_project_fake_anki.classes.User
 import com.google.firebase.firestore.*
 import com.google.firebase.firestore.ktx.toObject
 
@@ -15,11 +16,13 @@ class Storage(db: FirebaseFirestore, context: Context) {
     private var dataBase: FirebaseFirestore = db
     private var scope: Context = context
     var productionDefId : String = ""
-    //Todo check where to call checkForUID()
     var stacks: MutableList<Stack> = mutableListOf<Stack>()
 
-    fun getStacksForAdapter(adapter: ShowStackAdapter, stacksAdapter: MutableList<Stack>) {
+    init {
         checkForUID()
+    }
+
+    fun getStacksForAdapter(adapter: ShowStackAdapter, stacksAdapter: MutableList<Stack>) {
         val colRef = dataBase.collection("userID/${productionDefId}/stacks")
         colRef.addSnapshotListener(object: EventListener<QuerySnapshot> {
             override fun onEvent(value: QuerySnapshot?, error: FirebaseFirestoreException?) {
@@ -38,7 +41,6 @@ class Storage(db: FirebaseFirestore, context: Context) {
     }
 
     fun getStacksForSpinner(stacks: MutableList<Stack>, adapter: ArrayAdapter<String>) {
-        checkForUID()
         val colRef = dataBase.collection("userID/${productionDefId}/stacks")
         colRef.addSnapshotListener(object: EventListener<QuerySnapshot> {
             override fun onEvent(value: QuerySnapshot?, error: FirebaseFirestoreException?) {
@@ -55,7 +57,6 @@ class Storage(db: FirebaseFirestore, context: Context) {
     }
 
     fun postStack(data: Stack) {
-        checkForUID()
         val id = generateUniqueId()
         val dataToPost = hashMapOf(
             "stackId" to id,
@@ -68,7 +69,6 @@ class Storage(db: FirebaseFirestore, context: Context) {
 
     //************ CARDS ************\\
     fun getCardsForStackId(stackId: String, adapter: CardAdapter, cards: MutableList<DefaultCard>) {
-        checkForUID()
         val colRef = dataBase.collection("userID/${productionDefId}/cards")
         colRef.addSnapshotListener(object: EventListener<QuerySnapshot> {
             override fun onEvent(value: QuerySnapshot?, error: FirebaseFirestoreException?) {
@@ -86,16 +86,23 @@ class Storage(db: FirebaseFirestore, context: Context) {
     }
 
     fun postCard(data: DefaultCard) {
-        checkForUID()
         val dataToPost = hashMapOf(
             "question" to data.question,
             "answer" to data.answer,
             "stackId" to data.stackId
         )
-        val randomId = System.currentTimeMillis()
+        val randomId = generateUniqueId()
         dataBase.collection("userID/${productionDefId}/cards")
             .document(randomId.toString())
             .set(dataToPost).addOnSuccessListener { println("it worked") }
+    }
+
+    fun getUserData() {
+        val colRef = dataBase.collection("userID/${productionDefId}/userData").document(productionDefId)
+        colRef.get().addOnSuccessListener { document ->
+            var userData = document.toObject<User>()
+        }
+        //return userData
     }
 
     fun generateUniqueId(): String {
@@ -126,7 +133,7 @@ class Storage(db: FirebaseFirestore, context: Context) {
     fun checkForUID() {
         if (productionDefId.isNullOrEmpty()) {
             productionDefId = loadData(scope)
-            if (productionDefId.isNullOrEmpty()) {
+            if (productionDefId.isNullOrEmpty() || productionDefId == "null") {
                 saveData(scope)
             }
         }
