@@ -38,7 +38,6 @@
         android:id="@+id/WelcomeHome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:visibility="gone"
         app:constraint_referenced_ids="txt_home_welcome_title,ic_home_welcome_frame,txt_home_welcome_subtitle,ic_home_welcome_add" />
 
     <ImageView
@@ -96,7 +95,7 @@
         android:id="@+id/StandardHome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:visibility="visible"
+        android:visibility="gone"
         app:constraint_referenced_ids="ic_home_frame,txt_home_frame_cards_number,txt_home_frame_button,txt_home_frame_linie,txt_home_frame_title,txt_home_frame_time_number,txt_home_frame_date,txt_home_frame_time_title,txt_home_frame_subtitle,txt_home_frame_cards_title"
         tools:ignore="UnknownId" />
 

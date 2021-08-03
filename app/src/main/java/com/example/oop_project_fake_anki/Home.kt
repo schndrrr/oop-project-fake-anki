@@ -12,6 +12,7 @@ import com.example.oop_project_fake_anki.classes.User
 import com.example.oop_project_fake_anki.utility.Storage
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.toObject
+import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.fragment_home.view.*
 import kotlinx.android.synthetic.main.fragment_show_card.view.*
 
@@ -59,9 +60,11 @@ class home : Fragment() {
 
             println(userData?.numberOfStacks)
             if (userData?.numberOfStacks == "" || userData?.numberOfStacks.isNullOrEmpty() || userData?.numberOfStacks == "0") {
+                ic_home_add.visibility = View.INVISIBLE
                 standard.visibility = View.INVISIBLE
                 welcome.visibility = View.VISIBLE
             } else {
+                ic_home_add.visibility = View.VISIBLE
                 standard.visibility = View.VISIBLE
                 welcome.visibility = View.INVISIBLE
             }
@@ -76,6 +79,10 @@ class home : Fragment() {
             Navigation.findNavController(view).navigate(R.id.action_home_to_showStack)
             //navigate to showStack action_home_to_showStack
         }
+        val wlcmadd = view.findViewById(R.id.ic_home_welcome_add) as ImageView
+        wlcmadd.setOnClickListener {
+        Navigation.findNavController(view).navigate(R.id.action_home_to_createCard)
+    }
 
         return view
     }
