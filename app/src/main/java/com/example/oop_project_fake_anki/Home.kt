@@ -41,7 +41,10 @@ class Home : Fragment() {
 
         val view = inflater.inflate(R.layout.fragment_home, container, false)
 
-        //Declaration of the two groups
+        db = FirebaseFirestore.getInstance()
+        storage = Storage(db, requireActivity())
+
+        //  declaration of the two groups
         val welcome: Group = view.findViewById(R.id.WelcomeHome)
         val standard: Group = view.findViewById(R.id.StandardHome)
 
@@ -62,9 +65,6 @@ class Home : Fragment() {
                 standard.visibility = View.VISIBLE
                 welcome.visibility = View.INVISIBLE
             }
-
-            db = FirebaseFirestore.getInstance()
-            storage = Storage(db, requireActivity())
         }
 
         //  button  addbtn navigates to card creation
