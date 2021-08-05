@@ -17,10 +17,6 @@ import kotlinx.android.synthetic.main.fragment_show_card.*
 import kotlinx.android.synthetic.main.fragment_show_card.view.*
 import kotlin.math.roundToInt
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-//private const val ARG_STACKID = "BL6i6JL4DAakxUxjnowB"
-
 /**
  * A simple [Fragment] subclass.
  * Use the [ShowCard.newInstance] factory method to
@@ -67,14 +63,18 @@ class ShowCard : Fragment(), View.OnClickListener {
 
 
         adapter = CardAdapter(requireActivity(), cards, helper)
-        cardStackView = view.findViewById(R.id.card_stack_view)
+
         cardLayout = CardStackLayoutManager(requireActivity())
         cardLayout.setStackFrom(StackFrom.Top)
+        cardLayout.setSwipeableMethod(SwipeableMethod.AutomaticAndManual)
+        cardLayout.setCanScrollHorizontal(false)
+        cardLayout.setCanScrollVertical(false)
+        cardLayout.setVisibleCount(200)
+
+        cardStackView = view.findViewById(R.id.card_stack_view)
         cardStackView.layoutManager = cardLayout
         cardStackView.layoutManager
         cardStackView.adapter = adapter
-
-        // cardLayout.cardStackListener.onCardSwiped()
 
         EventChangeListener()
 
@@ -82,53 +82,45 @@ class ShowCard : Fragment(), View.OnClickListener {
     }
 
     override fun onClick(v: View?) {
-        if (cards.size <= 3) {
-            val copy = cards[0]
-            for (i in 0..(3 - cards.size)) {
-                cards.add(copy)
-            }
-            adapter.notifyDataSetChanged()
-        }
         when (v?.id) {
             R.id.button_hard -> {
                 helper.deactivateButton()
-                val firstCard = cards[0]
-                cards.add((cards.size*0.2).roundToInt(), firstCard)
-                cards.removeAt(0)
-                adapter.notifyDataSetChanged()
                 cardLayout.setSwipeAnimationSetting(helper.swipeLeft)
                 cardStackView.swipe()
-                println(cards[0].answer)
+                val firstCard = cards[0]
+                cards.removeAt(0)
+                adapter.notifyItemRemoved(0)
+                adapter.notifyItemMoved(0,(cards.size*0.2).roundToInt())
+                cards.add((cards.size*0.2).roundToInt(), firstCard)
+                adapter.notifyItemInserted((cards.size*0.2).roundToInt())
                 helper.noCards()
             }
 
             R.id.button_normal -> {
                 helper.deactivateButton()
-                val firstCard = cards[0]
-                cards.add((cards.size*0.6).roundToInt(), firstCard)
-                cards.removeAt(0)
-                adapter.notifyDataSetChanged()
                 cardLayout.setSwipeAnimationSetting(helper.swipeUp)
                 cardStackView.swipe()
+                val firstCard = cards[0]
+                cards.removeAt(0)
+                adapter.notifyItemRemoved(0)
+                cards.add((cards.size*0.6).roundToInt(), firstCard)
+                adapter.notifyItemInserted((cards.size*0.2).roundToInt())
                 helper.noCards()
             }
 
             R.id.button_easy -> {
                 helper.deactivateButton()
-                cards.removeAt(0)
-                adapter.notifyDataSetChanged()
                 cardLayout.setSwipeAnimationSetting(helper.swipeRight)
                 cardStackView.swipe()
                 helper.noCards()
             }
 
         }
-        adapter.notifyDataSetChanged()
     }
 
     private fun EventChangeListener() {
         db = FirebaseFirestore.getInstance()
-        val storage: Storage = Storage(db, requireActivity())
+        val storage = Storage(db, requireActivity())
         storage.getCardsForStackId(stackId.toString(), adapter, cards)
         println(cards.size)
     }

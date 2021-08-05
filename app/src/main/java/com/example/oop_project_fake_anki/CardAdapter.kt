@@ -8,6 +8,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.oop_project_fake_anki.classes.Card
 import com.example.oop_project_fake_anki.classes.DefaultCard
+import kotlin.math.roundToInt
 
 class CardAdapter internal constructor(context: Context?, private val cards: MutableList<DefaultCard>, helper: ShowCard.Helper):
     RecyclerView.Adapter<CardAdapter.ViewHolder>() {
@@ -27,6 +28,7 @@ class CardAdapter internal constructor(context: Context?, private val cards: Mut
         override fun onClick(v: View?) {
             val position = adapterPosition
             answer.text = cards[position].answer
+            question.text = cards[position].question
             help.activateButton()
         }
     }
@@ -52,5 +54,4 @@ class CardAdapter internal constructor(context: Context?, private val cards: Mut
     override fun getItemCount(): Int {
         return cards.size
     }
-
 }
