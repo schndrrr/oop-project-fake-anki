@@ -23,8 +23,6 @@ import kotlin.math.roundToInt
 
 /**
  * A simple [Fragment] subclass.
- * Use the [ShowCard.newInstance] factory method to
- * create an instance of this fragment.
  */
 class ShowCard : Fragment(), View.OnClickListener {
     private var stackId: String? = null
@@ -33,12 +31,10 @@ class ShowCard : Fragment(), View.OnClickListener {
         super.onCreate(savedInstanceState)
         arguments?.let {
             stackId = it.getString("stackIdValue")
-            println("$stackId")
         }
     }
 
     private lateinit var db: FirebaseFirestore
-    private lateinit var svCardStack: CardStackView
     private lateinit var adapter: CardAdapter
     private lateinit var cardStackView: CardStackView
     private lateinit var cardLayout: CardStackLayoutManager
@@ -70,6 +66,8 @@ class ShowCard : Fragment(), View.OnClickListener {
         cardStackView = view.findViewById(R.id.card_stack_view)
         cardLayout = CardStackLayoutManager(requireActivity())
         cardLayout.setStackFrom(StackFrom.Top)
+        cardLayout.setCanScrollHorizontal(false)
+        cardLayout.setCanScrollVertical(false)
         cardStackView.layoutManager = cardLayout
         cardStackView.layoutManager
         cardStackView.adapter = adapter
