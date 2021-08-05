@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/createCard"
-        android:name="com.example.oop_project_fake_anki.createCard"
+        android:name="com.example.oop_project_fake_anki.CreateCard"
         android:label="fragment_create_card"
         tools:layout="@layout/fragment_create_card" >
         <action
@@ -43,7 +43,7 @@
     </fragment>
     <fragment
         android:id="@+id/home"
-        android:name="com.example.oop_project_fake_anki.home"
+        android:name="com.example.oop_project_fake_anki.Home"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" >
         <action
