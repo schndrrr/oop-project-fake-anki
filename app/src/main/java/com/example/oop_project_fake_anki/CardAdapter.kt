@@ -1,3 +1,11 @@
+/*
+*   Version: v1.0
+*   Author: Florian Hager, Niklas Dreger
+*   date of creation:   22.06.21
+*   date of last change:    04.08.21
+*   content: class CardAdapter - handles cards
+*/
+
 package com.example.oop_project_fake_anki
 
 import android.content.Context
@@ -6,7 +14,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.oop_project_fake_anki.classes.Card
 import com.example.oop_project_fake_anki.classes.DefaultCard
 
 class CardAdapter internal constructor(context: Context?, private val cards: MutableList<DefaultCard>, helper: ShowCard.Helper):

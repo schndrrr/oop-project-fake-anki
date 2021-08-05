@@ -1,3 +1,11 @@
+/*
+*   Version: v1.0
+*   Author: Niklas Dreger, Johannes Wilhelm
+*   date of creation:   11.06.21
+*   date of last change:    04.08.21
+*   content: class Home - Fragment displays home screen of the app and manages interactions
+*/
+
 package com.example.oop_project_fake_anki
 
 import android.os.Bundle
@@ -14,44 +22,30 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.toObject
 import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.fragment_home.view.*
-import kotlinx.android.synthetic.main.fragment_show_card.view.*
 
+class Home : Fragment() {
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [ShowCard.newInstance] factory method to
- * create an instance of this fragment.
- */
-@Suppress("UNREACHABLE_CODE")
-class home : Fragment() {
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
     private lateinit var db: FirebaseFirestore
     private lateinit var storage: Storage
 
+    // initialise bundle
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+    }
+
+    //  initialise view
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
 
         val view = inflater.inflate(R.layout.fragment_home, container, false)
-        //        view.ic_home_home.setOnClickListener{ Navigation.findNavController(view).navigate(R.id.ac)}
 
         //Declaration of the two groups
         val welcome: Group = view.findViewById(R.id.WelcomeHome)
         val standard: Group = view.findViewById(R.id.StandardHome)
 
-        db = FirebaseFirestore.getInstance()
-        storage = Storage(db, requireActivity())
         val userData = storage.getUserData()
-
         val colRef = db.collection("userID/${storage.productionDefId}/userData").document(storage.productionDefId)
         colRef.get().addOnSuccessListener { document ->
             var userData = document.toObject<User>()
@@ -68,17 +62,25 @@ class home : Fragment() {
                 standard.visibility = View.VISIBLE
                 welcome.visibility = View.INVISIBLE
             }
+
+            db = FirebaseFirestore.getInstance()
+            storage = Storage(db, requireActivity())
         }
 
+        //  button  addbtn navigates to card creation
         val addbtn = view.findViewById(R.id.ic_home_add) as ImageView
         addbtn.setOnClickListener {
             Navigation.findNavController(view).navigate(R.id.action_home_to_createCard)
         }
+
+        //  button wlcmbtn navigates to stack creation
         val wlcmbtn = view.findViewById(R.id.txt_home_frame_button) as ImageView
         wlcmbtn.setOnClickListener {
             Navigation.findNavController(view).navigate(R.id.action_home_to_showStack)
             //navigate to showStack action_home_to_showStack
         }
+
+        //  button wlcmadd navigates to card creation
         val wlcmadd = view.findViewById(R.id.ic_home_welcome_add) as ImageView
         wlcmadd.setOnClickListener {
         Navigation.findNavController(view).navigate(R.id.action_home_to_createCard)
