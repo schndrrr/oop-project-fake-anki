@@ -90,7 +90,6 @@ class ShowCard : Fragment(), View.OnClickListener {
                 val firstCard = cards[0]
                 cards.removeAt(0)
                 adapter.notifyItemRemoved(0)
-                adapter.notifyItemMoved(0,(cards.size*0.2).roundToInt())
                 cards.add((cards.size*0.2).roundToInt(), firstCard)
                 adapter.notifyItemInserted((cards.size*0.2).roundToInt())
                 helper.noCards()
@@ -110,6 +109,8 @@ class ShowCard : Fragment(), View.OnClickListener {
 
             R.id.button_easy -> {
                 helper.deactivateButton()
+                cards.removeAt(0)
+                adapter.notifyItemRemoved(0)
                 cardLayout.setSwipeAnimationSetting(helper.swipeRight)
                 cardStackView.swipe()
                 helper.noCards()
